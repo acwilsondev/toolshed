@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "main": "postcss.config.js",
   "scripts": {
+    "build": "remix build",
+    "dev": "remix dev",
+    "start": "remix-serve build/index.js",
+    "typecheck": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
