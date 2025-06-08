@@ -18,31 +18,31 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-neighborhood-goldenrod dark:bg-neighborhood-dark-goldenrod hover:bg-neighborhood-hover dark:hover:bg-neighborhood-dark-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod dark:focus:ring-neighborhood-dark-goldenrod;
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center px-4 py-2 border border-neighborhood-mint dark:border-neighborhood-dark-mint text-sm font-medium rounded-md text-neighborhood-spruce dark:text-neighborhood-dark-spruce bg-white dark:bg-neighborhood-dark-cloud hover:bg-neighborhood-mint/10 dark:hover:bg-neighborhood-dark-mint/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod dark:focus:ring-neighborhood-dark-goldenrod;
+    @apply inline-flex items-center px-4 py-2 border border-neighborhood-mint text-sm font-medium rounded-md text-neighborhood-spruce bg-white hover:bg-neighborhood-mint/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod;
   }
   
   .form-input {
-    @apply block w-full px-3 py-2 border border-neighborhood-mint dark:border-neighborhood-dark-mint rounded-md shadow-sm bg-white dark:bg-neighborhood-dark-cloud text-neighborhood-slate dark:text-neighborhood-dark-slate focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod dark:focus:ring-neighborhood-dark-goldenrod focus:border-neighborhood-goldenrod dark:focus:border-neighborhood-dark-goldenrod;
+    @apply block w-full px-3 py-2 border border-neighborhood-mint rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod;
   }
   
   .form-select {
-    @apply block w-full px-3 py-2 border border-neighborhood-mint dark:border-neighborhood-dark-mint rounded-md shadow-sm bg-white dark:bg-neighborhood-dark-cloud text-neighborhood-slate dark:text-neighborhood-dark-slate focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod dark:focus:ring-neighborhood-dark-goldenrod focus:border-neighborhood-goldenrod dark:focus:border-neighborhood-dark-goldenrod;
+    @apply block w-full px-3 py-2 border border-neighborhood-mint rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod;
   }
   
   .form-textarea {
-    @apply block w-full px-3 py-2 border border-neighborhood-mint dark:border-neighborhood-dark-mint rounded-md shadow-sm bg-white dark:bg-neighborhood-dark-cloud text-neighborhood-slate dark:text-neighborhood-dark-slate focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod dark:focus:ring-neighborhood-dark-goldenrod focus:border-neighborhood-goldenrod dark:focus:border-neighborhood-dark-goldenrod;
+    @apply block w-full px-3 py-2 border border-neighborhood-mint rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod;
   }
   
   .card {
-    @apply bg-white dark:bg-neighborhood-dark-cloud rounded-lg shadow-sm border border-neighborhood-mint/20 dark:border-neighborhood-dark-mint/20;
+    @apply bg-white rounded-lg shadow-sm border border-neighborhood-mint/20;
   }
   
   .card-header {
-    @apply px-6 py-4 border-b border-neighborhood-mint/20 dark:border-neighborhood-dark-mint/20;
+    @apply px-6 py-4 border-b border-neighborhood-mint/20;
   }
   
   .card-body {
@@ -54,15 +54,15 @@
   }
   
   .empty-state-icon {
-    @apply mx-auto h-12 w-12 text-neighborhood-disabled dark:text-neighborhood-dark-disabled;
+    @apply mx-auto h-12 w-12 text-neighborhood-disabled;
   }
   
   .empty-state-title {
-    @apply mt-2 text-sm font-medium text-neighborhood-slate dark:text-neighborhood-dark-slate;
+    @apply mt-2 text-sm font-medium text-neighborhood-slate;
   }
   
   .empty-state-description {
-    @apply mt-1 text-sm text-neighborhood-slate dark:text-neighborhood-dark-slate;
+    @apply mt-1 text-sm text-neighborhood-slate;
   }
 }
 

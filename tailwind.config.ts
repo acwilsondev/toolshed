@@ -1,6 +1,5 @@
 module.exports = {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -8,7 +7,6 @@ module.exports = {
       },
       colors: {
         neighborhood: {
-          // Light mode
           spruce: '#2E5E4E',     // primary
           goldenrod: '#E0B34F',  // accent / CTA
           mint: '#A8D5BA',       // secondary highlight
@@ -17,18 +15,6 @@ module.exports = {
           slate: '#4A4A4A',      // primary text
           disabled: '#C4C4C4',   // form disabled
           hover: '#F3C86C',      // CTA hover
-
-          // Dark mode
-          dark: {
-            spruce: '#1E3A32',     // deeper primary
-            goldenrod: '#D9A73F',  // darker warmth
-            mint: '#7CBF9C',       // still soft
-            rust: '#B35425',       // less bright
-            cloud: '#1A1A18',      // background dark
-            slate: '#E6E6E6',      // light text
-            disabled: '#555555',   // dimmed text or components
-            hover: '#E5B95A',      // golden hover
-          },
         },
       },
       spacing: {

@@ -1018,55 +1018,6 @@ body {
 .disabled\:opacity-50:disabled {
   opacity: .5;
 }
-.dark\:border-neighborhood-dark-goldenrod:is(.dark *) {
-  --tw-border-opacity: 1;
-  border-color: rgb(217 167 63 / var(--tw-border-opacity, 1));
-}
-.dark\:border-neighborhood-dark-mint:is(.dark *) {
-  --tw-border-opacity: 1;
-  border-color: rgb(124 191 156 / var(--tw-border-opacity, 1));
-}
-.dark\:border-neighborhood-dark-mint\/20:is(.dark *) {
-  border-color: #7cbf9c33;
-}
-.dark\:bg-neighborhood-dark-cloud:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(26 26 24 / var(--tw-bg-opacity, 1));
-}
-.dark\:bg-neighborhood-dark-goldenrod:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(217 167 63 / var(--tw-bg-opacity, 1));
-}
-.dark\:bg-neighborhood-dark-mint\/20:is(.dark *) {
-  background-color: #7cbf9c33;
-}
-.dark\:text-neighborhood-dark-slate:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(230 230 230 / var(--tw-text-opacity, 1));
-}
-.dark\:text-neighborhood-dark-spruce:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(30 58 50 / var(--tw-text-opacity, 1));
-}
-.dark\:hover\:border-neighborhood-dark-mint:hover:is(.dark *) {
-  --tw-border-opacity: 1;
-  border-color: rgb(124 191 156 / var(--tw-border-opacity, 1));
-}
-.dark\:hover\:bg-neighborhood-dark-hover:hover:is(.dark *) {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 185 90 / var(--tw-bg-opacity, 1));
-}
-.dark\:hover\:bg-neighborhood-dark-mint\/10:hover:is(.dark *) {
-  background-color: #7cbf9c1a;
-}
-.dark\:hover\:text-neighborhood-dark-spruce:hover:is(.dark *) {
-  --tw-text-opacity: 1;
-  color: rgb(30 58 50 / var(--tw-text-opacity, 1));
-}
-.dark\:focus\:ring-neighborhood-dark-goldenrod:focus:is(.dark *) {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(217 167 63 / var(--tw-ring-opacity, 1));
-}
 @media (min-width: 640px) {
   .sm\:mx-auto {
     margin-left: auto;
@@ -1256,4 +1207,4 @@ body {
     padding-bottom: 8rem;
   }
 }
-/*# sourceMappingURL=/build/_assets/global-KQIM2ZSQ.css.map */
+/*# sourceMappingURL=/build/_assets/global-ELPHWO2O.css.map */

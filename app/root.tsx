@@ -10,7 +10,6 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import { Layout } from "~/components/Layout";
-import { ThemeProvider } from "~/utils/theme";
 import globalStyles from "~/styles/global.css";
 
 export const meta: MetaFunction = () => {
@@ -45,12 +44,10 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full bg-neighborhood-cloud dark:bg-neighborhood-dark-cloud text-neighborhood-slate dark:text-neighborhood-dark-slate">
-        <ThemeProvider>
-          <Layout>
-            <Outlet />
-          </Layout>
-        </ThemeProvider>
+      <body className="h-full bg-neighborhood-cloud text-neighborhood-slate">
+        <Layout>
+          <Outlet />
+        </Layout>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
