@@ -1,7 +1,6 @@
 import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
 import { json, redirect, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node";
 import { authenticateUser } from "~/utils/db.server";
-import jwt from "jsonwebtoken";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Sign In - Toolshed" }];
@@ -23,15 +22,10 @@ export async function action({ request }: ActionFunctionArgs) {
       return json({ error: "Invalid email or password" }, { status: 401 });
     }
 
-    const token = jwt.sign(
-      { userId: user.id, email: user.email },
-      process.env.JWT_SECRET || 'fallback-secret',
-      { expiresIn: '7d' }
-    );
-
+    // Simple session-based authentication
     return redirect("/profile", {
       headers: {
-        "Set-Cookie": `auth_token=${token}; HttpOnly; Path=/; Max-Age=${7 * 24 * 60 * 60}; SameSite=Strict; Secure`
+        "Set-Cookie": `user_session=${user.id}; HttpOnly; Path=/; Max-Age=${7 * 24 * 60 * 60}; SameSite=Strict`
       }
     });
   } catch (error) {
