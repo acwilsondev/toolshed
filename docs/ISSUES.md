@@ -14,40 +14,6 @@ This document outlines critical issues, technical debt, and areas for improvemen
 
 ## P0 - Critical Issues
 
-### 1. No Testing Infrastructure
-
-**Impact**: High - Makes refactoring and new feature development risky
-
-- No test files present in the repository
-- No test scripts in `package.json`
-- Missing test framework setup (Jest, Vitest, etc.)
-- No test coverage measurement
-
-**Action Required**: Implement comprehensive testing suite with unit, integration, and E2E tests.
-
-### 2. Authentication/Navigation UI Inconsistency
-
-**Impact**: High - Confusing user experience
-
-When users are signed in:
-- "Create Account" and "Sign In" buttons still appear in navigation
-- Should be replaced with user name and "Sign Out" button
-- Users can't easily tell if they're logged in
-- No clear way to access profile from main navigation
-
-**Action Required**: Implement session-aware navigation component
-
-### 3. Profile Page Missing App Header
-
-**Impact**: High - Navigation and branding consistency
-
-- Profile page (`/profile`) doesn't include the main app header/navigation
-- Users feel disconnected from main app when viewing profile
-- No way to navigate back to main sections from profile
-- Inconsistent with other pages in the application
-
-**Action Required**: Add consistent header/navigation to profile page
-
 ### 4. Incomplete Authentication Security
 
 **Impact**: High - Security vulnerability
