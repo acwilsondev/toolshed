@@ -248,3 +248,9 @@ meta/
 *.tgz
 *.tar.gz
 
+# E2E test artifacts
+test-screenshots/
+selenium-debug.log
+chromedriver.log
+geckodriver.log
+

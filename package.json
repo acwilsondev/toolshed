@@ -16,7 +16,16 @@
     "db:migrate": "tsx database/scripts/migrate.ts migrate",
     "db:status": "tsx database/scripts/migrate.ts status",
     "db:validate": "tsx database/scripts/migrate.ts validate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "test:e2e": "tsx test/e2e/runner.ts",
+    "test:e2e:chrome": "BROWSER=chrome tsx test/e2e/runner.ts",
+    "test:e2e:firefox": "BROWSER=firefox tsx test/e2e/runner.ts",
+    "test:e2e:headless": "HEADLESS=true tsx test/e2e/runner.ts",
+    "test:e2e:ci": "CI=true HEADLESS=true tsx test/e2e/runner.ts",
+    "test:e2e:demo": "tsx test/e2e/demo.ts",
+    "test:e2e:demo:headless": "HEADLESS=true tsx test/e2e/demo.ts",
+    "test:e2e:flows": "tsx test/e2e/criticalFlowsRunner.ts",
+    "test:e2e:flows:headless": "HEADLESS=true tsx test/e2e/criticalFlowsRunner.ts"
   },
   "keywords": [],
   "author": "",
@@ -62,5 +71,12 @@
     "uuid": "^11.1.0",
     "vitest": "^2.1.8",
     "zod": "^3.25.56"
+  },
+  "devDependencies": {
+    "@types/selenium-webdriver": "^4.1.28",
+    "chromedriver": "^137.0.1",
+    "geckodriver": "^5.0.0",
+    "selenium-webdriver": "^4.33.0",
+    "tsx": "^4.19.4"
   }
 }
