@@ -2,7 +2,17 @@
 
 This document outlines critical issues, technical debt, and areas for improvement identified in the Toolshed codebase.
 
-## Critical Issues (Priority 1)
+## Issue Priority System
+
+**P0 - Critical**: System-breaking issues, security vulnerabilities, data corruption risks
+**P1 - High**: Core functionality broken, major user experience issues
+**P2 - Medium**: Feature gaps, minor user experience problems
+**P3 - Low**: Nice-to-have improvements, minor convenience issues
+**P4 - Backlog**: Future enhancements, technical debt
+
+---
+
+## P0 - Critical Issues
 
 ### 1. No Testing Infrastructure
 
@@ -15,7 +25,30 @@ This document outlines critical issues, technical debt, and areas for improvemen
 
 **Action Required**: Implement comprehensive testing suite with unit, integration, and E2E tests.
 
-### 2. Incomplete Authentication Security
+### 2. Authentication/Navigation UI Inconsistency
+
+**Impact**: High - Confusing user experience
+
+When users are signed in:
+- "Create Account" and "Sign In" buttons still appear in navigation
+- Should be replaced with user name and "Sign Out" button
+- Users can't easily tell if they're logged in
+- No clear way to access profile from main navigation
+
+**Action Required**: Implement session-aware navigation component
+
+### 3. Profile Page Missing App Header
+
+**Impact**: High - Navigation and branding consistency
+
+- Profile page (`/profile`) doesn't include the main app header/navigation
+- Users feel disconnected from main app when viewing profile
+- No way to navigate back to main sections from profile
+- Inconsistent with other pages in the application
+
+**Action Required**: Add consistent header/navigation to profile page
+
+### 4. Incomplete Authentication Security
 
 **Impact**: High - Security vulnerability
 **Location**: `server/storage.ts:272-278`
@@ -59,7 +92,7 @@ private getItemIdFromFirstEvent(reservationId: string): string {
 
 **Action Required**: Implement proper item_id tracking in reservation events.
 
-## High Priority Issues (Priority 2)
+## P1 - High Priority Issues
 
 ### 5. Missing Input Validation
 
@@ -92,7 +125,7 @@ private getItemIdFromFirstEvent(reservationId: string): string {
 
 **Recommendations**: Implement Drizzle migrations or similar system.
 
-## Medium Priority Issues (Priority 3)
+## P2 - Medium Priority Issues
 
 ### 8. Missing Development Documentation
 
@@ -120,7 +153,7 @@ private getItemIdFromFirstEvent(reservationId: string): string {
 - No dispute resolution system
 - Missing notification system for reservation updates
 
-## Low Priority Issues (Priority 4)
+## P3 - Low Priority Issues
 
 ### 11. Missing Monitoring and Logging
 
@@ -137,6 +170,31 @@ private getItemIdFromFirstEvent(reservationId: string): string {
 - Limited API documentation
 - No OpenAPI/Swagger specification
 - Missing examples for API usage
+
+## P4 - Backlog Items
+
+### 13. Advanced User Features
+
+**Impact**: Very Low - Future enhancements
+
+- User profile photos/avatars
+- User rating and review system
+- Advanced search and filtering
+- Mobile app companion
+- Push notifications
+- Social features (following neighbors, activity feeds)
+
+### 14. Advanced Tool Management
+
+**Impact**: Very Low - Nice-to-have features
+
+- Tool maintenance scheduling
+- Usage analytics for tool owners
+- Automatic availability management
+- Integration with external calendars
+- QR code generation for physical tools
+
+---
 
 ## Code Quality Observations
 
@@ -158,23 +216,27 @@ private getItemIdFromFirstEvent(reservationId: string): string {
 
 ## Suggested Implementation Order
 
-1. **Phase 1 (Critical)**:
+1. **Phase 1 (P0 - Critical)**:
+   - Fix authentication/navigation UI inconsistency
+   - Add app header to profile page
    - Fix authentication security issue
    - Implement basic testing framework
-   - Add item_id tracking to reservations
 
-2. **Phase 2 (Core Features)**:
+2. **Phase 2 (P1 - High Priority)**:
+   - Add item_id tracking to reservations
    - Add overlapping reservation validation
    - Implement input validation
    - Add proper error handling
 
-3. **Phase 3 (Infrastructure)**:
+3. **Phase 3 (P2-P3 - Medium/Low Priority)**:
    - Set up database migrations
    - Add development documentation
    - Implement monitoring/logging
-
-4. **Phase 4 (Enhancements)**:
    - Complete business logic features
+
+4. **Phase 4 (P4 - Future Enhancements)**:
+   - Advanced user features
+   - Advanced tool management
    - Add comprehensive API documentation
    - Implement CI/CD pipeline
 
