@@ -1,5 +1,6 @@
 import { Link, useLocation } from "@remix-run/react";
 import { useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
   const location = useLocation();
@@ -13,12 +14,12 @@ export function Navigation() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b border-neighborhood-mint/20">
+    <nav className="bg-white dark:bg-neighborhood-dark-cloud shadow-sm border-b border-neighborhood-mint/20 dark:border-neighborhood-dark-mint/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="text-2xl font-bold text-neighborhood-spruce">
+              <Link to="/" className="text-2xl font-bold text-neighborhood-spruce dark:text-neighborhood-dark-spruce">
                 Toolshed
               </Link>
             </div>

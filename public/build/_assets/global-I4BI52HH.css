@@ -857,6 +857,21 @@ body {
     var(--tw-ring-shadow, 0 0 #0000),
     var(--tw-shadow);
 }
+.transition-colors {
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke;
+  transition-property:
+    color,
+    background-color,
+    border-color;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+  transition-duration: .15s;
+}
 .focus-visible:focus-visible {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -988,6 +1003,28 @@ body {
 }
 .disabled\:opacity-50:disabled {
   opacity: .5;
+}
+.dark\:border-neighborhood-dark-mint:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(124 191 156 / var(--tw-border-opacity, 1));
+}
+.dark\:border-neighborhood-dark-mint\/20:is(.dark *) {
+  border-color: #7cbf9c33;
+}
+.dark\:bg-neighborhood-dark-cloud:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(26 26 24 / var(--tw-bg-opacity, 1));
+}
+.dark\:text-neighborhood-dark-slate:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(230 230 230 / var(--tw-text-opacity, 1));
+}
+.dark\:text-neighborhood-dark-spruce:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(30 58 50 / var(--tw-text-opacity, 1));
+}
+.dark\:hover\:bg-neighborhood-dark-mint\/10:hover:is(.dark *) {
+  background-color: #7cbf9c1a;
 }
 @media (min-width: 640px) {
   .sm\:mx-auto {
@@ -1178,4 +1215,4 @@ body {
     padding-bottom: 8rem;
   }
 }
-/*# sourceMappingURL=/build/_assets/global-JB4DQCVE.css.map */
+/*# sourceMappingURL=/build/_assets/global-KBNK4QU4.css.map */
