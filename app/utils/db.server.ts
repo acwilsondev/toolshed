@@ -6,12 +6,14 @@ import type {
   Item, 
   ReservationState,
   ReservationEvent,
-  ReservationStatus,
-  ReservationEventType,
   CreateUserRequest,
   CreateItemRequest,
   CreateReservationEventRequest,
   PaginatedResponse
+} from './types';
+import { 
+  ReservationStatus,
+  ReservationEventType
 } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
