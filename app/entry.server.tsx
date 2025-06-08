@@ -1,6 +1,10 @@
 import type { EntryContext } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import { renderToString } from "react-dom/server";
+import { initializeDatabase } from "~/utils/db.server";
+
+// Initialize database with sample data on server start
+initializeDatabase().catch(console.error);
 
 export default function handleRequest(
   request: Request,
