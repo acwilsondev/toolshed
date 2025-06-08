@@ -12,6 +12,7 @@ import {
 import { db } from "./db";
 import { eq, desc, and, gte } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
+import bcrypt from "bcryptjs";
 import { ReservationStatus, ReservationEventType, type ReservationState, type CreateUserRequest, type CreateItemRequest, type CreateReservationEventRequest } from "../app/utils/types";
 
 // Interface for storage operations
@@ -271,7 +272,7 @@ export class DatabaseStorage implements IStorage {
   // Authentication
   async authenticateUser(email: string, password: string): Promise<User | null> {
     const user = await this.getUserByEmail(email);
-    if (user && user.password === password) {
+    if (user && await bcrypt.compare(password, user.password)) {
       return user;
     }
     return null;
