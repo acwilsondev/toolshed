@@ -8,9 +8,10 @@ export const meta: MetaFunction = () => {
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  // In a real app, this would get the user from session
-  // For demo, we'll use the sample user
-  const user = await getUserByEmail("alice@neighborhood.local");
+  const { getCurrentUser, requireUser } = await import("~/utils/session.server");
+  
+  const user = await getCurrentUser(request);
+  requireUser(user);
   
   if (!user) {
     throw new Response("User not found", { status: 404 });
@@ -37,8 +38,10 @@ export async function action({ request }: ActionFunctionArgs) {
     }
 
     try {
-      // In a real app, get user ID from session
-      const user = await getUserByEmail("alice@neighborhood.local");
+      const { getCurrentUser, requireUser } = await import("~/utils/session.server");
+      const user = await getCurrentUser(request);
+      requireUser(user);
+      
       if (!user) {
         return json({ error: "User not found" }, { status: 404 });
       }
