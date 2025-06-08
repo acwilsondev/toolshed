@@ -456,9 +456,6 @@ body {
 .h-8 {
   height: 2rem;
 }
-.h-9 {
-  height: 2.25rem;
-}
 .h-full {
   height: 100%;
 }
@@ -483,9 +480,6 @@ body {
 .w-8 {
   width: 2rem;
 }
-.w-9 {
-  width: 2.25rem;
-}
 .w-full {
   width: 100%;
 }
@@ -506,14 +500,6 @@ body {
 }
 .flex-shrink-0 {
   flex-shrink: 0;
-}
-@keyframes pulse {
-  50% {
-    opacity: .5;
-  }
-}
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
 }
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -871,21 +857,6 @@ body {
     var(--tw-ring-shadow, 0 0 #0000),
     var(--tw-shadow);
 }
-.transition-colors {
-  transition-property:
-    color,
-    background-color,
-    border-color,
-    text-decoration-color,
-    fill,
-    stroke;
-  transition-property:
-    color,
-    background-color,
-    border-color;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-  transition-duration: .15s;
-}
 .focus-visible:focus-visible {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1207,4 +1178,4 @@ body {
     padding-bottom: 8rem;
   }
 }
-/*# sourceMappingURL=/build/_assets/global-ELPHWO2O.css.map */
+/*# sourceMappingURL=/build/_assets/global-JB4DQCVE.css.map */

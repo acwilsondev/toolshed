@@ -28,20 +28,27 @@ if (import.meta) {
     //@ts-expect-error
     "app/entry.client.tsx"
   );
-  import.meta.hot.lastModified = "1749399942998.8193";
+  import.meta.hot.lastModified = "1749401565199.6035";
 }
-(0, import_react2.startTransition)(() => {
-  (0, import_client.hydrateRoot)(
-    document,
-    /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react2.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RemixBrowser, {}, void 0, false, {
-      fileName: "app/entry.client.tsx",
-      lineNumber: 20,
-      columnNumber: 7
-    }, this) }, void 0, false, {
-      fileName: "app/entry.client.tsx",
-      lineNumber: 19,
-      columnNumber: 5
-    }, this)
-  );
-});
-//# sourceMappingURL=/build/entry.client-AMJM5PHI.js.map
+function hydrate() {
+  (0, import_react2.startTransition)(() => {
+    (0, import_client.hydrateRoot)(
+      document,
+      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(import_react2.StrictMode, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(RemixBrowser, {}, void 0, false, {
+        fileName: "app/entry.client.tsx",
+        lineNumber: 21,
+        columnNumber: 9
+      }, this) }, void 0, false, {
+        fileName: "app/entry.client.tsx",
+        lineNumber: 20,
+        columnNumber: 7
+      }, this)
+    );
+  });
+}
+if (typeof requestIdleCallback === "function") {
+  requestIdleCallback(hydrate);
+} else {
+  setTimeout(hydrate, 1);
+}
+//# sourceMappingURL=/build/entry.client-PTVVFI7X.js.map
