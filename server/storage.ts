@@ -174,23 +174,33 @@ export class DatabaseStorage implements IStorage {
     reservationId?: string,
     afterTimestamp?: Date
   ): Promise<ReservationEvent[]> {
-    const conditions = [];
-    if (reservationId) {
-      conditions.push(eq(reservationEvents.reservationId, reservationId));
+    if (reservationId && afterTimestamp) {
+      return await db.select().from(reservationEvents)
+        .where(and(
+          eq(reservationEvents.reservationId, reservationId),
+          gte(reservationEvents.timestamp, afterTimestamp)
+        ))
+        .orderBy(desc(reservationEvents.timestamp))
+        .limit(limit)
+        .offset(offset);
+    } else if (reservationId) {
+      return await db.select().from(reservationEvents)
+        .where(eq(reservationEvents.reservationId, reservationId))
+        .orderBy(desc(reservationEvents.timestamp))
+        .limit(limit)
+        .offset(offset);
+    } else if (afterTimestamp) {
+      return await db.select().from(reservationEvents)
+        .where(gte(reservationEvents.timestamp, afterTimestamp))
+        .orderBy(desc(reservationEvents.timestamp))
+        .limit(limit)
+        .offset(offset);
+    } else {
+      return await db.select().from(reservationEvents)
+        .orderBy(desc(reservationEvents.timestamp))
+        .limit(limit)
+        .offset(offset);
     }
-    if (afterTimestamp) {
-      conditions.push(gte(reservationEvents.timestamp, afterTimestamp));
-    }
-    
-    let query = db.select().from(reservationEvents);
-    if (conditions.length > 0) {
-      query = query.where(and(...conditions)) as typeof query;
-    }
-    
-    return await query
-      .orderBy(desc(reservationEvents.timestamp))
-      .limit(limit)
-      .offset(offset);
   }
 
   async createReservationEvent(

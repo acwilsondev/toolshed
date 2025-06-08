@@ -1,6 +1,7 @@
-// Event-sourced in-memory database for development
-// This implements the reservation system with complete event sourcing
+// Database layer using PostgreSQL with event sourcing
+// This implements the reservation system with complete persistence
 
+import { storage } from "../../server/storage";
 import type { 
   User, 
   Item, 
@@ -15,12 +16,10 @@ import {
   ReservationStatus,
   ReservationEventType
 } from './types';
+import bcrypt from 'bcryptjs';
 import { v4 as uuidv4 } from 'uuid';
 
-// In-memory storage
-let users: User[] = [];
-let items: Item[] = [];
-let reservationEvents: ReservationEvent[] = [];
+// Database operations now use PostgreSQL storage
 
 // Sample data for development
 const sampleUsers: User[] = [
