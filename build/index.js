@@ -209,7 +209,7 @@ function Layout({ children }) {
 }
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-RSNX2CVR.css";
+var global_default = "/build/_assets/global-53PQQSY7.css";
 
 // app/root.tsx
 var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), meta = () => [
@@ -446,22 +446,625 @@ function ErrorBoundary() {
   }, this);
 }
 
+// app/routes/api.reservations.$id.events.tsx
+var api_reservations_id_events_exports = {};
+__export(api_reservations_id_events_exports, {
+  loader: () => loader
+});
+var import_node = require("@remix-run/node");
+
+// app/utils/db.server.ts
+var import_uuid = require("uuid"), users = [], items = [], reservationEvents = [], sampleUsers = [
+  {
+    id: "550e8400-e29b-41d4-a716-446655440001",
+    name: "Alice Johnson",
+    email: "alice@neighborhood.local",
+    neighborhood: "Downtown",
+    contact_method: "message",
+    created_at: /* @__PURE__ */ new Date("2024-01-15"),
+    updated_at: /* @__PURE__ */ new Date("2024-01-15")
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440002",
+    name: "Bob Smith",
+    email: "bob@neighborhood.local",
+    neighborhood: "Riverside",
+    contact_method: "email",
+    created_at: /* @__PURE__ */ new Date("2024-01-20"),
+    updated_at: /* @__PURE__ */ new Date("2024-01-20")
+  },
+  {
+    id: "550e8400-e29b-41d4-a716-446655440003",
+    name: "Carol Davis",
+    email: "carol@neighborhood.local",
+    neighborhood: "Hillside",
+    contact_method: "phone",
+    created_at: /* @__PURE__ */ new Date("2024-01-25"),
+    updated_at: /* @__PURE__ */ new Date("2024-01-25")
+  }
+], sampleItems = [
+  {
+    id: "650e8400-e29b-41d4-a716-446655440001",
+    owner_id: "550e8400-e29b-41d4-a716-446655440001",
+    title: "Electric Drill",
+    description: "High-quality cordless drill with multiple bits",
+    category: "power-tools",
+    tags: ["drilling", "construction", "DIY"],
+    location: "Downtown",
+    photo_path: null,
+    quantity_total: 1,
+    quantity_available: 1,
+    created_at: /* @__PURE__ */ new Date("2024-01-15")
+  },
+  {
+    id: "650e8400-e29b-41d4-a716-446655440002",
+    owner_id: "550e8400-e29b-41d4-a716-446655440002",
+    title: "Garden Hose",
+    description: "50ft expandable garden hose with spray nozzle",
+    category: "garden",
+    tags: ["watering", "garden", "outdoor"],
+    location: "Riverside",
+    photo_path: null,
+    quantity_total: 1,
+    quantity_available: 1,
+    created_at: /* @__PURE__ */ new Date("2024-01-20")
+  },
+  {
+    id: "650e8400-e29b-41d4-a716-446655440003",
+    owner_id: "550e8400-e29b-41d4-a716-446655440001",
+    title: "Socket Set",
+    description: "Complete metric and standard socket set",
+    category: "automotive",
+    tags: ["automotive", "repair", "mechanic"],
+    location: "Downtown",
+    photo_path: null,
+    quantity_total: 1,
+    quantity_available: 0,
+    created_at: /* @__PURE__ */ new Date("2024-01-22")
+  }
+], sampleReservationEvents = [
+  {
+    id: "750e8400-e29b-41d4-a716-446655440001",
+    reservation_id: "850e8400-e29b-41d4-a716-446655440001",
+    event_type: ReservationEventType.REQUESTED,
+    actor_id: "550e8400-e29b-41d4-a716-446655440002",
+    timestamp: /* @__PURE__ */ new Date("2024-01-23T10:00:00Z"),
+    quantity: 1,
+    start_date: /* @__PURE__ */ new Date("2024-01-25T09:00:00Z"),
+    end_date: /* @__PURE__ */ new Date("2024-01-27T17:00:00Z"),
+    notes: "Need for weekend project"
+  },
+  {
+    id: "750e8400-e29b-41d4-a716-446655440002",
+    reservation_id: "850e8400-e29b-41d4-a716-446655440001",
+    event_type: ReservationEventType.APPROVED,
+    actor_id: "550e8400-e29b-41d4-a716-446655440001",
+    timestamp: /* @__PURE__ */ new Date("2024-01-23T14:30:00Z")
+  },
+  {
+    id: "750e8400-e29b-41d4-a716-446655440003",
+    reservation_id: "850e8400-e29b-41d4-a716-446655440001",
+    event_type: ReservationEventType.ACTIVATED,
+    actor_id: "550e8400-e29b-41d4-a716-446655440002",
+    timestamp: /* @__PURE__ */ new Date("2024-01-25T09:15:00Z"),
+    notes: "Picked up successfully"
+  }
+];
+function initializeDatabase() {
+  users = [...sampleUsers], items = [...sampleItems], reservationEvents = [...sampleReservationEvents];
+}
+function computeReservationState(reservationId) {
+  let events = reservationEvents.filter((e) => e.reservation_id === reservationId).sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
+  if (events.length === 0)
+    return null;
+  let firstEvent = events[0];
+  if (firstEvent.event_type !== ReservationEventType.REQUESTED)
+    return null;
+  let state = {
+    id: reservationId,
+    item_id: firstEvent.quantity ? getItemIdFromFirstEvent(reservationId) : "",
+    owner_id: "",
+    requester_id: firstEvent.actor_id,
+    status: ReservationStatus.PENDING,
+    quantity_requested: firstEvent.quantity || 1,
+    start_date: firstEvent.start_date || null,
+    end_date: firstEvent.end_date || null,
+    notes: firstEvent.notes || null,
+    version: events.length,
+    created_at: firstEvent.timestamp,
+    updated_at: events[events.length - 1].timestamp
+  }, item = items.find((i) => i.id === state.item_id);
+  item && (state.owner_id = item.owner_id);
+  for (let event of events) {
+    switch (event.event_type) {
+      case ReservationEventType.APPROVED:
+        state.status = ReservationStatus.APPROVED;
+        break;
+      case ReservationEventType.REJECTED:
+        state.status = ReservationStatus.REJECTED;
+        break;
+      case ReservationEventType.ACTIVATED:
+        state.status = ReservationStatus.ACTIVE;
+        break;
+      case ReservationEventType.RETURNED:
+        state.status = ReservationStatus.RETURNED;
+        break;
+      case ReservationEventType.CANCELLED:
+        state.status = ReservationStatus.CANCELLED;
+        break;
+      case ReservationEventType.EXTENDED:
+        event.end_date && (state.end_date = event.end_date);
+        break;
+      case ReservationEventType.NOTES_UPDATED:
+        event.notes && (state.notes = event.notes);
+        break;
+    }
+    state.updated_at = event.timestamp;
+  }
+  return state;
+}
+function getItemIdFromFirstEvent(reservationId) {
+  return "650e8400-e29b-41d4-a716-446655440003";
+}
+async function getUsers(limit = 50, offset = 0) {
+  return users.slice(offset, offset + limit);
+}
+async function getUserById(id) {
+  return users.find((user) => user.id === id) || null;
+}
+async function getUserByEmail(email) {
+  return users.find((user) => user.email === email) || null;
+}
+async function createUser(userData) {
+  let newUser = {
+    id: (0, import_uuid.v4)(),
+    name: userData.name,
+    email: userData.email,
+    neighborhood: userData.neighborhood || "",
+    contact_method: userData.contact_method || "message",
+    created_at: /* @__PURE__ */ new Date(),
+    updated_at: /* @__PURE__ */ new Date()
+  };
+  return users.push(newUser), newUser;
+}
+async function updateUser(id, userData) {
+  let userIndex = users.findIndex((user) => user.id === id);
+  return userIndex === -1 ? null : (users[userIndex] = {
+    ...users[userIndex],
+    ...userData,
+    updated_at: /* @__PURE__ */ new Date()
+  }, users[userIndex]);
+}
+async function deleteUser(id) {
+  let userIndex = users.findIndex((user) => user.id === id);
+  return userIndex === -1 ? !1 : (users.splice(userIndex, 1), !0);
+}
+async function getItems(limit = 50, offset = 0) {
+  return items.slice(offset, offset + limit);
+}
+async function getItemById(id) {
+  return items.find((item) => item.id === id) || null;
+}
+async function createItem(itemData) {
+  let newItem = {
+    id: (0, import_uuid.v4)(),
+    owner_id: itemData.owner_id,
+    title: itemData.title,
+    description: itemData.description || null,
+    category: itemData.category,
+    tags: itemData.tags || [],
+    location: itemData.location,
+    photo_path: itemData.photo_path || null,
+    quantity_total: itemData.quantity_total,
+    quantity_available: itemData.quantity_total,
+    created_at: /* @__PURE__ */ new Date()
+  };
+  return items.push(newItem), newItem;
+}
+async function updateItem(id, itemData) {
+  let itemIndex = items.findIndex((item) => item.id === id);
+  return itemIndex === -1 ? null : (items[itemIndex] = {
+    ...items[itemIndex],
+    ...itemData
+  }, items[itemIndex]);
+}
+async function deleteItem(id) {
+  let itemIndex = items.findIndex((item) => item.id === id);
+  return itemIndex === -1 ? !1 : (items.splice(itemIndex, 1), !0);
+}
+async function getReservations(limit = 50, offset = 0, itemId, requesterId, status) {
+  let states = [...new Set(reservationEvents.map((e) => e.reservation_id))].map((id) => computeReservationState(id)).filter((state) => state !== null);
+  return itemId && (states = states.filter((s) => s.item_id === itemId)), requesterId && (states = states.filter((s) => s.requester_id === requesterId)), status && (states = states.filter((s) => s.status === status)), states.slice(offset, offset + limit);
+}
+async function getReservationById(id) {
+  return computeReservationState(id);
+}
+async function getReservationEvents(limit = 50, offset = 0, reservationId, afterTimestamp) {
+  let events = [...reservationEvents];
+  return reservationId && (events = events.filter((e) => e.reservation_id === reservationId)), afterTimestamp && (events = events.filter((e) => e.timestamp > afterTimestamp)), events.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(offset, offset + limit);
+}
+async function createReservationEvent(eventData, actorId) {
+  let reservationId = eventData.reservation_id || (0, import_uuid.v4)();
+  if (eventData.event_type === ReservationEventType.REQUESTED) {
+    if (!eventData.item_id)
+      throw new Error("item_id is required for reservation requests");
+    let item = await getItemById(eventData.item_id);
+    if (!item)
+      throw new Error("Item not found");
+    if ((eventData.quantity || 1) > item.quantity_available)
+      throw new Error("Insufficient quantity available");
+  }
+  let newEvent = {
+    id: (0, import_uuid.v4)(),
+    reservation_id: reservationId,
+    event_type: eventData.event_type,
+    actor_id: actorId,
+    timestamp: /* @__PURE__ */ new Date(),
+    quantity: eventData.quantity || null,
+    start_date: eventData.start_date || null,
+    end_date: eventData.end_date || null,
+    notes: eventData.notes || null,
+    expected_version: eventData.expected_version || null
+  };
+  if (reservationEvents.push(newEvent), eventData.event_type === ReservationEventType.ACTIVATED && eventData.item_id) {
+    let item = items.find((i) => i.id === eventData.item_id);
+    item && (item.quantity_available -= eventData.quantity || 1);
+  } else if (eventData.event_type === ReservationEventType.RETURNED && eventData.item_id) {
+    let item = items.find((i) => i.id === eventData.item_id);
+    item && (item.quantity_available += eventData.quantity || 1);
+  }
+  return newEvent;
+}
+async function authenticateUser(email, password) {
+  return await getUserByEmail(email);
+}
+function getHealthStatus() {
+  return {
+    status: "healthy",
+    uptime: Math.floor(process.uptime())
+  };
+}
+initializeDatabase();
+
+// app/routes/api.reservations.$id.events.tsx
+function requireAuth(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader({ request, params }) {
+  try {
+    requireAuth(request);
+    let { id } = params;
+    if (!id)
+      return (0, import_node.json)({ error: "Reservation ID is required" }, { status: 400 });
+    let events = await getReservationEvents(50, 0, id);
+    return events.length === 0 ? (0, import_node.json)({ error: "Reservation not found" }, { status: 404 }) : (0, import_node.json)(events);
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get reservation events error:", error), (0, import_node.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.reservations._index.tsx
+var api_reservations_index_exports = {};
+__export(api_reservations_index_exports, {
+  loader: () => loader2
+});
+var import_node2 = require("@remix-run/node");
+function requireAuth2(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader2({ request }) {
+  try {
+    requireAuth2(request);
+    let url = new URL(request.url), limit = parseInt(url.searchParams.get("limit") || "50"), offset = parseInt(url.searchParams.get("offset") || "0"), itemId = url.searchParams.get("item_id") || void 0, requesterId = url.searchParams.get("requester_id") || void 0, status = url.searchParams.get("status") || void 0, reservations = await getReservations(limit, offset, itemId, requesterId, status);
+    return (0, import_node2.json)(reservations);
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get reservations error:", error), (0, import_node2.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.reservations.events.tsx
+var api_reservations_events_exports = {};
+__export(api_reservations_events_exports, {
+  action: () => action,
+  loader: () => loader3
+});
+var import_node3 = require("@remix-run/node");
+function requireAuth3(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+function extractUserIdFromToken(token) {
+  return token.replace("mock-jwt-token-", "");
+}
+async function loader3({ request }) {
+  try {
+    requireAuth3(request);
+    let url = new URL(request.url), limit = parseInt(url.searchParams.get("limit") || "50"), offset = parseInt(url.searchParams.get("offset") || "0"), reservationId = url.searchParams.get("reservation_id") || void 0, afterTimestamp = url.searchParams.get("after_timestamp") ? new Date(url.searchParams.get("after_timestamp")) : void 0, events = await getReservationEvents(limit, offset, reservationId, afterTimestamp);
+    return (0, import_node3.json)(events);
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get reservation events error:", error), (0, import_node3.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+async function action({ request }) {
+  if (request.method !== "POST")
+    return (0, import_node3.json)({ error: "Method not allowed" }, { status: 405 });
+  try {
+    let token = requireAuth3(request), actorId = extractUserIdFromToken(token), body = await request.json();
+    if (!body.event_type)
+      return (0, import_node3.json)({ error: "event_type is required" }, { status: 400 });
+    body.start_date && typeof body.start_date == "string" && (body.start_date = new Date(body.start_date)), body.end_date && typeof body.end_date == "string" && (body.end_date = new Date(body.end_date));
+    let event = await createReservationEvent(body, actorId);
+    return (0, import_node3.json)(event, { status: 201 });
+  } catch (error) {
+    return error instanceof Response ? error : error instanceof Error ? error.message.includes("insufficient quantity") || error.message.includes("not found") ? (0, import_node3.json)({ error: error.message }, { status: 409 }) : (0, import_node3.json)({ error: error.message }, { status: 400 }) : (console.error("Create reservation event error:", error), (0, import_node3.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.reservations.$id.tsx
+var api_reservations_id_exports = {};
+__export(api_reservations_id_exports, {
+  loader: () => loader4
+});
+var import_node4 = require("@remix-run/node");
+function requireAuth4(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader4({ request, params }) {
+  try {
+    requireAuth4(request);
+    let { id } = params;
+    if (!id)
+      return (0, import_node4.json)({ error: "Reservation ID is required" }, { status: 400 });
+    let reservation = await getReservationById(id);
+    return reservation ? (0, import_node4.json)(reservation) : (0, import_node4.json)({ error: "Reservation not found" }, { status: 404 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get reservation error:", error), (0, import_node4.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.items._index.tsx
+var api_items_index_exports = {};
+__export(api_items_index_exports, {
+  action: () => action2,
+  loader: () => loader5
+});
+var import_node5 = require("@remix-run/node");
+function requireAuth5(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader5({ request }) {
+  try {
+    requireAuth5(request);
+    let url = new URL(request.url), limit = parseInt(url.searchParams.get("limit") || "50"), offset = parseInt(url.searchParams.get("offset") || "0"), items2 = await getItems(limit, offset);
+    return (0, import_node5.json)(items2);
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get items error:", error), (0, import_node5.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+async function action2({ request }) {
+  if (request.method !== "POST")
+    return (0, import_node5.json)({ error: "Method not allowed" }, { status: 405 });
+  try {
+    requireAuth5(request);
+    let body = await request.json();
+    if (!body.owner_id || !body.title || !body.category || !body.location || !body.quantity_total)
+      return (0, import_node5.json)({
+        error: "owner_id, title, category, location, and quantity_total are required"
+      }, { status: 400 });
+    let item = await createItem(body);
+    return (0, import_node5.json)(item, { status: 201 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Create item error:", error), (0, import_node5.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.users._index.tsx
+var api_users_index_exports = {};
+__export(api_users_index_exports, {
+  action: () => action3,
+  loader: () => loader6
+});
+var import_node6 = require("@remix-run/node");
+function requireAuth6(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader6({ request }) {
+  try {
+    requireAuth6(request);
+    let url = new URL(request.url), limit = parseInt(url.searchParams.get("limit") || "50"), offset = parseInt(url.searchParams.get("offset") || "0"), users2 = await getUsers(limit, offset);
+    return (0, import_node6.json)(users2);
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get users error:", error), (0, import_node6.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+async function action3({ request }) {
+  if (request.method !== "POST")
+    return (0, import_node6.json)({ error: "Method not allowed" }, { status: 405 });
+  try {
+    requireAuth6(request);
+    let body = await request.json();
+    if (!body.name || !body.email || !body.password)
+      return (0, import_node6.json)({ error: "Name, email, and password are required" }, { status: 400 });
+    let user = await createUser(body);
+    return (0, import_node6.json)(user, { status: 201 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Create user error:", error), (0, import_node6.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.auth.logout.tsx
+var api_auth_logout_exports = {};
+__export(api_auth_logout_exports, {
+  action: () => action4
+});
+var import_node7 = require("@remix-run/node");
+async function action4({ request }) {
+  if (request.method !== "POST")
+    return (0, import_node7.json)({ error: "Method not allowed" }, { status: 405 });
+  try {
+    let authHeader = request.headers.get("Authorization");
+    return !authHeader || !authHeader.startsWith("Bearer ") ? (0, import_node7.json)({ error: "Invalid or missing token" }, { status: 401 }) : (0, import_node7.json)({ message: "Successfully logged out" }, { status: 200 });
+  } catch (error) {
+    return console.error("Logout error:", error), (0, import_node7.json)({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
+// app/routes/api.auth.login.tsx
+var api_auth_login_exports = {};
+__export(api_auth_login_exports, {
+  action: () => action5
+});
+var import_node8 = require("@remix-run/node");
+async function action5({ request }) {
+  if (request.method !== "POST")
+    return (0, import_node8.json)({ error: "Method not allowed" }, { status: 405 });
+  try {
+    let body = await request.json();
+    if (!body.email || !body.password)
+      return (0, import_node8.json)({ error: "Email and password are required" }, { status: 400 });
+    let user = await authenticateUser(body.email, body.password);
+    if (!user)
+      return (0, import_node8.json)({ error: "Invalid credentials" }, { status: 401 });
+    let response = { token: `mock-jwt-token-${user.id}` };
+    return (0, import_node8.json)(response, { status: 200 });
+  } catch (error) {
+    return console.error("Login error:", error), (0, import_node8.json)({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
+// app/routes/api.items.$id.tsx
+var api_items_id_exports = {};
+__export(api_items_id_exports, {
+  action: () => action6,
+  loader: () => loader7
+});
+var import_node9 = require("@remix-run/node");
+function requireAuth7(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader7({ request, params }) {
+  try {
+    requireAuth7(request);
+    let { id } = params;
+    if (!id)
+      return (0, import_node9.json)({ error: "Item ID is required" }, { status: 400 });
+    let item = await getItemById(id);
+    return item ? (0, import_node9.json)(item) : (0, import_node9.json)({ error: "Item not found" }, { status: 404 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get item error:", error), (0, import_node9.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+async function action6({ request, params }) {
+  try {
+    requireAuth7(request);
+    let { id } = params;
+    if (!id)
+      return (0, import_node9.json)({ error: "Item ID is required" }, { status: 400 });
+    if (request.method === "PUT") {
+      let body = await request.json(), item = await updateItem(id, body);
+      return item ? (0, import_node9.json)(item) : (0, import_node9.json)({ error: "Item not found" }, { status: 404 });
+    } else
+      return request.method === "DELETE" ? await deleteItem(id) ? new Response(null, { status: 204 }) : (0, import_node9.json)({ error: "Item not found" }, { status: 404 }) : (0, import_node9.json)({ error: "Method not allowed" }, { status: 405 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Item action error:", error), (0, import_node9.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.users.$id.tsx
+var api_users_id_exports = {};
+__export(api_users_id_exports, {
+  action: () => action7,
+  loader: () => loader8
+});
+var import_node10 = require("@remix-run/node");
+function requireAuth8(request) {
+  let authHeader = request.headers.get("Authorization");
+  if (!authHeader || !authHeader.startsWith("Bearer "))
+    throw new Response("Unauthorized", { status: 401 });
+  return authHeader.replace("Bearer ", "");
+}
+async function loader8({ request, params }) {
+  try {
+    requireAuth8(request);
+    let { id } = params;
+    if (!id)
+      return (0, import_node10.json)({ error: "User ID is required" }, { status: 400 });
+    let user = await getUserById(id);
+    return user ? (0, import_node10.json)(user) : (0, import_node10.json)({ error: "User not found" }, { status: 404 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("Get user error:", error), (0, import_node10.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+async function action7({ request, params }) {
+  try {
+    requireAuth8(request);
+    let { id } = params;
+    if (!id)
+      return (0, import_node10.json)({ error: "User ID is required" }, { status: 400 });
+    if (request.method === "PUT") {
+      let body = await request.json(), user = await updateUser(id, body);
+      return user ? (0, import_node10.json)(user) : (0, import_node10.json)({ error: "User not found" }, { status: 404 });
+    } else
+      return request.method === "DELETE" ? await deleteUser(id) ? new Response(null, { status: 204 }) : (0, import_node10.json)({ error: "User not found" }, { status: 404 }) : (0, import_node10.json)({ error: "Method not allowed" }, { status: 405 });
+  } catch (error) {
+    return error instanceof Response ? error : (console.error("User action error:", error), (0, import_node10.json)({ error: "Internal server error" }, { status: 500 }));
+  }
+}
+
+// app/routes/api.health.tsx
+var api_health_exports = {};
+__export(api_health_exports, {
+  loader: () => loader9
+});
+var import_node11 = require("@remix-run/node");
+async function loader9({ request }) {
+  try {
+    let health = getHealthStatus();
+    return (0, import_node11.json)(health);
+  } catch (error) {
+    return console.error("Health check error:", error), (0, import_node11.json)({
+      status: "unhealthy",
+      error: "Internal server error"
+    }, { status: 500 });
+  }
+}
+
 // app/routes/tool.$id.tsx
 var tool_id_exports = {};
 __export(tool_id_exports, {
   default: () => ToolDetail,
-  loader: () => loader,
+  loader: () => loader10,
   meta: () => meta2
 });
-var import_node = require("@remix-run/node"), import_react5 = require("@remix-run/react"), import_jsx_dev_runtime5 = require("react/jsx-dev-runtime"), meta2 = () => [
+var import_node12 = require("@remix-run/node"), import_react5 = require("@remix-run/react"), import_jsx_dev_runtime5 = require("react/jsx-dev-runtime"), meta2 = () => [
   { title: "Tool Details - Toolshed" },
   { name: "description", content: "View tool details and contact the owner" }
 ];
-async function loader({ params }) {
+async function loader10({ params }) {
   let toolId = params.id;
   if (!toolId)
     throw new Response("Tool not found", { status: 404 });
-  return (0, import_node.json)({ toolId });
+  return (0, import_node12.json)({ toolId });
 }
 function ToolDetail() {
   let { toolId } = (0, import_react5.useLoaderData)();
@@ -1300,17 +1903,17 @@ function Browse() {
 // app/routes/share.tsx
 var share_exports = {};
 __export(share_exports, {
-  action: () => action,
+  action: () => action8,
   default: () => Share,
   meta: () => meta5
 });
-var import_node2 = require("@remix-run/node"), import_react8 = require("@remix-run/react"), import_react9 = require("react"), import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), meta5 = () => [
+var import_node13 = require("@remix-run/node"), import_react8 = require("@remix-run/react"), import_react9 = require("react"), import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), meta5 = () => [
   { title: "Share a Tool - Toolshed" },
   { name: "description", content: "Share your tools and resources with the community" }
 ];
-async function action({ request }) {
+async function action8({ request }) {
   let formData = await request.formData(), title = formData.get("title"), description = formData.get("description"), category = formData.get("category"), errors = {};
-  return (!title || typeof title != "string" || title.trim().length === 0) && (errors.title = "Tool name is required"), (!description || typeof description != "string" || description.trim().length === 0) && (errors.description = "Description is required"), (!category || typeof category != "string" || category === "") && (errors.category = "Category is required"), Object.keys(errors).length > 0 ? (0, import_node2.json)({ errors, success: !1 }, { status: 400 }) : (console.log("Tool sharing data:", {
+  return (!title || typeof title != "string" || title.trim().length === 0) && (errors.title = "Tool name is required"), (!description || typeof description != "string" || description.trim().length === 0) && (errors.description = "Description is required"), (!category || typeof category != "string" || category === "") && (errors.category = "Category is required"), Object.keys(errors).length > 0 ? (0, import_node13.json)({ errors, success: !1 }, { status: 400 }) : (console.log("Tool sharing data:", {
     title,
     description,
     category,
@@ -1318,7 +1921,7 @@ async function action({ request }) {
     availability: formData.get("availability"),
     location: formData.get("location"),
     contactMethod: formData.get("contactMethod")
-  }), (0, import_node2.redirect)("/browse?shared=true"));
+  }), (0, import_node13.redirect)("/browse?shared=true"));
 }
 function Share() {
   let actionData = (0, import_react8.useActionData)(), isSubmitting = (0, import_react8.useNavigation)().state === "submitting", [selectedCategory, setSelectedCategory] = (0, import_react9.useState)(""), categories = [
@@ -1652,7 +2255,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-2ZH675NH.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-WMQ543TE.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-WPGZ4YGD.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-44XRAY57.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-IC6H4GRK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-52QKRX52.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-A4IVSSDU.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-ZAJSK4UL.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "e43f4f7a", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749401744267 }, url: "/build/manifest-E43F4F7A.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-566ZT4RX.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-WMQ543TE.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-FAKOS2XW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-KFMCZYTN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-LBOL2MDC.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-GMSVKGW2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-QLWNWI5W.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-KI35JFJD.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "4a9b3725", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749402845591 }, url: "/build/manifest-4A9B3725.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1663,6 +2266,94 @@ var mode = "development", assetsBuildDirectory = "public/build", future = { v3_f
     index: void 0,
     caseSensitive: void 0,
     module: root_exports
+  },
+  "routes/api.reservations.$id.events": {
+    id: "routes/api.reservations.$id.events",
+    parentId: "routes/api.reservations.$id",
+    path: "events",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_reservations_id_events_exports
+  },
+  "routes/api.reservations._index": {
+    id: "routes/api.reservations._index",
+    parentId: "root",
+    path: "api/reservations",
+    index: !0,
+    caseSensitive: void 0,
+    module: api_reservations_index_exports
+  },
+  "routes/api.reservations.events": {
+    id: "routes/api.reservations.events",
+    parentId: "root",
+    path: "api/reservations/events",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_reservations_events_exports
+  },
+  "routes/api.reservations.$id": {
+    id: "routes/api.reservations.$id",
+    parentId: "root",
+    path: "api/reservations/:id",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_reservations_id_exports
+  },
+  "routes/api.items._index": {
+    id: "routes/api.items._index",
+    parentId: "root",
+    path: "api/items",
+    index: !0,
+    caseSensitive: void 0,
+    module: api_items_index_exports
+  },
+  "routes/api.users._index": {
+    id: "routes/api.users._index",
+    parentId: "root",
+    path: "api/users",
+    index: !0,
+    caseSensitive: void 0,
+    module: api_users_index_exports
+  },
+  "routes/api.auth.logout": {
+    id: "routes/api.auth.logout",
+    parentId: "root",
+    path: "api/auth/logout",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_auth_logout_exports
+  },
+  "routes/api.auth.login": {
+    id: "routes/api.auth.login",
+    parentId: "root",
+    path: "api/auth/login",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_auth_login_exports
+  },
+  "routes/api.items.$id": {
+    id: "routes/api.items.$id",
+    parentId: "root",
+    path: "api/items/:id",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_items_id_exports
+  },
+  "routes/api.users.$id": {
+    id: "routes/api.users.$id",
+    parentId: "root",
+    path: "api/users/:id",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_users_id_exports
+  },
+  "routes/api.health": {
+    id: "routes/api.health",
+    parentId: "root",
+    path: "api/health",
+    index: void 0,
+    caseSensitive: void 0,
+    module: api_health_exports
   },
   "routes/tool.$id": {
     id: "routes/tool.$id",

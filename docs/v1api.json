@@ -1,0 +1,822 @@
+openapi: 3.0.0
+info:
+  title: Toolshed API
+  version: 0.1.0
+  description: Mutual aid resource sharing app schema.
+tags:
+  - name: Auth
+    description: Authentication routes
+  - name: Users
+    description: User management
+  - name: Reservations
+    description: Reservation management
+  - name: Items
+    description: Item operations
+  - name: Health
+    description: Health management
+paths:
+  /auth/login:
+    post:
+      summary: Login to get a JWT
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: User's email
+                password:
+                  type: string
+                  format: password
+                  description: User's password
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: JWT token returned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: JWT token
+        '401':
+          description: Invalid credentials
+        '500':
+          description: Internal server error
+  /auth/logout:
+    post:
+      summary: Logout to disable a JWT
+      tags: [Auth]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successfully logged out
+        '401':
+          description: Invalid or expired token
+        '500':
+          description: Internal server error
+  /users:
+    get:
+      summary: Get all users
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+          description: Maximum number of users to return
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+          description: Number of users to skip before starting to collect the result set
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '500':
+          description: Internal server error
+    post:
+      summary: Create a new user
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+      responses:
+        '201':
+          description: User created
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+    put:
+      summary: Update a user by ID
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+      responses:
+        '200':
+          description: User updated
+        '400':
+          description: Invalid input
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+    delete:
+      summary: Delete a user by ID
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: User deleted
+        '404':
+          description: User not found
+        '500':
+          description: Internal server error
+  /items:
+    get:
+      summary: Get all items
+      tags: [Items]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+          description: Maximum number of items to return
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+          description: Number of items to skip before starting to collect the result set
+      responses:
+        '200':
+          description: A list of items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+        '500':
+          description: Internal server error
+    post:
+      summary: Create a new item
+      tags: [Items]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItem'
+      responses:
+        '201':
+          description: Item created
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+  /items/{id}:
+    get:
+      summary: Get an item by ID
+      tags: [Items]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404':
+          description: Item not found
+        '500':
+          description: Internal server error
+    put:
+      summary: Update an item by ID
+      tags: [Items]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateItem'
+      responses:
+        '200':
+          description: Item updated
+        '400':
+          description: Invalid input
+        '404':
+          description: Item not found
+        '500':
+          description: Internal server error
+    delete:
+      summary: Delete an item by ID
+      tags: [Items]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Item deleted
+        '404':
+          description: Item not found
+        '500':
+          description: Internal server error
+  /reservations:
+    get:
+      summary: Get current reservation states
+      tags: [Reservations]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+          description: Maximum number of reservations to return
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+          description: Number of reservations to skip before starting to collect the result set
+        - name: item_id
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Filter reservations by item ID
+        - name: requester_id
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Filter reservations by requester ID
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [pending, approved, active, returned, cancelled]
+          description: Filter reservations by status
+      responses:
+        '200':
+          description: A list of current reservation states
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationState'
+        '500':
+          description: Internal server error
+  /reservations/events:
+    get:
+      summary: Get reservation event log
+      tags: [Reservations]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+          description: Maximum number of events to return
+        - name: offset
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 0
+          description: Number of events to skip
+        - name: reservation_id
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Filter events by reservation ID
+        - name: after_timestamp
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+          description: Only return events after this timestamp
+      responses:
+        '200':
+          description: A list of reservation events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationEvent'
+        '500':
+          description: Internal server error
+    post:
+      summary: Add a new reservation event
+      tags: [Reservations]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReservationEvent'
+      responses:
+        '201':
+          description: Event added to reservation log
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationEvent'
+        '400':
+          description: Invalid input or business rule violation
+        '409':
+          description: Conflicting event (e.g., insufficient quantity)
+        '500':
+          description: Internal server error
+  /reservations/{id}:
+    get:
+      summary: Get a reservation's current state by ID
+      tags: [Reservations]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Current reservation state
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReservationState'
+        '404':
+          description: Reservation not found
+        '500':
+          description: Internal server error
+  /reservations/{id}/events:
+    get:
+      summary: Get all events for a specific reservation
+      tags: [Reservations]
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: All events for this reservation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReservationEvent'
+        '404':
+          description: Reservation not found
+        '500':
+          description: Internal server error
+  /health:
+    get:
+      summary: Health check endpoint
+      tags: [Health]
+      description: Returns the status of the API.
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  uptime:
+                    type: integer
+                    description: Uptime in seconds
+        '500':
+          description: API is not healthy
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    User:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        email:
+          format: email
+          type: string
+        neighborhood:
+          type: string
+        contact_method:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - email
+      - neighborhood
+      - contact_method
+      - created_at
+      - updated_at
+      type: object
+    CreateUser:
+      properties:
+        name:
+          type: string
+        email:
+          format: email
+          type: string
+        password:
+          type: string
+          format: password
+        neighborhood:
+          type: string
+        contact_method:
+          type: string
+      required:
+      - name
+      - email
+      - password
+      type: object
+    Item:
+      properties:
+        id:
+          format: uuid
+          type: string
+        owner_id:
+          format: uuid
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        location:
+          type: string
+        photo_path:
+          type: string
+          nullable: true
+        quantity_total:
+          minimum: 1
+          type: integer
+        quantity_available:
+          minimum: 0
+          type: integer
+        created_at:
+          format: date-time
+          type: string
+      required:
+      - id
+      - owner_id
+      - title
+      - description
+      - category
+      - location
+      - quantity_total
+      - quantity_available
+      - created_at
+      type: object
+    CreateItem:
+      properties:
+        owner_id:
+          format: uuid
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+          nullable: true
+        category:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        location:
+          type: string
+        photo_path:
+          type: string
+          nullable: true
+        quantity_total:
+          minimum: 1
+          type: integer
+      required:
+      - owner_id
+      - title
+      - description
+      - category
+      - location
+      - quantity_total
+      type: object
+    ReservationState:
+      description: Current computed state of a reservation based on event log
+      properties:
+        id:
+          format: uuid
+          type: string
+          description: Unique identifier for the reservation
+        item_id:
+          format: uuid
+          type: string
+          description: ID of the item being reserved
+        owner_id:
+          format: uuid
+          type: string
+          description: ID of the item owner (denormalized for easier access)
+        requester_id:
+          format: uuid
+          type: string
+          description: ID of the user requesting the reservation
+        quantity_requested:
+          minimum: 1
+          type: integer
+          description: Quantity of items requested
+        start_date:
+          format: date
+          type: string
+          nullable: true
+          description: Planned start date of the reservation
+        end_date:
+          format: date
+          type: string
+          nullable: true
+          description: Planned end date of the reservation
+        status:
+          enum: [pending, approved, active, returned, cancelled, rejected]
+          type: string
+          description: Current status derived from event log
+        notes:
+          type: string
+          nullable: true
+          description: Latest notes from events
+        created_at:
+          format: date-time
+          type: string
+          description: Timestamp of initial reservation request event
+        last_event_at:
+          format: date-time
+          type: string
+          description: Timestamp of most recent event
+        version:
+          type: integer
+          minimum: 1
+          description: Event sequence number for optimistic concurrency
+      required:
+      - id
+      - item_id
+      - owner_id
+      - requester_id
+      - quantity_requested
+      - status
+      - created_at
+      - last_event_at
+      - version
+      type: object
+    ReservationEvent:
+      description: Immutable event in the reservation log
+      properties:
+        id:
+          format: uuid
+          type: string
+          description: Unique identifier for this event
+        reservation_id:
+          format: uuid
+          type: string
+          description: ID of the reservation this event belongs to
+        event_type:
+          enum: [requested, approved, rejected, activated, returned, cancelled, extended, notes_updated]
+          type: string
+          description: Type of reservation event
+        actor_id:
+          format: uuid
+          type: string
+          description: ID of the user who triggered this event
+        timestamp:
+          format: date-time
+          type: string
+          description: When this event occurred
+        sequence_number:
+          type: integer
+          minimum: 1
+          description: Sequential number for this reservation's events
+        data:
+          type: object
+          description: Event-specific data
+          properties:
+            quantity_requested:
+              type: integer
+              minimum: 1
+              description: For requested events
+            start_date:
+              format: date
+              type: string
+              nullable: true
+              description: For requested/extended events
+            end_date:
+              format: date
+              type: string
+              nullable: true
+              description: For requested/extended events
+            notes:
+              type: string
+              nullable: true
+              description: For any event with notes
+            reason:
+              type: string
+              nullable: true
+              description: For rejected/cancelled events
+            actual_return_date:
+              format: date
+              type: string
+              nullable: true
+              description: For returned events
+            new_end_date:
+              format: date
+              type: string
+              nullable: true
+              description: For extended events
+      required:
+      - id
+      - reservation_id
+      - event_type
+      - actor_id
+      - timestamp
+      - sequence_number
+      type: object
+    CreateReservationEvent:
+      description: Request to create a new reservation event
+      properties:
+        reservation_id:
+          format: uuid
+          type: string
+          description: ID of the reservation (omit for new reservations)
+          nullable: true
+        item_id:
+          format: uuid
+          type: string
+          description: Required for 'requested' events
+          nullable: true
+        event_type:
+          enum: [requested, approved, rejected, activated, returned, cancelled, extended, notes_updated]
+          type: string
+          description: Type of event to create
+        expected_version:
+          type: integer
+          minimum: 0
+          description: Expected current version for optimistic concurrency control
+          nullable: true
+        data:
+          type: object
+          description: Event-specific data
+          properties:
+            quantity_requested:
+              type: integer
+              minimum: 1
+              description: Required for 'requested' events
+            start_date:
+              format: date
+              type: string
+              nullable: true
+              description: For requested/extended events
+            end_date:
+              format: date
+              type: string
+              nullable: true
+              description: For requested/extended events
+            notes:
+              type: string
+              nullable: true
+              description: For any event with notes
+            reason:
+              type: string
+              nullable: true
+              description: For rejected/cancelled events
+            actual_return_date:
+              format: date
+              type: string
+              nullable: true
+              description: For returned events
+            new_end_date:
+              format: date
+              type: string
+              nullable: true
+              description: For extended events
+      required:
+      - event_type
+      type: object

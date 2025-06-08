@@ -1,116 +1,117 @@
-// Common types for the Toolshed application
-// These will be expanded when the data schema is integrated
+// Common types for the Toolshed application - Event Sourced Reservation System
 
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  location?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface Tool {
-  id: string;
-  title: string;
-  description: string;
-  category: ToolCategory;
-  condition: ToolCondition;
-  availability: ToolAvailability;
-  location?: string;
-  contactMethod: ContactMethod;
-  ownerId: string;
-  owner?: User;
-  images?: string[];
-  tags?: string[];
-  isActive: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface BorrowRequest {
-  id: string;
-  toolId: string;
-  tool?: Tool;
-  borrowerId: string;
-  borrower?: User;
-  requestedStartDate: Date;
-  requestedEndDate: Date;
-  message?: string;
-  status: BorrowRequestStatus;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-export interface Review {
-  id: string;
-  toolId: string;
-  tool?: Tool;
-  reviewerId: string;
-  reviewer?: User;
-  rating: number;
-  comment?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
-// Enums
-export enum ToolCategory {
-  POWER_TOOLS = 'power-tools',
-  HAND_TOOLS = 'hand-tools',
-  GARDEN = 'garden',
-  AUTOMOTIVE = 'automotive',
-  HOME = 'home',
-  SPECIALTY = 'specialty',
-}
-
-export enum ToolCondition {
-  EXCELLENT = 'excellent',
-  GOOD = 'good',
-  FAIR = 'fair',
-  NEEDS_REPAIR = 'needs-repair',
-}
-
-export enum ToolAvailability {
-  AVAILABLE = 'available',
-  LIMITED = 'limited',
-  WEEKENDS = 'weekends',
-  BY_APPOINTMENT = 'by-appointment',
-}
-
-export enum ContactMethod {
-  MESSAGE = 'message',
-  EMAIL = 'email',
-  PHONE = 'phone',
-}
-
-export enum BorrowRequestStatus {
+// Enums for the reservation system
+export enum ReservationStatus {
   PENDING = 'pending',
   APPROVED = 'approved',
-  DECLINED = 'declined',
-  COMPLETED = 'completed',
+  REJECTED = 'rejected',
+  ACTIVE = 'active',
+  RETURNED = 'returned',
   CANCELLED = 'cancelled',
 }
 
-// Form types
-export interface ToolFormData {
-  title: string;
-  description: string;
-  category: string;
-  condition: string;
-  availability: string;
-  location?: string;
-  contactMethod: string;
-  tags?: string[];
+export enum ReservationEventType {
+  REQUESTED = 'requested',
+  APPROVED = 'approved',
+  REJECTED = 'rejected',
+  ACTIVATED = 'activated',
+  RETURNED = 'returned',
+  CANCELLED = 'cancelled',
+  EXTENDED = 'extended',
+  NOTES_UPDATED = 'notes_updated',
 }
 
-export interface SearchFilters {
-  query?: string;
-  category?: string;
-  condition?: string;
-  availability?: string;
-  location?: string;
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  neighborhood: string;
+  contact_method: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface Item {
+  id: string;
+  owner_id: string;
+  title: string;
+  description: string | null;
+  category: string;
+  tags: string[];
+  location: string;
+  photo_path: string | null;
+  quantity_total: number;
+  quantity_available: number;
+  created_at: Date;
+}
+
+export interface ReservationState {
+  id: string;
+  item_id: string;
+  owner_id: string;
+  requester_id: string;
+  status: ReservationStatus;
+  quantity_requested: number;
+  start_date: Date | null;
+  end_date: Date | null;
+  notes: string | null;
+  version: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface ReservationEvent {
+  id: string;
+  reservation_id: string;
+  event_type: ReservationEventType;
+  actor_id: string;
+  timestamp: Date;
+  quantity?: number | null;
+  start_date?: Date | null;
+  end_date?: Date | null;
+  notes?: string | null;
+  expected_version?: number | null;
+}
+
+// Form and request types
+export interface CreateUserRequest {
+  name: string;
+  email: string;
+  password: string;
+  neighborhood?: string;
+  contact_method?: string;
+}
+
+export interface CreateItemRequest {
+  owner_id: string;
+  title: string;
+  description?: string;
+  category: string;
   tags?: string[];
+  location: string;
+  photo_path?: string;
+  quantity_total: number;
+}
+
+export interface CreateReservationEventRequest {
+  reservation_id?: string;
+  item_id?: string;
+  event_type: ReservationEventType;
+  quantity?: number;
+  start_date?: Date;
+  end_date?: Date;
+  notes?: string;
+  expected_version?: number;
+}
+
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
+export interface AuthResponse {
+  token: string;
 }
 
 // API Response types
