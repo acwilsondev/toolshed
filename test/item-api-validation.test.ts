@@ -67,7 +67,8 @@ describe('Item API Quantity Validation Integration', () => {
     expect(response.status).toBe(409); // Conflict
     
     const data = await response.json();
-    expect(data.error).toBe('Item update validation failed');
+    expect(data.error).toBe('ConflictError');
+    expect(data.message).toBe('Item update validation failed');
     expect(data.details).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Cannot reduce quantity to 1'),
@@ -112,9 +113,9 @@ describe('Item API Quantity Validation Integration', () => {
     
     expect(response.status).toBe(200); // Success
     
-    const data = await response.json();
-    expect(data.quantityTotal).toBe(2);
-    expect(data._warnings).toEqual(
+    const responseData = await response.json();
+    expect(responseData.data.quantityTotal).toBe(2);
+    expect(responseData.warnings).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Quantity reduced from 3 to 2')
       ])
@@ -153,7 +154,8 @@ describe('Item API Quantity Validation Integration', () => {
     expect(response.status).toBe(409); // Conflict
     
     const data = await response.json();
-    expect(data.error).toBe('Item deletion validation failed');
+    expect(data.error).toBe('ConflictError');
+    expect(data.message).toBe('Item deletion validation failed');
     expect(data.details).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Cannot delete item with 1 active reservation(s)')

@@ -184,6 +184,7 @@ export async function validateRequest<TBody, TQuery, TParams>(
     query?: TQuery;
     params?: TParams;
   };
+  errors?: string[];
   response?: Response;
 }> {
   const results: {
@@ -198,6 +199,7 @@ export async function validateRequest<TBody, TQuery, TParams>(
     if (!results.body.success) {
       return {
         success: false,
+        errors: results.body.errors,
         response: results.body.response
       };
     }
@@ -209,6 +211,7 @@ export async function validateRequest<TBody, TQuery, TParams>(
     if (!results.query.success) {
       return {
         success: false,
+        errors: results.query.errors,
         response: results.query.response
       };
     }
@@ -220,6 +223,7 @@ export async function validateRequest<TBody, TQuery, TParams>(
     if (!results.params.success) {
       return {
         success: false,
+        errors: results.params.errors,
         response: results.params.response
       };
     }

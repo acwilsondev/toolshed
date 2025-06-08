@@ -14,35 +14,7 @@ This document outlines critical issues, technical debt, and areas for improvemen
 
 ## P0 - Critical Issues
 
-### 4. Incomplete Item Tracking in Reservations
-
-**Impact**: High - Data integrity issue
-**Location**: `server/storage.ts:346-350`
-
-```typescript
-private getItemIdFromFirstEvent(reservationId: string): string {
-  // For now, return empty string - this would need to be tracked properly
-  // In a real implementation, we'd store item_id in the reservation events
-  return '';
-}
-```
-
-**Action Required**: Implement proper item_id tracking in reservation events.
-
 ## P1 - High Priority Issues
-
-### 5. Missing Input Validation
-
-**Impact**: Medium-High - Security and data integrity
-
-- No apparent input validation in API routes
-- No schema validation for request bodies
-- Missing sanitization of user inputs
-
-**Recommendations**:
-
-- Add Zod or similar schema validation library
-- Implement request validation middleware
 
 ### 6. Incomplete Error Handling
 
