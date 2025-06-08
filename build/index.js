@@ -1,17 +1,25 @@
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __getProtoOf = Object.getPrototypeOf, __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: !0 });
-}, __copyProps = (to, from, except, desc) => {
+}, __copyProps = (to, from, except, desc2) => {
   if (from && typeof from == "object" || typeof from == "function")
     for (let key of __getOwnPropNames(from))
-      !__hasOwnProp.call(to, key) && key !== except && __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      !__hasOwnProp.call(to, key) && key !== except && __defProp(to, key, { get: () => from[key], enumerable: !(desc2 = __getOwnPropDesc(from, key)) || desc2.enumerable });
   return to;
 };
-var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: !0 }), mod);
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: !0 }) : target,
+  mod
+)), __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: !0 }), mod);
 
 // <stdin>
 var stdin_exports = {};
@@ -452,278 +460,385 @@ __export(api_reservations_id_events_exports, {
 });
 var import_node = require("@remix-run/node");
 
-// app/utils/db.server.ts
-var import_uuid = require("uuid"), sampleUsers = [
+// shared/schema.ts
+var schema_exports = {};
+__export(schema_exports, {
+  items: () => items,
+  itemsRelations: () => itemsRelations,
+  reservationEvents: () => reservationEvents,
+  reservationEventsRelations: () => reservationEventsRelations,
+  sessions: () => sessions,
+  users: () => users,
+  usersRelations: () => usersRelations
+});
+var import_pg_core = require("drizzle-orm/pg-core"), import_drizzle_orm = require("drizzle-orm"), sessions = (0, import_pg_core.pgTable)(
+  "sessions",
   {
-    id: "550e8400-e29b-41d4-a716-446655440001",
-    name: "Alice Johnson",
-    email: "alice@neighborhood.local",
-    neighborhood: "Downtown",
-    contact_method: "message",
-    created_at: /* @__PURE__ */ new Date("2024-01-15"),
-    updated_at: /* @__PURE__ */ new Date("2024-01-15")
+    sid: (0, import_pg_core.varchar)("sid").primaryKey(),
+    sess: (0, import_pg_core.jsonb)("sess").notNull(),
+    expire: (0, import_pg_core.timestamp)("expire").notNull()
   },
-  {
-    id: "550e8400-e29b-41d4-a716-446655440002",
-    name: "Bob Smith",
-    email: "bob@neighborhood.local",
-    neighborhood: "Riverside",
-    contact_method: "email",
-    created_at: /* @__PURE__ */ new Date("2024-01-20"),
-    updated_at: /* @__PURE__ */ new Date("2024-01-20")
-  },
-  {
-    id: "550e8400-e29b-41d4-a716-446655440003",
-    name: "Carol Davis",
-    email: "carol@neighborhood.local",
-    neighborhood: "Hillside",
-    contact_method: "phone",
-    created_at: /* @__PURE__ */ new Date("2024-01-25"),
-    updated_at: /* @__PURE__ */ new Date("2024-01-25")
+  (table) => [(0, import_pg_core.index)("IDX_session_expire").on(table.expire)]
+), users = (0, import_pg_core.pgTable)("users", {
+  id: (0, import_pg_core.varchar)("id").primaryKey().notNull(),
+  name: (0, import_pg_core.varchar)("name", { length: 255 }).notNull(),
+  email: (0, import_pg_core.varchar)("email", { length: 255 }).unique().notNull(),
+  password: (0, import_pg_core.varchar)("password", { length: 255 }).notNull(),
+  neighborhood: (0, import_pg_core.varchar)("neighborhood", { length: 255 }).notNull().default(""),
+  contactMethod: (0, import_pg_core.varchar)("contact_method", { length: 255 }).notNull().default(""),
+  createdAt: (0, import_pg_core.timestamp)("created_at").defaultNow().notNull(),
+  updatedAt: (0, import_pg_core.timestamp)("updated_at").defaultNow().notNull()
+}), items = (0, import_pg_core.pgTable)("items", {
+  id: (0, import_pg_core.varchar)("id").primaryKey().notNull(),
+  ownerId: (0, import_pg_core.varchar)("owner_id").notNull().references(() => users.id),
+  title: (0, import_pg_core.varchar)("title", { length: 255 }).notNull(),
+  description: (0, import_pg_core.text)("description"),
+  category: (0, import_pg_core.varchar)("category", { length: 100 }).notNull(),
+  tags: (0, import_pg_core.jsonb)("tags").$type().default([]),
+  location: (0, import_pg_core.varchar)("location", { length: 255 }).notNull(),
+  photoPath: (0, import_pg_core.varchar)("photo_path", { length: 500 }),
+  quantityTotal: (0, import_pg_core.integer)("quantity_total").notNull().default(1),
+  quantityAvailable: (0, import_pg_core.integer)("quantity_available").notNull().default(1),
+  createdAt: (0, import_pg_core.timestamp)("created_at").defaultNow().notNull()
+}), reservationEvents = (0, import_pg_core.pgTable)("reservation_events", {
+  id: (0, import_pg_core.varchar)("id").primaryKey().notNull(),
+  reservationId: (0, import_pg_core.varchar)("reservation_id").notNull(),
+  eventType: (0, import_pg_core.varchar)("event_type", { length: 50 }).notNull(),
+  actorId: (0, import_pg_core.varchar)("actor_id").notNull().references(() => users.id),
+  timestamp: (0, import_pg_core.timestamp)("timestamp").defaultNow().notNull(),
+  quantity: (0, import_pg_core.integer)("quantity"),
+  startDate: (0, import_pg_core.timestamp)("start_date"),
+  endDate: (0, import_pg_core.timestamp)("end_date"),
+  notes: (0, import_pg_core.text)("notes"),
+  expectedVersion: (0, import_pg_core.integer)("expected_version")
+}), usersRelations = (0, import_drizzle_orm.relations)(users, ({ many }) => ({
+  items: many(items),
+  reservationEvents: many(reservationEvents)
+})), itemsRelations = (0, import_drizzle_orm.relations)(items, ({ one }) => ({
+  owner: one(users, {
+    fields: [items.ownerId],
+    references: [users.id]
+  })
+})), reservationEventsRelations = (0, import_drizzle_orm.relations)(reservationEvents, ({ one }) => ({
+  actor: one(users, {
+    fields: [reservationEvents.actorId],
+    references: [users.id]
+  })
+}));
+
+// server/db.ts
+var import_serverless = require("@neondatabase/serverless"), import_neon_serverless = require("drizzle-orm/neon-serverless"), import_ws = __toESM(require("ws"));
+import_serverless.neonConfig.webSocketConstructor = import_ws.default;
+if (!process.env.DATABASE_URL)
+  throw new Error(
+    "DATABASE_URL must be set. Did you forget to provision a database?"
+  );
+var pool = new import_serverless.Pool({ connectionString: process.env.DATABASE_URL }), db = (0, import_neon_serverless.drizzle)({ client: pool, schema: schema_exports });
+
+// server/storage.ts
+var import_drizzle_orm2 = require("drizzle-orm"), import_uuid = require("uuid");
+var DatabaseStorage = class {
+  // User operations (mandatory for Replit Auth)
+  async getUser(id) {
+    let [user] = await db.select().from(users).where((0, import_drizzle_orm2.eq)(users.id, id));
+    return user;
   }
-], sampleItems = [
-  {
-    id: "650e8400-e29b-41d4-a716-446655440001",
-    owner_id: "550e8400-e29b-41d4-a716-446655440001",
-    title: "Electric Drill",
-    description: "High-quality cordless drill with multiple bits",
-    category: "power-tools",
-    tags: ["drilling", "construction", "DIY"],
-    location: "Downtown",
-    photo_path: null,
-    quantity_total: 1,
-    quantity_available: 1,
-    created_at: /* @__PURE__ */ new Date("2024-01-15")
-  },
-  {
-    id: "650e8400-e29b-41d4-a716-446655440002",
-    owner_id: "550e8400-e29b-41d4-a716-446655440002",
-    title: "Garden Hose",
-    description: "50ft expandable garden hose with spray nozzle",
-    category: "garden",
-    tags: ["watering", "garden", "outdoor"],
-    location: "Riverside",
-    photo_path: null,
-    quantity_total: 1,
-    quantity_available: 1,
-    created_at: /* @__PURE__ */ new Date("2024-01-20")
-  },
-  {
-    id: "650e8400-e29b-41d4-a716-446655440003",
-    owner_id: "550e8400-e29b-41d4-a716-446655440001",
-    title: "Socket Set",
-    description: "Complete metric and standard socket set",
-    category: "automotive",
-    tags: ["automotive", "repair", "mechanic"],
-    location: "Downtown",
-    photo_path: null,
-    quantity_total: 1,
-    quantity_available: 0,
-    created_at: /* @__PURE__ */ new Date("2024-01-22")
+  async upsertUser(userData) {
+    let [user] = await db.insert(users).values(userData).onConflictDoUpdate({
+      target: users.id,
+      set: {
+        ...userData,
+        updatedAt: /* @__PURE__ */ new Date()
+      }
+    }).returning();
+    return user;
   }
-], sampleReservationEvents = [
-  {
-    id: "750e8400-e29b-41d4-a716-446655440001",
-    reservation_id: "850e8400-e29b-41d4-a716-446655440001",
-    event_type: "requested" /* REQUESTED */,
-    actor_id: "550e8400-e29b-41d4-a716-446655440002",
-    timestamp: /* @__PURE__ */ new Date("2024-01-23T10:00:00Z"),
-    quantity: 1,
-    start_date: /* @__PURE__ */ new Date("2024-01-25T09:00:00Z"),
-    end_date: /* @__PURE__ */ new Date("2024-01-27T17:00:00Z"),
-    notes: "Need for weekend project"
-  },
-  {
-    id: "750e8400-e29b-41d4-a716-446655440002",
-    reservation_id: "850e8400-e29b-41d4-a716-446655440001",
-    event_type: "approved" /* APPROVED */,
-    actor_id: "550e8400-e29b-41d4-a716-446655440001",
-    timestamp: /* @__PURE__ */ new Date("2024-01-23T14:30:00Z")
-  },
-  {
-    id: "750e8400-e29b-41d4-a716-446655440003",
-    reservation_id: "850e8400-e29b-41d4-a716-446655440001",
-    event_type: "activated" /* ACTIVATED */,
-    actor_id: "550e8400-e29b-41d4-a716-446655440002",
-    timestamp: /* @__PURE__ */ new Date("2024-01-25T09:15:00Z"),
-    notes: "Picked up successfully"
+  // Additional user operations
+  async getUserByEmail(email) {
+    let [user] = await db.select().from(users).where((0, import_drizzle_orm2.eq)(users.email, email));
+    return user || null;
   }
-];
-function initializeDatabase() {
-  users = [...sampleUsers], items = [...sampleItems], reservationEvents = [...sampleReservationEvents];
-}
-function computeReservationState(reservationId) {
-  let events = reservationEvents.filter((e) => e.reservation_id === reservationId).sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
-  if (events.length === 0)
-    return null;
-  let firstEvent = events[0];
-  if (firstEvent.event_type !== "requested" /* REQUESTED */)
-    return null;
-  let state = {
-    id: reservationId,
-    item_id: firstEvent.quantity ? getItemIdFromFirstEvent(reservationId) : "",
-    owner_id: "",
-    requester_id: firstEvent.actor_id,
-    status: "pending" /* PENDING */,
-    quantity_requested: firstEvent.quantity || 1,
-    start_date: firstEvent.start_date || null,
-    end_date: firstEvent.end_date || null,
-    notes: firstEvent.notes || null,
-    version: events.length,
-    created_at: firstEvent.timestamp,
-    updated_at: events[events.length - 1].timestamp
-  }, item = items.find((i) => i.id === state.item_id);
-  item && (state.owner_id = item.owner_id);
-  for (let event of events) {
-    switch (event.event_type) {
-      case "approved" /* APPROVED */:
-        state.status = "approved" /* APPROVED */;
-        break;
-      case "rejected" /* REJECTED */:
-        state.status = "rejected" /* REJECTED */;
-        break;
-      case "activated" /* ACTIVATED */:
-        state.status = "active" /* ACTIVE */;
-        break;
-      case "returned" /* RETURNED */:
-        state.status = "returned" /* RETURNED */;
-        break;
-      case "cancelled" /* CANCELLED */:
-        state.status = "cancelled" /* CANCELLED */;
-        break;
-      case "extended" /* EXTENDED */:
-        event.end_date && (state.end_date = event.end_date);
-        break;
-      case "notes_updated" /* NOTES_UPDATED */:
-        event.notes && (state.notes = event.notes);
-        break;
+  async createUser(userData) {
+    let newUser = {
+      id: (0, import_uuid.v4)(),
+      name: userData.name,
+      email: userData.email,
+      password: userData.password,
+      neighborhood: userData.neighborhood || "",
+      contactMethod: userData.contact_method || ""
+    }, [user] = await db.insert(users).values(newUser).returning();
+    return user;
+  }
+  async updateUser(id, userData) {
+    let updateData = {
+      ...userData.name && { name: userData.name },
+      ...userData.email && { email: userData.email },
+      ...userData.password && { password: userData.password },
+      ...userData.neighborhood && { neighborhood: userData.neighborhood },
+      ...userData.contact_method && { contactMethod: userData.contact_method },
+      updatedAt: /* @__PURE__ */ new Date()
+    }, [user] = await db.update(users).set(updateData).where((0, import_drizzle_orm2.eq)(users.id, id)).returning();
+    return user || null;
+  }
+  async deleteUser(id) {
+    return ((await db.delete(users).where((0, import_drizzle_orm2.eq)(users.id, id))).rowCount ?? 0) > 0;
+  }
+  async getUsers(limit = 50, offset = 0) {
+    return await db.select().from(users).limit(limit).offset(offset);
+  }
+  // Item operations
+  async getItems(limit = 50, offset = 0) {
+    return await db.select().from(items).limit(limit).offset(offset);
+  }
+  async getItemById(id) {
+    let [item] = await db.select().from(items).where((0, import_drizzle_orm2.eq)(items.id, id));
+    return item || null;
+  }
+  async createItem(itemData) {
+    let newItem = {
+      id: (0, import_uuid.v4)(),
+      ownerId: itemData.owner_id,
+      title: itemData.title,
+      description: itemData.description || null,
+      category: itemData.category,
+      tags: itemData.tags || [],
+      location: itemData.location,
+      photoPath: itemData.photo_path || null,
+      quantityTotal: itemData.quantity_total,
+      quantityAvailable: itemData.quantity_total
+    }, [item] = await db.insert(items).values(newItem).returning();
+    return item;
+  }
+  async updateItem(id, itemData) {
+    let updateData = {
+      ...itemData.title && { title: itemData.title },
+      ...itemData.description !== void 0 && { description: itemData.description },
+      ...itemData.category && { category: itemData.category },
+      ...itemData.tags && { tags: itemData.tags },
+      ...itemData.location && { location: itemData.location },
+      ...itemData.photo_path !== void 0 && { photoPath: itemData.photo_path },
+      ...itemData.quantity_total && { quantityTotal: itemData.quantity_total }
+    }, [item] = await db.update(items).set(updateData).where((0, import_drizzle_orm2.eq)(items.id, id)).returning();
+    return item || null;
+  }
+  async deleteItem(id) {
+    return ((await db.delete(items).where((0, import_drizzle_orm2.eq)(items.id, id))).rowCount ?? 0) > 0;
+  }
+  // Reservation operations (event sourced)
+  async getReservationEvents(limit = 50, offset = 0, reservationId, afterTimestamp) {
+    return reservationId && afterTimestamp ? await db.select().from(reservationEvents).where((0, import_drizzle_orm2.and)(
+      (0, import_drizzle_orm2.eq)(reservationEvents.reservationId, reservationId),
+      (0, import_drizzle_orm2.gte)(reservationEvents.timestamp, afterTimestamp)
+    )).orderBy((0, import_drizzle_orm2.desc)(reservationEvents.timestamp)).limit(limit).offset(offset) : reservationId ? await db.select().from(reservationEvents).where((0, import_drizzle_orm2.eq)(reservationEvents.reservationId, reservationId)).orderBy((0, import_drizzle_orm2.desc)(reservationEvents.timestamp)).limit(limit).offset(offset) : afterTimestamp ? await db.select().from(reservationEvents).where((0, import_drizzle_orm2.gte)(reservationEvents.timestamp, afterTimestamp)).orderBy((0, import_drizzle_orm2.desc)(reservationEvents.timestamp)).limit(limit).offset(offset) : await db.select().from(reservationEvents).orderBy((0, import_drizzle_orm2.desc)(reservationEvents.timestamp)).limit(limit).offset(offset);
+  }
+  async createReservationEvent(eventData, actorId) {
+    let newEvent = {
+      id: (0, import_uuid.v4)(),
+      reservationId: eventData.reservation_id || (0, import_uuid.v4)(),
+      eventType: eventData.event_type,
+      actorId,
+      quantity: eventData.quantity || null,
+      startDate: eventData.start_date || null,
+      endDate: eventData.end_date || null,
+      notes: eventData.notes || null,
+      expectedVersion: eventData.expected_version || null
+    }, [event] = await db.insert(reservationEvents).values(newEvent).returning();
+    return event;
+  }
+  async getReservationById(id) {
+    let events = await this.getReservationEvents(void 0, void 0, id);
+    return events.length === 0 ? null : this.computeReservationStateFromEvents(events);
+  }
+  async getReservations(limit = 50, offset = 0, itemId, requesterId, status) {
+    let allEvents = await this.getReservationEvents(), reservationMap = /* @__PURE__ */ new Map();
+    for (let event of allEvents)
+      reservationMap.has(event.reservationId) || reservationMap.set(event.reservationId, []), reservationMap.get(event.reservationId).push(event);
+    let reservations = [];
+    for (let [reservationId, events] of reservationMap.entries()) {
+      let state = this.computeReservationStateFromEvents(events);
+      if (state) {
+        if (itemId && state.item_id !== itemId || requesterId && state.requester_id !== requesterId || status && state.status !== status)
+          continue;
+        reservations.push(state);
+      }
     }
-    state.updated_at = event.timestamp;
+    return reservations.sort((a, b) => b.updated_at.getTime() - a.updated_at.getTime()).slice(offset, offset + limit);
   }
-  return state;
-}
-function getItemIdFromFirstEvent(reservationId) {
-  return "650e8400-e29b-41d4-a716-446655440003";
+  // Authentication
+  async authenticateUser(email, password) {
+    let user = await this.getUserByEmail(email);
+    return user && user.password === password ? user : null;
+  }
+  // Helper method to compute reservation state from events
+  computeReservationStateFromEvents(events) {
+    if (events.length === 0)
+      return null;
+    let sortedEvents = events.sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime()), firstEvent = sortedEvents[0], lastEvent = sortedEvents[sortedEvents.length - 1], itemIdFromFirstEvent = this.getItemIdFromFirstEvent(firstEvent.reservationId), state = {
+      id: firstEvent.reservationId,
+      item_id: itemIdFromFirstEvent || "",
+      // Will be updated when we have proper item tracking
+      owner_id: "",
+      // Will be resolved from item
+      requester_id: firstEvent.actorId,
+      status: "pending" /* PENDING */,
+      quantity_requested: firstEvent.quantity || 1,
+      start_date: firstEvent.startDate,
+      end_date: firstEvent.endDate,
+      notes: firstEvent.notes,
+      version: sortedEvents.length,
+      created_at: firstEvent.timestamp,
+      updated_at: lastEvent.timestamp
+    };
+    for (let event of sortedEvents) {
+      switch (event.eventType) {
+        case "requested" /* REQUESTED */:
+          state.status = "pending" /* PENDING */, event.quantity && (state.quantity_requested = event.quantity), event.startDate && (state.start_date = event.startDate), event.endDate && (state.end_date = event.endDate), event.notes && (state.notes = event.notes);
+          break;
+        case "approved" /* APPROVED */:
+          state.status = "approved" /* APPROVED */;
+          break;
+        case "rejected" /* REJECTED */:
+          state.status = "rejected" /* REJECTED */;
+          break;
+        case "activated" /* ACTIVATED */:
+          state.status = "active" /* ACTIVE */;
+          break;
+        case "returned" /* RETURNED */:
+          state.status = "returned" /* RETURNED */;
+          break;
+        case "cancelled" /* CANCELLED */:
+          state.status = "cancelled" /* CANCELLED */;
+          break;
+        case "extended" /* EXTENDED */:
+          event.endDate && (state.end_date = event.endDate);
+          break;
+        case "notes_updated" /* NOTES_UPDATED */:
+          event.notes && (state.notes = event.notes);
+          break;
+      }
+      state.updated_at = event.timestamp;
+    }
+    return state;
+  }
+  getItemIdFromFirstEvent(reservationId) {
+    return "";
+  }
+}, storage = new DatabaseStorage();
+
+// app/utils/db.server.ts
+var import_bcryptjs = __toESM(require("bcryptjs"));
+async function initializeDatabase() {
+  if ((await storage.getUsers(1)).length === 0) {
+    let sampleUsers = [
+      {
+        name: "Alice Johnson",
+        email: "alice@neighborhood.local",
+        password: await import_bcryptjs.default.hash("password123", 10),
+        neighborhood: "Downtown",
+        contact_method: "message"
+      },
+      {
+        name: "Bob Smith",
+        email: "bob@neighborhood.local",
+        password: await import_bcryptjs.default.hash("password123", 10),
+        neighborhood: "Riverside",
+        contact_method: "email"
+      },
+      {
+        name: "Carol Davis",
+        email: "carol@neighborhood.local",
+        password: await import_bcryptjs.default.hash("password123", 10),
+        neighborhood: "Hillside",
+        contact_method: "phone"
+      }
+    ];
+    for (let user of sampleUsers)
+      await storage.createUser(user);
+    let createdUsers = await storage.getUsers(), alice = createdUsers.find((u) => u.name === "Alice Johnson"), bob = createdUsers.find((u) => u.name === "Bob Smith");
+    if (alice && bob) {
+      let sampleItems = [
+        {
+          owner_id: alice.id,
+          title: "Electric Drill",
+          description: "Cordless drill with various bits",
+          category: "Tools",
+          tags: ["power tool", "cordless"],
+          location: "Downtown",
+          quantity_total: 1
+        },
+        {
+          owner_id: bob.id,
+          title: "Ladder",
+          description: "6-foot aluminum step ladder",
+          category: "Tools",
+          tags: ["ladder", "aluminum"],
+          location: "Riverside",
+          quantity_total: 1
+        }
+      ];
+      for (let item of sampleItems)
+        await storage.createItem(item);
+    }
+  }
 }
 async function getUsers(limit = 50, offset = 0) {
-  return users.slice(offset, offset + limit);
+  return await storage.getUsers(limit, offset);
 }
 async function getUserById(id) {
-  return users.find((user) => user.id === id) || null;
-}
-async function getUserByEmail(email) {
-  return users.find((user) => user.email === email) || null;
+  return await storage.getUser(id) || null;
 }
 async function createUser(userData) {
-  let newUser = {
-    id: (0, import_uuid.v4)(),
-    name: userData.name,
-    email: userData.email,
-    neighborhood: userData.neighborhood || "",
-    contact_method: userData.contact_method || "message",
-    created_at: /* @__PURE__ */ new Date(),
-    updated_at: /* @__PURE__ */ new Date()
+  let hashedData = {
+    ...userData,
+    password: await import_bcryptjs.default.hash(userData.password, 10)
   };
-  return users.push(newUser), newUser;
+  return await storage.createUser(hashedData);
 }
 async function updateUser(id, userData) {
-  let userIndex = users.findIndex((user) => user.id === id);
-  return userIndex === -1 ? null : (users[userIndex] = {
-    ...users[userIndex],
-    ...userData,
-    updated_at: /* @__PURE__ */ new Date()
-  }, users[userIndex]);
+  return userData.password && (userData.password = await import_bcryptjs.default.hash(userData.password, 10)), await storage.updateUser(id, userData);
 }
 async function deleteUser(id) {
-  let userIndex = users.findIndex((user) => user.id === id);
-  return userIndex === -1 ? !1 : (users.splice(userIndex, 1), !0);
+  return await storage.deleteUser(id);
 }
 async function getItems(limit = 50, offset = 0) {
-  return items.slice(offset, offset + limit);
+  return await storage.getItems(limit, offset);
 }
 async function getItemById(id) {
-  return items.find((item) => item.id === id) || null;
+  return await storage.getItemById(id);
 }
 async function createItem(itemData) {
-  let newItem = {
-    id: (0, import_uuid.v4)(),
-    owner_id: itemData.owner_id,
-    title: itemData.title,
-    description: itemData.description || null,
-    category: itemData.category,
-    tags: itemData.tags || [],
-    location: itemData.location,
-    photo_path: itemData.photo_path || null,
-    quantity_total: itemData.quantity_total,
-    quantity_available: itemData.quantity_total,
-    created_at: /* @__PURE__ */ new Date()
-  };
-  return items.push(newItem), newItem;
+  return await storage.createItem(itemData);
 }
 async function updateItem(id, itemData) {
-  let itemIndex = items.findIndex((item) => item.id === id);
-  return itemIndex === -1 ? null : (items[itemIndex] = {
-    ...items[itemIndex],
-    ...itemData
-  }, items[itemIndex]);
+  return await storage.updateItem(id, itemData);
 }
 async function deleteItem(id) {
-  let itemIndex = items.findIndex((item) => item.id === id);
-  return itemIndex === -1 ? !1 : (items.splice(itemIndex, 1), !0);
+  return await storage.deleteItem(id);
 }
 async function getReservations(limit = 50, offset = 0, itemId, requesterId, status) {
-  let states = [...new Set(reservationEvents.map((e) => e.reservation_id))].map((id) => computeReservationState(id)).filter((state) => state !== null);
-  return itemId && (states = states.filter((s) => s.item_id === itemId)), requesterId && (states = states.filter((s) => s.requester_id === requesterId)), status && (states = states.filter((s) => s.status === status)), states.slice(offset, offset + limit);
+  return await storage.getReservations(limit, offset, itemId, requesterId, status);
 }
 async function getReservationById(id) {
-  return computeReservationState(id);
+  return await storage.getReservationById(id);
 }
 async function getReservationEvents(limit = 50, offset = 0, reservationId, afterTimestamp) {
-  let events = [...reservationEvents];
-  return reservationId && (events = events.filter((e) => e.reservation_id === reservationId)), afterTimestamp && (events = events.filter((e) => e.timestamp > afterTimestamp)), events.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(offset, offset + limit);
+  return await storage.getReservationEvents(limit, offset, reservationId, afterTimestamp);
 }
 async function createReservationEvent(eventData, actorId) {
-  let reservationId = eventData.reservation_id || (0, import_uuid.v4)();
-  if (eventData.event_type === "requested" /* REQUESTED */) {
-    if (!eventData.item_id)
-      throw new Error("item_id is required for reservation requests");
-    let item = await getItemById(eventData.item_id);
-    if (!item)
-      throw new Error("Item not found");
-    if ((eventData.quantity || 1) > item.quantity_available)
-      throw new Error("Insufficient quantity available");
-  }
-  let newEvent = {
-    id: (0, import_uuid.v4)(),
-    reservation_id: reservationId,
-    event_type: eventData.event_type,
-    actor_id: actorId,
-    timestamp: /* @__PURE__ */ new Date(),
-    quantity: eventData.quantity || null,
-    start_date: eventData.start_date || null,
-    end_date: eventData.end_date || null,
-    notes: eventData.notes || null,
-    expected_version: eventData.expected_version || null
-  };
-  if (reservationEvents.push(newEvent), eventData.event_type === "activated" /* ACTIVATED */ && eventData.item_id) {
-    let item = items.find((i) => i.id === eventData.item_id);
-    item && (item.quantity_available -= eventData.quantity || 1);
-  } else if (eventData.event_type === "returned" /* RETURNED */ && eventData.item_id) {
-    let item = items.find((i) => i.id === eventData.item_id);
-    item && (item.quantity_available += eventData.quantity || 1);
-  }
-  return newEvent;
+  return await storage.createReservationEvent(eventData, actorId);
 }
 async function authenticateUser(email, password) {
-  return await getUserByEmail(email);
+  let user = await storage.getUserByEmail(email);
+  return user && await import_bcryptjs.default.compare(password, user.password) ? user : null;
 }
 function getHealthStatus() {
   return {
     status: "healthy",
-    uptime: Math.floor(process.uptime())
+    timestamp: (/* @__PURE__ */ new Date()).toISOString(),
+    database: "postgresql",
+    eventSourcing: "enabled"
   };
 }
-initializeDatabase();
 
 // app/routes/api.reservations.$id.events.tsx
 function requireAuth(request) {
@@ -1319,17 +1434,23 @@ __export(api_auth_login_exports, {
   action: () => action5
 });
 var import_node9 = require("@remix-run/node");
+var import_jsonwebtoken = __toESM(require("jsonwebtoken"));
 async function action5({ request }) {
   if (request.method !== "POST")
     return (0, import_node9.json)({ error: "Method not allowed" }, { status: 405 });
   try {
+    await initializeDatabase();
     let body = await request.json();
     if (!body.email || !body.password)
       return (0, import_node9.json)({ error: "Email and password are required" }, { status: 400 });
     let user = await authenticateUser(body.email, body.password);
     if (!user)
       return (0, import_node9.json)({ error: "Invalid credentials" }, { status: 401 });
-    let response = { token: `mock-jwt-token-${user.id}` };
+    let response = { token: import_jsonwebtoken.default.sign(
+      { userId: user.id, email: user.email, name: user.name },
+      process.env.JWT_SECRET || "dev-secret-key",
+      { expiresIn: "24h" }
+    ) };
     return (0, import_node9.json)(response, { status: 200 });
   } catch (error) {
     return console.error("Login error:", error), (0, import_node9.json)({ error: "Internal server error" }, { status: 500 });
@@ -4582,7 +4703,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-2ZH675NH.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-WMQ543TE.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-FC6DUTTV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-GZ4TM6AV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-Z5UMRQ7A.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-5ECGZEGH.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-RDPFD6CJ.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-BQAJGG5G.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-FPNXJ2H2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-IC6H4GRK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-52QKRX52.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-A4IVSSDU.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-ZAJSK4UL.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "75423768", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749404028629 }, url: "/build/manifest-75423768.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-2ZH675NH.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-WMQ543TE.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-FC6DUTTV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-GZ4TM6AV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-Z5UMRQ7A.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-5ECGZEGH.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-RDPFD6CJ.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-BQAJGG5G.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-FPNXJ2H2.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-IC6H4GRK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-52QKRX52.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-A4IVSSDU.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-ZAJSK4UL.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "75423768", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749404109047 }, url: "/build/manifest-75423768.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

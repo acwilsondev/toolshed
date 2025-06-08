@@ -1,7 +1,8 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { authenticateUser } from "~/utils/db.server";
+import { authenticateUser, initializeDatabase } from "~/utils/db.server";
 import type { LoginRequest, AuthResponse } from "~/utils/types";
+import jwt from "jsonwebtoken";
 
 export async function action({ request }: ActionFunctionArgs) {
   if (request.method !== "POST") {
@@ -9,6 +10,9 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 
   try {
+    // Initialize database with sample data if needed
+    await initializeDatabase();
+
     const body: LoginRequest = await request.json();
     
     if (!body.email || !body.password) {
@@ -21,8 +25,12 @@ export async function action({ request }: ActionFunctionArgs) {
       return json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    // In production, generate a proper JWT token
-    const token = `mock-jwt-token-${user.id}`;
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user.id, email: user.email, name: user.name },
+      process.env.JWT_SECRET || "dev-secret-key",
+      { expiresIn: "24h" }
+    );
     
     const response: AuthResponse = { token };
     return json(response, { status: 200 });
