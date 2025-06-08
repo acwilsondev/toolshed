@@ -85,17 +85,17 @@ export default function Share() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Share a Tool</h1>
-        <p className="text-lg text-gray-600">
+        <h1 className="text-3xl font-bold text-neighborhood-slate mb-4">Share a Tool</h1>
+        <p className="text-lg text-neighborhood-slate">
           Add your tool to the community sharing network
         </p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <div className="bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6">
         <Form method="post" className="space-y-6">
           {/* Tool Name */}
           <div>
-            <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="title" className="block text-sm font-medium text-neighborhood-slate mb-2">
               Tool Name *
             </label>
             <input
@@ -104,13 +104,13 @@ export default function Share() {
               name="title"
               className={`block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1 ${
                 actionData?.errors?.title
-                  ? "border-red-300 focus:ring-red-500 focus:border-red-500"
-                  : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                  ? "border-neighborhood-rust focus:ring-neighborhood-rust focus:border-neighborhood-rust"
+                  : "border-neighborhood-mint focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
               }`}
               placeholder="e.g., Power Drill, Lawnmower, Socket Set"
             />
             {actionData?.errors?.title && (
-              <p className="mt-1 text-sm text-red-600">{actionData.errors.title}</p>
+              <p className="mt-1 text-sm text-neighborhood-rust">{actionData.errors.title}</p>
             )}
           </div>
 
@@ -235,7 +235,7 @@ export default function Share() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Sharing Tool..." : "Share Tool"}
             </button>
