@@ -14,6 +14,7 @@ import globalStyles from "~/styles/global.css";
 
 export const meta: MetaFunction = () => {
   return [
+    { title: "Toolshed - Community Resource Sharing" },
     { name: "description", content: "Share tools and resources in your community" },
   ];
 };

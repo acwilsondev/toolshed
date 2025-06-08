@@ -5,12 +5,22 @@ export function Navigation() {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navigation = [
+  // In a real app, this would come from session/context
+  const isAuthenticated = false; // Demo state
+  
+  const publicNavigation = [
+    { name: "Home", href: "/", current: location.pathname === "/" },
+    { name: "Browse", href: "/browse", current: location.pathname === "/browse" },
+  ];
+
+  const authenticatedNavigation = [
     { name: "Home", href: "/", current: location.pathname === "/" },
     { name: "Browse", href: "/browse", current: location.pathname === "/browse" },
     { name: "Share", href: "/share", current: location.pathname === "/share" },
     { name: "Profile", href: "/profile", current: location.pathname === "/profile" },
   ];
+
+  const navigation = isAuthenticated ? authenticatedNavigation : publicNavigation;
 
   return (
     <nav className="bg-white shadow-sm border-b border-neighborhood-mint/20">
@@ -37,6 +47,36 @@ export function Navigation() {
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Auth controls */}
+          <div className="hidden sm:ml-6 sm:flex sm:items-center">
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-neighborhood-slate">Welcome back!</span>
+                <Link
+                  to="/logout"
+                  className="px-4 py-2 text-sm font-medium text-neighborhood-slate hover:text-neighborhood-spruce"
+                >
+                  Sign Out
+                </Link>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link
+                  to="/login"
+                  className="text-sm font-medium text-neighborhood-slate hover:text-neighborhood-spruce"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/register"
+                  className="px-4 py-2 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors text-sm font-medium"
+                >
+                  Join Community
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
