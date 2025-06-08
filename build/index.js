@@ -65,22 +65,31 @@ function ThemeProvider({ children }) {
   let [theme, setTheme] = (0, import_react2.useState)("light"), [isHydrated, setIsHydrated] = (0, import_react2.useState)(!1);
   (0, import_react2.useEffect)(() => {
     setIsHydrated(!0);
-    let savedTheme = localStorage.getItem("theme");
-    if (savedTheme)
-      setTheme(savedTheme);
-    else {
-      let prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(prefersDark ? "dark" : "light");
+    try {
+      let savedTheme = localStorage.getItem("theme");
+      if (savedTheme && (savedTheme === "light" || savedTheme === "dark"))
+        setTheme(savedTheme);
+      else {
+        let prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+      }
+    } catch {
+      setTheme("light");
     }
   }, []), (0, import_react2.useEffect)(() => {
-    isHydrated && (theme === "dark" ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark"), localStorage.setItem("theme", theme));
+    if (isHydrated)
+      try {
+        theme === "dark" ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark"), localStorage.setItem("theme", theme);
+      } catch {
+        console.warn("Unable to save theme preference");
+      }
   }, [theme, isHydrated]);
   let toggleTheme = () => {
     setTheme((prev) => prev === "light" ? "dark" : "light");
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(ThemeContext.Provider, { value: { theme, toggleTheme }, children }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(ThemeContext.Provider, { value: { theme, toggleTheme, isHydrated }, children }, void 0, !1, {
     fileName: "app/utils/theme.tsx",
-    lineNumber: 49,
+    lineNumber: 60,
     columnNumber: 5
   }, this);
 }
@@ -94,8 +103,8 @@ function useTheme() {
 // app/components/ThemeToggle.tsx
 var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime");
 function ThemeToggle() {
-  let { theme, toggleTheme } = useTheme();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+  let { theme, toggleTheme, isHydrated } = useTheme();
+  return isHydrated ? /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
     "button",
     {
       onClick: toggleTheme,
@@ -120,7 +129,7 @@ function ThemeToggle() {
             !1,
             {
               fileName: "app/components/ThemeToggle.tsx",
-              lineNumber: 19,
+              lineNumber: 25,
               columnNumber: 11
             },
             this
@@ -130,7 +139,7 @@ function ThemeToggle() {
         !1,
         {
           fileName: "app/components/ThemeToggle.tsx",
-          lineNumber: 13,
+          lineNumber: 19,
           columnNumber: 9
         },
         this
@@ -153,7 +162,7 @@ function ThemeToggle() {
             !1,
             {
               fileName: "app/components/ThemeToggle.tsx",
-              lineNumber: 33,
+              lineNumber: 39,
               columnNumber: 11
             },
             this
@@ -163,7 +172,7 @@ function ThemeToggle() {
         !1,
         {
           fileName: "app/components/ThemeToggle.tsx",
-          lineNumber: 27,
+          lineNumber: 33,
           columnNumber: 9
         },
         this
@@ -173,11 +182,15 @@ function ThemeToggle() {
     !1,
     {
       fileName: "app/components/ThemeToggle.tsx",
-      lineNumber: 7,
+      lineNumber: 13,
       columnNumber: 5
     },
     this
-  );
+  ) : /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "p-2 rounded-lg bg-neighborhood-cloud border border-neighborhood-mint w-9 h-9 animate-pulse" }, void 0, !1, {
+    fileName: "app/components/ThemeToggle.tsx",
+    lineNumber: 8,
+    columnNumber: 7
+  }, this);
 }
 
 // app/components/Navigation.tsx
@@ -344,7 +357,7 @@ function Layout({ children }) {
 }
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-CRLXF4F4.css";
+var global_default = "/build/_assets/global-WEFA347W.css";
 
 // app/root.tsx
 var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta = () => [
@@ -366,14 +379,24 @@ var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta = () => [
 function App() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("html", { lang: "en", className: "h-full", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Meta, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
         fileName: "app/root.tsx",
         lineNumber: 43,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, !1, {
         fileName: "app/root.tsx",
         lineNumber: 44,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Meta, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 45,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Links, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 46,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
@@ -384,35 +407,35 @@ function App() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud dark:bg-neighborhood-dark-cloud text-neighborhood-slate dark:text-neighborhood-dark-slate", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(ThemeProvider, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Outlet, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 49,
+        lineNumber: 51,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 48,
+        lineNumber: 50,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 47,
+        lineNumber: 49,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.ScrollRestoration, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 52,
+        lineNumber: 54,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 53,
+        lineNumber: 55,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.LiveReload, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 54,
+        lineNumber: 56,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 46,
+      lineNumber: 48,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
@@ -427,39 +450,39 @@ function ErrorBoundary() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 67,
+        lineNumber: 69,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Meta, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 68,
+        lineNumber: 70,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Links, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 69,
+        lineNumber: 71,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 66,
+      lineNumber: 68,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-center", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-6xl font-bold text-gray-900 mb-4", children: error.status }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 75,
+          lineNumber: 77,
           columnNumber: 17
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-2xl font-semibold text-gray-700 mb-4", children: error.statusText }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 78,
+          lineNumber: 80,
           columnNumber: 17
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-gray-600 mb-8", children: error.data || "Something went wrong. Please try again later." }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 81,
+          lineNumber: 83,
           columnNumber: 17
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
@@ -473,70 +496,70 @@ function ErrorBoundary() {
           !1,
           {
             fileName: "app/root.tsx",
-            lineNumber: 84,
+            lineNumber: 86,
             columnNumber: 17
           },
           this
         )
       ] }, void 0, !0, {
         fileName: "app/root.tsx",
-        lineNumber: 74,
+        lineNumber: 76,
         columnNumber: 15
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 73,
+        lineNumber: 75,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 72,
+        lineNumber: 74,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 93,
+        lineNumber: 95,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 71,
+      lineNumber: 73,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.tsx",
-    lineNumber: 65,
+    lineNumber: 67,
     columnNumber: 7
   }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("html", { lang: "en", className: "h-full", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 102,
+        lineNumber: 104,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Meta, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 103,
+        lineNumber: 105,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Links, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 104,
+        lineNumber: 106,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 101,
+      lineNumber: 103,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-center", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Unexpected Error" }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 110,
+          lineNumber: 112,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-neighborhood-slate mb-8", children: "An unexpected error occurred. Please try refreshing the page." }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 113,
+          lineNumber: 115,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
@@ -550,37 +573,37 @@ function ErrorBoundary() {
           !1,
           {
             fileName: "app/root.tsx",
-            lineNumber: 116,
+            lineNumber: 118,
             columnNumber: 15
           },
           this
         )
       ] }, void 0, !0, {
         fileName: "app/root.tsx",
-        lineNumber: 109,
+        lineNumber: 111,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 108,
+        lineNumber: 110,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 107,
+        lineNumber: 109,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(import_react5.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 125,
+        lineNumber: 127,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 106,
+      lineNumber: 108,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.tsx",
-    lineNumber: 100,
+    lineNumber: 102,
     columnNumber: 5
   }, this);
 }
@@ -1795,7 +1818,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-AMJM5PHI.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-WMQ543TE.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-L3JOBKCA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-XW6AH6FS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-IC6H4GRK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-52QKRX52.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-A4IVSSDU.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-ZAJSK4UL.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "33df948e", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749401129098 }, url: "/build/manifest-33DF948E.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-AMJM5PHI.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-WMQ543TE.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-MZF63MUG.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-XW6AH6FS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-IC6H4GRK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-52QKRX52.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-A4IVSSDU.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-ZAJSK4UL.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "a3f67668", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749401183705 }, url: "/build/manifest-A3F67668.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

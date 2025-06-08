@@ -1,7 +1,13 @@
 import { useTheme } from "~/utils/theme";
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, isHydrated } = useTheme();
+
+  if (!isHydrated) {
+    return (
+      <div className="p-2 rounded-lg bg-neighborhood-cloud border border-neighborhood-mint w-9 h-9 animate-pulse" />
+    );
+  }
 
   return (
     <button

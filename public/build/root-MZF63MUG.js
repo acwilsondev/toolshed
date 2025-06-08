@@ -50,7 +50,7 @@ if (import.meta) {
     //@ts-expect-error
     "app/utils/theme.tsx"
   );
-  import.meta.hot.lastModified = "1749401096615.9575";
+  import.meta.hot.lastModified = "1749401154676.9136";
 }
 var ThemeContext = (0, import_react.createContext)(void 0);
 function ThemeProvider({
@@ -61,33 +61,42 @@ function ThemeProvider({
   const [isHydrated, setIsHydrated] = (0, import_react.useState)(false);
   (0, import_react.useEffect)(() => {
     setIsHydrated(true);
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(prefersDark ? "dark" : "light");
+    try {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+        setTheme(savedTheme);
+      } else {
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+      }
+    } catch (error) {
+      setTheme("light");
     }
   }, []);
   (0, import_react.useEffect)(() => {
     if (!isHydrated)
       return;
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    try {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      localStorage.setItem("theme", theme);
+    } catch (error) {
+      console.warn("Unable to save theme preference");
     }
-    localStorage.setItem("theme", theme);
   }, [theme, isHydrated]);
   const toggleTheme = () => {
     setTheme((prev) => prev === "light" ? "dark" : "light");
   };
   return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(ThemeContext.Provider, { value: {
     theme,
-    toggleTheme
+    toggleTheme,
+    isHydrated
   }, children }, void 0, false, {
     fileName: "app/utils/theme.tsx",
-    lineNumber: 60,
+    lineNumber: 70,
     columnNumber: 10
   }, this);
 }
@@ -127,37 +136,45 @@ if (import.meta) {
     //@ts-expect-error
     "app/components/ThemeToggle.tsx"
   );
-  import.meta.hot.lastModified = "1749400942888.0732";
+  import.meta.hot.lastModified = "1749401170311.9019";
 }
 function ThemeToggle() {
   _s3();
   const {
     theme,
-    toggleTheme
+    toggleTheme,
+    isHydrated
   } = useTheme();
+  if (!isHydrated) {
+    return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "p-2 rounded-lg bg-neighborhood-cloud border border-neighborhood-mint w-9 h-9 animate-pulse" }, void 0, false, {
+      fileName: "app/components/ThemeToggle.tsx",
+      lineNumber: 31,
+      columnNumber: 12
+    }, this);
+  }
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("button", { onClick: toggleTheme, className: "p-2 rounded-lg bg-neighborhood-cloud dark:bg-neighborhood-dark-cloud border border-neighborhood-mint dark:border-neighborhood-dark-mint hover:bg-neighborhood-mint/10 dark:hover:bg-neighborhood-dark-mint/10 transition-colors", "aria-label": `Switch to ${theme === "light" ? "dark" : "light"} mode`, children: theme === "light" ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("svg", { className: "w-5 h-5 text-neighborhood-slate dark:text-neighborhood-dark-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" }, void 0, false, {
     fileName: "app/components/ThemeToggle.tsx",
-    lineNumber: 31,
+    lineNumber: 35,
     columnNumber: 11
   }, this) }, void 0, false, {
     fileName: "app/components/ThemeToggle.tsx",
-    lineNumber: 30,
+    lineNumber: 34,
     columnNumber: 28
   }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("svg", { className: "w-5 h-5 text-neighborhood-slate dark:text-neighborhood-dark-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" }, void 0, false, {
     fileName: "app/components/ThemeToggle.tsx",
-    lineNumber: 33,
+    lineNumber: 37,
     columnNumber: 11
   }, this) }, void 0, false, {
     fileName: "app/components/ThemeToggle.tsx",
-    lineNumber: 32,
+    lineNumber: 36,
     columnNumber: 18
   }, this) }, void 0, false, {
     fileName: "app/components/ThemeToggle.tsx",
-    lineNumber: 29,
+    lineNumber: 33,
     columnNumber: 10
   }, this);
 }
-_s3(ThemeToggle, "Q4eAjrIZ0CuRuhycs6byifK2KBk=", false, function() {
+_s3(ThemeToggle, "6A+/8Khj31NuV7Vm3B6qdO3rDT8=", false, function() {
   return [useTheme];
 });
 _c2 = ThemeToggle;
@@ -363,7 +380,7 @@ window.$RefreshReg$ = prevRefreshReg;
 window.$RefreshSig$ = prevRefreshSig;
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-CRLXF4F4.css";
+var global_default = "/build/_assets/global-WEFA347W.css";
 
 // app/root.tsx
 var import_jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime());
@@ -413,14 +430,24 @@ var links = () => {
 function App() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("html", { lang: "en", className: "h-full", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Meta, {}, void 0, false, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("meta", { charSet: "utf-8" }, void 0, false, {
         fileName: "app/root.tsx",
         lineNumber: 52,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Links, {}, void 0, false, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("meta", { name: "viewport", content: "width=device-width,initial-scale=1" }, void 0, false, {
         fileName: "app/root.tsx",
         lineNumber: 53,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Meta, {}, void 0, false, {
+        fileName: "app/root.tsx",
+        lineNumber: 54,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Links, {}, void 0, false, {
+        fileName: "app/root.tsx",
+        lineNumber: 55,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
@@ -431,35 +458,35 @@ function App() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud dark:bg-neighborhood-dark-cloud text-neighborhood-slate dark:text-neighborhood-dark-slate", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(ThemeProvider, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Outlet, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 58,
+        lineNumber: 60,
         columnNumber: 13
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 57,
+        lineNumber: 59,
         columnNumber: 11
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 56,
+        lineNumber: 58,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(ScrollRestoration, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 61,
+        lineNumber: 63,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Scripts, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 62,
+        lineNumber: 64,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(LiveReload, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 63,
+        lineNumber: 65,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 55,
+      lineNumber: 57,
       columnNumber: 7
     }, this)
   ] }, void 0, true, {
@@ -477,72 +504,72 @@ function ErrorBoundary() {
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("head", { children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 74,
+          lineNumber: 76,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Meta, {}, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 75,
+          lineNumber: 77,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Links, {}, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 76,
+          lineNumber: 78,
           columnNumber: 11
         }, this)
       ] }, void 0, true, {
         fileName: "app/root.tsx",
-        lineNumber: 73,
+        lineNumber: 75,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-center", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h1", { className: "text-6xl font-bold text-gray-900 mb-4", children: error.status }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 82,
+            lineNumber: 84,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h2", { className: "text-2xl font-semibold text-gray-700 mb-4", children: error.statusText }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 85,
+            lineNumber: 87,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-gray-600 mb-8", children: error.data || "Something went wrong. Please try again later." }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 88,
+            lineNumber: 90,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("a", { href: "/", className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", children: "Go Home" }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 91,
+            lineNumber: 93,
             columnNumber: 17
           }, this)
         ] }, void 0, true, {
           fileName: "app/root.tsx",
-          lineNumber: 81,
+          lineNumber: 83,
           columnNumber: 15
         }, this) }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 80,
+          lineNumber: 82,
           columnNumber: 13
         }, this) }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 79,
+          lineNumber: 81,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Scripts, {}, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 98,
+          lineNumber: 100,
           columnNumber: 11
         }, this)
       ] }, void 0, true, {
         fileName: "app/root.tsx",
-        lineNumber: 78,
+        lineNumber: 80,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 72,
+      lineNumber: 74,
       columnNumber: 12
     }, this);
   }
@@ -550,67 +577,67 @@ function ErrorBoundary() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 104,
+        lineNumber: 106,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Meta, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 105,
+        lineNumber: 107,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Links, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 106,
+        lineNumber: 108,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 103,
+      lineNumber: 105,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-center", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Unexpected Error" }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 112,
+          lineNumber: 114,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-neighborhood-slate mb-8", children: "An unexpected error occurred. Please try refreshing the page." }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 115,
+          lineNumber: 117,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("a", { href: "/", className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod", children: "Go Home" }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 118,
+          lineNumber: 120,
           columnNumber: 15
         }, this)
       ] }, void 0, true, {
         fileName: "app/root.tsx",
-        lineNumber: 111,
+        lineNumber: 113,
         columnNumber: 13
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 110,
+        lineNumber: 112,
         columnNumber: 11
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 109,
+        lineNumber: 111,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Scripts, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 125,
+        lineNumber: 127,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 108,
+      lineNumber: 110,
       columnNumber: 7
     }, this)
   ] }, void 0, true, {
     fileName: "app/root.tsx",
-    lineNumber: 102,
+    lineNumber: 104,
     columnNumber: 10
   }, this);
 }
@@ -630,4 +657,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-L3JOBKCA.js.map
+//# sourceMappingURL=/build/root-MZF63MUG.js.map

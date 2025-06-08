@@ -5,6 +5,7 @@ type Theme = "light" | "dark";
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  isHydrated: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -17,13 +18,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setIsHydrated(true);
     
     // Check if user has a saved preference
-    const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setTheme(prefersDark ? "dark" : "light");
+    try {
+      const savedTheme = localStorage.getItem("theme") as Theme;
+      if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+        setTheme(savedTheme);
+      } else {
+        // Check system preference
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        setTheme(prefersDark ? "dark" : "light");
+      }
+    } catch (error) {
+      // Fallback to light theme if localStorage is not available
+      setTheme("light");
     }
   }, []);
 
@@ -31,14 +37,19 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     if (!isHydrated) return;
     
     // Apply theme to document
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    try {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      
+      // Save preference
+      localStorage.setItem("theme", theme);
+    } catch (error) {
+      // Handle cases where localStorage is not available
+      console.warn("Unable to save theme preference");
     }
-    
-    // Save preference
-    localStorage.setItem("theme", theme);
   }, [theme, isHydrated]);
 
   const toggleTheme = () => {
@@ -46,7 +57,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, isHydrated }}>
       {children}
     </ThemeContext.Provider>
   );
