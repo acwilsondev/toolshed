@@ -57,283 +57,56 @@ function handleRequest(request, responseStatusCode, responseHeaders, remixContex
 // app/root.tsx
 var root_exports = {};
 __export(root_exports, {
-  ErrorBoundary: () => ErrorBoundary,
-  default: () => App,
-  links: () => links
+  default: () => App
 });
-var import_react2 = require("@remix-run/react");
-
-// app/styles/global.css
-var global_default = "/build/_assets/global-NVIY2XSO.css";
-
-// app/root.tsx
-var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), links = () => [
-  { rel: "stylesheet", href: global_default },
-  {
-    rel: "preconnect",
-    href: "https://fonts.googleapis.com"
-  },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous"
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-  }
-];
+var import_react2 = require("@remix-run/react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
 function App() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 36,
+        lineNumber: 11,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 37,
+        lineNumber: 12,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("title", { children: "Toolshed" }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 38,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 39,
+        lineNumber: 13,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 35,
+      lineNumber: 10,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { style: { margin: 0, padding: 0, backgroundColor: "#f7fafc" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("nav", { style: { backgroundColor: "white", borderBottom: "1px solid #e2e8f0", padding: "1rem 0" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h1", { style: { margin: 0, fontSize: "1.5rem", fontWeight: "bold", color: "#2d3748" }, children: "Toolshed" }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 44,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { display: "flex", gap: "1rem" }, children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: "/login", style: { color: "#4a5568", textDecoration: "none" }, children: "Sign In" }, void 0, !1, {
-            fileName: "app/root.tsx",
-            lineNumber: 46,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: "/register", style: { backgroundColor: "#f6ad55", color: "white", padding: "0.5rem 1rem", borderRadius: "0.25rem", textDecoration: "none" }, children: "Join" }, void 0, !1, {
-            fileName: "app/root.tsx",
-            lineNumber: 47,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/root.tsx",
-          lineNumber: 45,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/root.tsx",
-        lineNumber: 43,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 42,
-        columnNumber: 9
-      }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 51,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 52,
+        lineNumber: 16,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 53,
+        lineNumber: 17,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 54,
+        lineNumber: 18,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 41,
+      lineNumber: 15,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.tsx",
-    lineNumber: 34,
-    columnNumber: 5
-  }, this);
-}
-function ErrorBoundary() {
-  let error = (0, import_react2.useRouteError)();
-  return (0, import_react2.isRouteErrorResponse)(error) ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 67,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 68,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 66,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { style: { margin: 0, padding: 0, backgroundColor: "#f7fafc" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { textAlign: "center" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h1", { style: { fontSize: "4rem", fontWeight: "bold", color: "#1a202c", marginBottom: "1rem" }, children: error.status }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 73,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h2", { style: { fontSize: "1.5rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: error.statusText }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 76,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "2rem" }, children: error.data || "Something went wrong. Please try again later." }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 79,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          "a",
-          {
-            href: "/",
-            style: {
-              display: "inline-flex",
-              alignItems: "center",
-              padding: "0.75rem 1.5rem",
-              backgroundColor: "#f6ad55",
-              color: "white",
-              textDecoration: "none",
-              borderRadius: "0.5rem",
-              fontWeight: "600"
-            },
-            children: "Go Home"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/root.tsx",
-            lineNumber: 82,
-            columnNumber: 15
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/root.tsx",
-        lineNumber: 72,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 71,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 99,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 70,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 65,
-    columnNumber: 7
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 108,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 109,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 107,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { style: { margin: 0, padding: 0, backgroundColor: "#f7fafc" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { textAlign: "center" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h1", { style: { fontSize: "2rem", fontWeight: "bold", color: "#1a202c", marginBottom: "1rem" }, children: "Something went wrong" }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 114,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "2rem" }, children: "We encountered an unexpected error. Please try again later." }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 117,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          "a",
-          {
-            href: "/",
-            style: {
-              display: "inline-flex",
-              alignItems: "center",
-              padding: "0.75rem 1.5rem",
-              backgroundColor: "#f6ad55",
-              color: "white",
-              textDecoration: "none",
-              borderRadius: "0.5rem",
-              fontWeight: "600"
-            },
-            children: "Go Home"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/root.tsx",
-            lineNumber: 120,
-            columnNumber: 13
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/root.tsx",
-        lineNumber: 113,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 112,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 137,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 111,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 106,
+    lineNumber: 9,
     columnNumber: 5
   }, this);
 }
@@ -4646,218 +4419,199 @@ __export(index_exports, {
 });
 var import_react12 = require("@remix-run/react"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime");
 function Index() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { maxWidth: "1200px", margin: "0 auto", padding: "2rem" }, children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("header", { style: { textAlign: "center", marginBottom: "3rem" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h1", { style: { fontSize: "3rem", color: "#2d3748", marginBottom: "1rem" }, children: "Welcome to Toolshed" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { fontFamily: "system-ui, sans-serif", lineHeight: "1.6" }, children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("nav", { style: { backgroundColor: "#fff", borderBottom: "1px solid #e0e0e0", padding: "1rem 0" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h1", { style: { margin: 0, fontSize: "1.5rem", fontWeight: "bold", color: "#333" }, children: "Toolshed" }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
         lineNumber: 8,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { fontSize: "1.25rem", color: "#4a5568", maxWidth: "600px", margin: "0 auto" }, children: "Share tools, borrow equipment, and build stronger communities. Connect with neighbors to share resources and reduce waste." }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "flex", gap: "1rem" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/login", style: { color: "#666", textDecoration: "none" }, children: "Sign In" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 10,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/register", style: { backgroundColor: "#007bff", color: "white", padding: "0.5rem 1rem", borderRadius: "4px", textDecoration: "none" }, children: "Join" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 11,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 11,
+        lineNumber: 9,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
       lineNumber: 7,
       columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/_index.tsx",
+      lineNumber: 6,
+      columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "flex", gap: "1rem", justifyContent: "center", marginBottom: "3rem" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
-        import_react12.Link,
-        {
-          to: "/browse",
-          style: {
-            backgroundColor: "#f6ad55",
-            color: "white",
-            padding: "0.75rem 1.5rem",
-            borderRadius: "0.5rem",
-            textDecoration: "none",
-            fontWeight: "600"
-          },
-          children: "Browse Tools"
-        },
-        void 0,
-        !1,
-        {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("main", { style: { padding: "3rem 2rem", maxWidth: "1200px", margin: "0 auto" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("header", { style: { textAlign: "center", marginBottom: "3rem" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h2", { style: { fontSize: "2.5rem", color: "#333", marginBottom: "1rem" }, children: "Welcome to Toolshed" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 18,
           columnNumber: 11
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
-        import_react12.Link,
-        {
-          to: "/register",
-          style: {
-            backgroundColor: "#4fd1c7",
-            color: "#2d3748",
-            padding: "0.75rem 1.5rem",
-            borderRadius: "0.5rem",
-            textDecoration: "none",
-            fontWeight: "600"
-          },
-          children: "Join Community"
-        },
-        void 0,
-        !1,
-        {
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { fontSize: "1.2rem", color: "#666", maxWidth: "600px", margin: "0 auto" }, children: "Share tools, borrow equipment, and build stronger communities. Connect with neighbors to share resources and reduce waste." }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 31,
+          lineNumber: 21,
           columnNumber: 11
-        },
-        this
-      )
-    ] }, void 0, !0, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 17,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "3rem" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "white", padding: "2rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: "Share Your Tools" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 48,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1rem" }, children: "List tools you're willing to lend to neighbors. From power drills to garden equipment, help your community access what they need." }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 51,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/share", style: { color: "#f6ad55", textDecoration: "none", fontWeight: "600" }, children: "Start Sharing \u2192" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 54,
-          columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 47,
-        columnNumber: 11
+        lineNumber: 17,
+        columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "white", padding: "2rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: "Find What You Need" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "3rem" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "#f8f9fa", padding: "2rem", borderRadius: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#333", marginBottom: "1rem" }, children: "Share Your Tools" }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 29,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#666", marginBottom: "1rem" }, children: "List tools you're willing to lend to neighbors. From power drills to garden equipment, help your community access what they need." }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 32,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/share", style: { color: "#007bff", textDecoration: "none", fontWeight: "600" }, children: "Start Sharing \u2192" }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 35,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, !0, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 60,
-          columnNumber: 13
+          lineNumber: 28,
+          columnNumber: 11
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1rem" }, children: "Browse available tools in your neighborhood. Save money and reduce waste by borrowing instead of buying." }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "#f8f9fa", padding: "2rem", borderRadius: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#333", marginBottom: "1rem" }, children: "Find What You Need" }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 41,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#666", marginBottom: "1rem" }, children: "Browse available tools in your neighborhood. Save money and reduce waste by borrowing instead of buying." }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 44,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/browse", style: { color: "#007bff", textDecoration: "none", fontWeight: "600" }, children: "Browse Tools \u2192" }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 47,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, !0, {
           fileName: "app/routes/_index.tsx",
-          lineNumber: 63,
-          columnNumber: 13
+          lineNumber: 40,
+          columnNumber: 11
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/browse", style: { color: "#f6ad55", textDecoration: "none", fontWeight: "600" }, children: "Browse Tools \u2192" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "#f8f9fa", padding: "2rem", borderRadius: "8px" }, children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#333", marginBottom: "1rem" }, children: "Build Community" }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 53,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#666", marginBottom: "1rem" }, children: "Connect with neighbors, build trust, and create a stronger, more sustainable community together." }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 56,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/login", style: { color: "#007bff", textDecoration: "none", fontWeight: "600" }, children: "Get Started \u2192" }, void 0, !1, {
+            fileName: "app/routes/_index.tsx",
+            lineNumber: 59,
+            columnNumber: 13
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 52,
+          columnNumber: 11
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 27,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { textAlign: "center", backgroundColor: "#f0f8ff", padding: "2rem", borderRadius: "8px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.5rem", color: "#333", marginBottom: "1rem" }, children: "Ready to get started?" }, void 0, !1, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 66,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 59,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "white", padding: "2rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: "Build Community" }, void 0, !1, {
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#666", marginBottom: "1.5rem" }, children: "Join our community and start sharing resources with your neighbors today." }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 69,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "flex", gap: "1rem", justifyContent: "center" }, children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+            import_react12.Link,
+            {
+              to: "/register",
+              style: {
+                backgroundColor: "#007bff",
+                color: "white",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "4px",
+                textDecoration: "none",
+                fontWeight: "600"
+              },
+              children: "Create Account"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/_index.tsx",
+              lineNumber: 73,
+              columnNumber: 13
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+            import_react12.Link,
+            {
+              to: "/login",
+              style: {
+                backgroundColor: "white",
+                color: "#333",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "4px",
+                textDecoration: "none",
+                fontWeight: "600",
+                border: "1px solid #ddd"
+              },
+              children: "Sign In"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/_index.tsx",
+              lineNumber: 86,
+              columnNumber: 13
+            },
+            this
+          )
+        ] }, void 0, !0, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 72,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1rem" }, children: "Connect with neighbors, build trust, and create a stronger, more sustainable community together." }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 75,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/login", style: { color: "#f6ad55", textDecoration: "none", fontWeight: "600" }, children: "Get Started \u2192" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 78,
-          columnNumber: 13
+          columnNumber: 11
         }, this)
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 71,
-        columnNumber: 11
+        lineNumber: 65,
+        columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 46,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { textAlign: "center", backgroundColor: "#f7fafc", padding: "2rem", borderRadius: "0.5rem" }, children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h2", { style: { fontSize: "1.5rem", color: "#2d3748", marginBottom: "1rem" }, children: "Ready to get started?" }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 85,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1.5rem" }, children: "Join our community and start sharing resources with your neighbors today." }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 88,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "flex", gap: "1rem", justifyContent: "center" }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
-          import_react12.Link,
-          {
-            to: "/register",
-            style: {
-              backgroundColor: "#f6ad55",
-              color: "white",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "0.5rem",
-              textDecoration: "none",
-              fontWeight: "600"
-            },
-            children: "Create Account"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 92,
-            columnNumber: 13
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
-          import_react12.Link,
-          {
-            to: "/login",
-            style: {
-              backgroundColor: "white",
-              color: "#2d3748",
-              padding: "0.75rem 1.5rem",
-              borderRadius: "0.5rem",
-              textDecoration: "none",
-              fontWeight: "600",
-              border: "1px solid #e2e8f0"
-            },
-            children: "Sign In"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 105,
-            columnNumber: 13
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 91,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 84,
-      columnNumber: 9
+      lineNumber: 16,
+      columnNumber: 7
     }, this)
   ] }, void 0, !0, {
-    fileName: "app/routes/_index.tsx",
-    lineNumber: 6,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
     fileName: "app/routes/_index.tsx",
     lineNumber: 5,
     columnNumber: 5
@@ -5705,7 +5459,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-TK4I6SIB.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-OJIVT72O.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-XONX5ZQK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-G7XMN5QS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-FWOQBVIG.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-L4WQGEW7.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-KTL55TVY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-ERJEZREU.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-VM54SIOU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-FN4GGKMW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-W2P5FXXE.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4RC6W7AA.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-SZDBEUUY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-WCTBIYP2.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-JWDXL6UE.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-MIIMFKU6.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "5c58b395", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749404923228 }, url: "/build/manifest-5C58B395.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-TK4I6SIB.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-OJIVT72O.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-VFHBBIIH.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-O6G7J3WL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-FWOQBVIG.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-L4WQGEW7.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-KTL55TVY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-ERJEZREU.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-VM54SIOU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-FN4GGKMW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-W2P5FXXE.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4RC6W7AA.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-SZDBEUUY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-WCTBIYP2.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-JWDXL6UE.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-MIIMFKU6.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "23f461c7", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749405082146 }, url: "/build/manifest-23F461C7.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
