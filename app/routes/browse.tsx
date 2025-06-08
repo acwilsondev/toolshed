@@ -1,5 +1,8 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { useState } from "react";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import { Layout } from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,7 +11,14 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  const { getCurrentUser } = await import("~/utils/session.server");
+  const user = await getCurrentUser(request);
+  return json({ user });
+}
+
 export default function Browse() {
+  const { user } = useLoaderData<typeof loader>();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
@@ -23,7 +33,8 @@ export default function Browse() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Layout user={user}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-neighborhood-spruce mb-4">Browse Tools</h1>
         <p className="text-lg text-neighborhood-slate">
@@ -103,6 +114,7 @@ export default function Browse() {
           </a>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }

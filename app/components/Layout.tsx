@@ -2,12 +2,13 @@ import { Navigation } from "./Navigation";
 
 interface LayoutProps {
   children: React.ReactNode;
+  user?: { id: string; name: string; email: string } | null;
 }
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, user }: LayoutProps) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navigation />
+      <Navigation user={user} />
       <main>{children}</main>
     </div>
   );

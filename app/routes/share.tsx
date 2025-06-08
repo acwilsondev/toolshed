@@ -1,7 +1,8 @@
-import type { MetaFunction, ActionFunctionArgs } from "@remix-run/node";
+import type { MetaFunction, ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useActionData, useNavigation } from "@remix-run/react";
+import { Form, useActionData, useNavigation, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
+import { Layout } from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return [
@@ -9,6 +10,12 @@ export const meta: MetaFunction = () => {
     { name: "description", content: "Share your tools and resources with the community" },
   ];
 };
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const { getCurrentUser } = await import("~/utils/session.server");
+  const user = await getCurrentUser(request);
+  return json({ user });
+}
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -52,11 +59,11 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Share() {
+  const { user } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
-  const isSubmitting = navigation.state === "submitting";
-
   const [selectedCategory, setSelectedCategory] = useState("");
+  const isSubmitting = navigation.state === "submitting";
 
   const categories = [
     { id: "", name: "Select a category" },
@@ -83,7 +90,8 @@ export default function Share() {
   ];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <Layout user={user}>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-neighborhood-slate mb-4">Share a Tool</h1>
         <p className="text-lg text-neighborhood-slate">
@@ -242,6 +250,7 @@ export default function Share() {
           </div>
         </Form>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }

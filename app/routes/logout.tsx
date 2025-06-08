@@ -1,9 +1,12 @@
 import { redirect, type LoaderFunctionArgs } from "@remix-run/node";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-  // In a real app, this would clear the session
-  // For demo, just redirect to home
-  return redirect("/?logout=true");
+  // Clear the session cookie by setting it to expire immediately
+  return redirect("/?logout=true", {
+    headers: {
+      "Set-Cookie": "user_session=; HttpOnly; Path=/; Max-Age=0; SameSite=Strict"
+    }
+  });
 }
 
 export default function Logout() {

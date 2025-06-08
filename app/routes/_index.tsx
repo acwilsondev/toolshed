@@ -1,21 +1,28 @@
-import { Link } from "@remix-run/react";
+import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
+import { json, type LoaderFunctionArgs } from "@remix-run/node";
+import { Layout } from "~/components/Layout";
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const { getCurrentUser } = await import("~/utils/session.server");
+  const user = await getCurrentUser(request);
+  return json({ user });
+}
 
 export default function Index() {
+  const { user } = useLoaderData<typeof loader>();
+  const [searchParams] = useSearchParams();
+  const isLoggedOut = searchParams.get("logout") === "true";
+  
   return (
-    <div>
-      <nav className="nav py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            <h1 className="text-xl font-bold text-neighborhood-spruce">Toolshed</h1>
-            <div className="flex gap-4 items-center">
-              <Link to="/login" className="text-neighborhood-slate hover:text-neighborhood-spruce">Sign In</Link>
-              <Link to="/register" className="btn btn-primary">Join</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-      
+    <Layout user={user}>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Logout confirmation message */}
+        {isLoggedOut && (
+          <div className="mb-8 bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+            <p className="text-green-600 font-medium">You've been successfully signed out. Thanks for using Toolshed!</p>
+          </div>
+        )}
+        
         <header className="text-center mb-12">
           <h2 className="text-4xl font-bold text-neighborhood-spruce mb-4">Welcome to Toolshed</h2>
           <p className="text-xl text-neighborhood-slate max-w-2xl mx-auto">
@@ -46,21 +53,39 @@ export default function Index() {
             <p className="text-neighborhood-slate mb-4">
               Connect with neighbors, build trust, and create a stronger, more sustainable community together.
             </p>
-            <Link to="/login" className="text-neighborhood-goldenrod hover:text-neighborhood-hover font-medium">Get Started →</Link>
+            <Link to={user ? "/profile" : "/login"} className="text-neighborhood-goldenrod hover:text-neighborhood-hover font-medium">
+              {user ? "My Profile" : "Get Started"} →
+            </Link>
           </div>
         </div>
 
         <div className="text-center bg-gradient-to-r from-neighborhood-mint/20 to-neighborhood-cloud border border-neighborhood-mint/20 rounded-xl p-8">
-          <h3 className="text-2xl font-semibold text-neighborhood-spruce mb-4">Ready to get started?</h3>
-          <p className="text-neighborhood-slate mb-6 max-w-md mx-auto">
-            Join our community and start sharing resources with your neighbors today.
-          </p>
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Link to="/register" className="btn btn-primary">Create Account</Link>
-            <Link to="/login" className="btn btn-secondary">Sign In</Link>
-          </div>
+          {user ? (
+            <>
+              <h3 className="text-2xl font-semibold text-neighborhood-spruce mb-4">Welcome back, {user.name}!</h3>
+              <p className="text-neighborhood-slate mb-6 max-w-md mx-auto">
+                Ready to share or borrow tools with your neighbors?
+              </p>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Link to="/share" className="btn btn-primary">Share an Item</Link>
+                <Link to="/browse" className="btn btn-secondary">Browse Tools</Link>
+                <Link to="/profile" className="btn btn-secondary">My Profile</Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <h3 className="text-2xl font-semibold text-neighborhood-spruce mb-4">Ready to get started?</h3>
+              <p className="text-neighborhood-slate mb-6 max-w-md mx-auto">
+                Join our community and start sharing resources with your neighbors today.
+              </p>
+              <div className="flex gap-4 justify-center flex-wrap">
+                <Link to="/register" className="btn btn-primary">Create Account</Link>
+                <Link to="/login" className="btn btn-secondary">Sign In</Link>
+              </div>
+            </>
+          )}
         </div>
       </main>
-    </div>
+    </Layout>
   );
 }

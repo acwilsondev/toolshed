@@ -1,12 +1,15 @@
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 
-export function Navigation() {
+interface NavigationProps {
+  user?: { id: string; name: string; email: string } | null;
+}
+
+export function Navigation({ user }: NavigationProps) {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // In a real app, this would come from session/context
-  const isAuthenticated = false; // Demo state
+  const isAuthenticated = !!user;
   
   const publicNavigation = [
     { name: "Home", href: "/", current: location.pathname === "/" },
@@ -53,7 +56,7 @@ export function Navigation() {
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-neighborhood-slate">Welcome back!</span>
+                <span className="text-sm text-neighborhood-slate">Welcome back, {user?.name}!</span>
                 <Link
                   to="/logout"
                   className="px-4 py-2 text-sm font-medium text-neighborhood-slate hover:text-neighborhood-spruce"

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, Link, useLoaderData, useActionData, useNavigation, useSearchParams } from "@remix-run/react";
 import { json, type LoaderFunctionArgs, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node";
 import { getUserByEmail, updateUser, getItems } from "~/utils/db.server";
+import { Layout } from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Profile - Toolshed" }];
@@ -74,7 +75,8 @@ export default function Profile() {
   const isNewUser = searchParams.get("new") === "true";
 
   return (
-    <div className="min-h-screen bg-neighborhood-cloud">
+    <Layout user={user}>
+      <div className="min-h-screen bg-neighborhood-cloud">
       <div className="container mx-auto px-4 py-8">
         {/* Welcome Message */}
         {isWelcome && (
@@ -331,6 +333,7 @@ export default function Profile() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }
