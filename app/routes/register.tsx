@@ -67,8 +67,8 @@ export default function Register() {
         <Form method="post">
           {actionData?.error && (
             <div className="error" style={{ 
-              backgroundColor: "#fef2f2", 
-              border: "1px solid #fecaca", 
+              backgroundColor: "#fdf2f2", 
+              border: "1px solid #D96C33", 
               borderRadius: "6px", 
               padding: "0.75rem",
               marginBottom: "1rem"
