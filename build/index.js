@@ -59,241 +59,20 @@ var root_exports = {};
 __export(root_exports, {
   ErrorBoundary: () => ErrorBoundary,
   default: () => App,
-  links: () => links,
-  meta: () => meta
+  links: () => links
 });
-var import_react4 = require("@remix-run/react");
-
-// app/components/Navigation.tsx
-var import_react2 = require("@remix-run/react"), import_react3 = require("react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime");
-function Navigation() {
-  let location = (0, import_react2.useLocation)(), [isMobileMenuOpen, setIsMobileMenuOpen] = (0, import_react3.useState)(!1), isAuthenticated = !1, publicNavigation = [
-    { name: "Home", href: "/", current: location.pathname === "/" },
-    { name: "Browse", href: "/browse", current: location.pathname === "/browse" }
-  ], authenticatedNavigation = [
-    { name: "Home", href: "/", current: location.pathname === "/" },
-    { name: "Browse", href: "/browse", current: location.pathname === "/browse" },
-    { name: "Share", href: "/share", current: location.pathname === "/share" },
-    { name: "Profile", href: "/profile", current: location.pathname === "/profile" }
-  ], navigation = isAuthenticated ? authenticatedNavigation : publicNavigation;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("nav", { className: "bg-white shadow-sm border-b border-neighborhood-mint/20", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex justify-between h-16", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex-shrink-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Link, { to: "/", className: "text-2xl font-bold text-neighborhood-spruce", children: "Toolshed" }, void 0, !1, {
-          fileName: "app/components/Navigation.tsx",
-          lineNumber: 31,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/Navigation.tsx",
-          lineNumber: 30,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "hidden sm:ml-6 sm:flex sm:space-x-8", children: navigation.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          import_react2.Link,
-          {
-            to: item.href,
-            className: `${item.current ? "border-neighborhood-goldenrod text-neighborhood-spruce" : "border-transparent text-neighborhood-slate hover:text-neighborhood-spruce hover:border-neighborhood-mint"} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`,
-            children: item.name
-          },
-          item.name,
-          !1,
-          {
-            fileName: "app/components/Navigation.tsx",
-            lineNumber: 37,
-            columnNumber: 17
-          },
-          this
-        )) }, void 0, !1, {
-          fileName: "app/components/Navigation.tsx",
-          lineNumber: 35,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/components/Navigation.tsx",
-        lineNumber: 29,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "hidden sm:ml-6 sm:flex sm:items-center", children: isAuthenticated ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex items-center space-x-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "text-sm text-neighborhood-slate", children: "Welcome back!" }, void 0, !1, {
-          fileName: "app/components/Navigation.tsx",
-          lineNumber: 56,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          import_react2.Link,
-          {
-            to: "/logout",
-            className: "px-4 py-2 text-sm font-medium text-neighborhood-slate hover:text-neighborhood-spruce",
-            children: "Sign Out"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/Navigation.tsx",
-            lineNumber: 57,
-            columnNumber: 17
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/components/Navigation.tsx",
-        lineNumber: 55,
-        columnNumber: 15
-      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex items-center space-x-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          import_react2.Link,
-          {
-            to: "/login",
-            className: "text-sm font-medium text-neighborhood-slate hover:text-neighborhood-spruce",
-            children: "Sign In"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/Navigation.tsx",
-            lineNumber: 66,
-            columnNumber: 17
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-          import_react2.Link,
-          {
-            to: "/register",
-            className: "px-4 py-2 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors text-sm font-medium",
-            children: "Join Community"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/Navigation.tsx",
-            lineNumber: 72,
-            columnNumber: 17
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/components/Navigation.tsx",
-        lineNumber: 65,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/components/Navigation.tsx",
-        lineNumber: 53,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-        "button",
-        {
-          type: "button",
-          className: "inline-flex items-center justify-center p-2 rounded-md text-neighborhood-slate hover:text-neighborhood-spruce hover:bg-neighborhood-mint/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neighborhood-goldenrod",
-          onClick: () => setIsMobileMenuOpen(!isMobileMenuOpen),
-          children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("span", { className: "sr-only", children: "Open main menu" }, void 0, !1, {
-              fileName: "app/components/Navigation.tsx",
-              lineNumber: 89,
-              columnNumber: 15
-            }, this),
-            isMobileMenuOpen ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("svg", { className: "block h-6 w-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M6 18L18 6M6 6l12 12" }, void 0, !1, {
-              fileName: "app/components/Navigation.tsx",
-              lineNumber: 96,
-              columnNumber: 19
-            }, this) }, void 0, !1, {
-              fileName: "app/components/Navigation.tsx",
-              lineNumber: 95,
-              columnNumber: 17
-            }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("svg", { className: "block h-6 w-6", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M4 6h16M4 12h16M4 18h16" }, void 0, !1, {
-              fileName: "app/components/Navigation.tsx",
-              lineNumber: 92,
-              columnNumber: 19
-            }, this) }, void 0, !1, {
-              fileName: "app/components/Navigation.tsx",
-              lineNumber: 91,
-              columnNumber: 17
-            }, this)
-          ]
-        },
-        void 0,
-        !0,
-        {
-          fileName: "app/components/Navigation.tsx",
-          lineNumber: 84,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/components/Navigation.tsx",
-        lineNumber: 83,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/components/Navigation.tsx",
-      lineNumber: 28,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/components/Navigation.tsx",
-      lineNumber: 27,
-      columnNumber: 7
-    }, this),
-    isMobileMenuOpen && /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "pt-2 pb-3 space-y-1", children: navigation.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-      import_react2.Link,
-      {
-        to: item.href,
-        className: `${item.current ? "bg-neighborhood-mint/20 border-neighborhood-goldenrod text-neighborhood-spruce" : "border-transparent text-neighborhood-slate hover:text-neighborhood-spruce hover:bg-neighborhood-mint/10 hover:border-neighborhood-mint"} block pl-3 pr-4 py-2 border-l-4 text-base font-medium`,
-        onClick: () => setIsMobileMenuOpen(!1),
-        children: item.name
-      },
-      item.name,
-      !1,
-      {
-        fileName: "app/components/Navigation.tsx",
-        lineNumber: 109,
-        columnNumber: 15
-      },
-      this
-    )) }, void 0, !1, {
-      fileName: "app/components/Navigation.tsx",
-      lineNumber: 107,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/Navigation.tsx",
-      lineNumber: 106,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/Navigation.tsx",
-    lineNumber: 26,
-    columnNumber: 5
-  }, this);
-}
-
-// app/components/Layout.tsx
-var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime");
-function Layout({ children }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "min-h-screen bg-gray-50", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Navigation, {}, void 0, !1, {
-      fileName: "app/components/Layout.tsx",
-      lineNumber: 10,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("main", { children }, void 0, !1, {
-      fileName: "app/components/Layout.tsx",
-      lineNumber: 11,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/Layout.tsx",
-    lineNumber: 9,
-    columnNumber: 5
-  }, this);
-}
+var import_react2 = require("@remix-run/react");
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-5I2LCT7K.css";
+var global_default = "/build/_assets/global-NVIY2XSO.css";
 
 // app/root.tsx
-var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), meta = () => [], links = () => [
+var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), links = () => [
   { rel: "stylesheet", href: global_default },
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "preconnect",
+    href: "https://fonts.googleapis.com"
+  },
   {
     rel: "preconnect",
     href: "https://fonts.gstatic.com",
@@ -305,229 +84,256 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), meta = () => [],
   }
 ];
 function App() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { charSet: "utf-8" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 36,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 37,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("title", { children: "Toolshed" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 38,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
         fileName: "app/root.tsx",
         lineNumber: 39,
         columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 40,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 41,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 42,
-        columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 38,
+      lineNumber: 35,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Outlet, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { style: { margin: 0, padding: 0, backgroundColor: "#f7fafc" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("nav", { style: { backgroundColor: "white", borderBottom: "1px solid #e2e8f0", padding: "1rem 0" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h1", { style: { margin: 0, fontSize: "1.5rem", fontWeight: "bold", color: "#2d3748" }, children: "Toolshed" }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 44,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { display: "flex", gap: "1rem" }, children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: "/login", style: { color: "#4a5568", textDecoration: "none" }, children: "Sign In" }, void 0, !1, {
+            fileName: "app/root.tsx",
+            lineNumber: 46,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("a", { href: "/register", style: { backgroundColor: "#f6ad55", color: "white", padding: "0.5rem 1rem", borderRadius: "0.25rem", textDecoration: "none" }, children: "Join" }, void 0, !1, {
+            fileName: "app/root.tsx",
+            lineNumber: 47,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/root.tsx",
+          lineNumber: 45,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
         fileName: "app/root.tsx",
-        lineNumber: 46,
+        lineNumber: 43,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 45,
+        lineNumber: 42,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.ScrollRestoration, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Outlet, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 48,
+        lineNumber: 51,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.ScrollRestoration, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 49,
+        lineNumber: 52,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.LiveReload, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 50,
+        lineNumber: 53,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.LiveReload, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 54,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 44,
+      lineNumber: 41,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.tsx",
-    lineNumber: 37,
+    lineNumber: 34,
     columnNumber: 5
   }, this);
 }
 function ErrorBoundary() {
-  let error = (0, import_react4.useRouteError)();
-  return (0, import_react4.isRouteErrorResponse)(error) ? /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("html", { lang: "en", className: "h-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
+  let error = (0, import_react2.useRouteError)();
+  return (0, import_react2.isRouteErrorResponse)(error) ? /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 63,
+        lineNumber: 67,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 64,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 65,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 62,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "text-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-6xl font-bold text-gray-900 mb-4", children: error.status }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 71,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-2xl font-semibold text-gray-700 mb-4", children: error.statusText }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 74,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-gray-600 mb-8", children: error.data || "Something went wrong. Please try again later." }, void 0, !1, {
-          fileName: "app/root.tsx",
-          lineNumber: 77,
-          columnNumber: 17
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
-          "a",
-          {
-            href: "/",
-            className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
-            children: "Go Home"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/root.tsx",
-            lineNumber: 80,
-            columnNumber: 17
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/root.tsx",
-        lineNumber: 70,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 69,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
         fileName: "app/root.tsx",
         lineNumber: 68,
         columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Scripts, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 89,
-        columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 67,
+      lineNumber: 66,
       columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/root.tsx",
-    lineNumber: 61,
-    columnNumber: 7
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("html", { lang: "en", className: "h-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 98,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Meta, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 99,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Links, {}, void 0, !1, {
-        fileName: "app/root.tsx",
-        lineNumber: 100,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/root.tsx",
-      lineNumber: 97,
-      columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "text-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Unexpected Error" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { style: { margin: 0, padding: 0, backgroundColor: "#f7fafc" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { textAlign: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h1", { style: { fontSize: "4rem", fontWeight: "bold", color: "#1a202c", marginBottom: "1rem" }, children: error.status }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 106,
+          lineNumber: 73,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-neighborhood-slate mb-8", children: "An unexpected error occurred. Please try refreshing the page." }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h2", { style: { fontSize: "1.5rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: error.statusText }, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 109,
+          lineNumber: 76,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "2rem" }, children: error.data || "Something went wrong. Please try again later." }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 79,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
           "a",
           {
             href: "/",
-            className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
+            style: {
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "0.75rem 1.5rem",
+              backgroundColor: "#f6ad55",
+              color: "white",
+              textDecoration: "none",
+              borderRadius: "0.5rem",
+              fontWeight: "600"
+            },
             children: "Go Home"
           },
           void 0,
           !1,
           {
             fileName: "app/root.tsx",
-            lineNumber: 112,
+            lineNumber: 82,
             columnNumber: 15
           },
           this
         )
       ] }, void 0, !0, {
         fileName: "app/root.tsx",
-        lineNumber: 105,
+        lineNumber: 72,
         columnNumber: 13
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 104,
+        lineNumber: 71,
         columnNumber: 11
-      }, this) }, void 0, !1, {
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 103,
+        lineNumber: 99,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 70,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/root.tsx",
+    lineNumber: 65,
+    columnNumber: 7
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 108,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(import_react4.Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Links, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 121,
+        lineNumber: 109,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 102,
+      lineNumber: 107,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { style: { margin: 0, padding: 0, backgroundColor: "#f7fafc" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { style: { textAlign: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("h1", { style: { fontSize: "2rem", fontWeight: "bold", color: "#1a202c", marginBottom: "1rem" }, children: "Something went wrong" }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 114,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "2rem" }, children: "We encountered an unexpected error. Please try again later." }, void 0, !1, {
+          fileName: "app/root.tsx",
+          lineNumber: 117,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
+          "a",
+          {
+            href: "/",
+            style: {
+              display: "inline-flex",
+              alignItems: "center",
+              padding: "0.75rem 1.5rem",
+              backgroundColor: "#f6ad55",
+              color: "white",
+              textDecoration: "none",
+              borderRadius: "0.5rem",
+              fontWeight: "600"
+            },
+            children: "Go Home"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/root.tsx",
+            lineNumber: 120,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/root.tsx",
+        lineNumber: 113,
+        columnNumber: 11
+      }, this) }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 112,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react2.Scripts, {}, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 137,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/root.tsx",
+      lineNumber: 111,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.tsx",
-    lineNumber: 96,
+    lineNumber: 106,
     columnNumber: 5
   }, this);
 }
@@ -1034,10 +840,10 @@ var admin_reservations_exports = {};
 __export(admin_reservations_exports, {
   default: () => AdminReservations,
   loader: () => loader5,
-  meta: () => meta2
+  meta: () => meta
 });
-var import_node5 = require("@remix-run/node"), import_react5 = require("@remix-run/react");
-var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime"), meta2 = () => [
+var import_node5 = require("@remix-run/node"), import_react3 = require("@remix-run/react");
+var import_jsx_dev_runtime3 = require("react/jsx-dev-runtime"), meta = () => [
   { title: "Reservation Management - Admin - Toolshed" },
   { name: "description", content: "Manage platform reservations and bookings" }
 ];
@@ -1050,7 +856,7 @@ async function loader5({ request }) {
   });
 }
 function AdminReservations() {
-  let { reservations, userMap, itemMap } = (0, import_react5.useLoaderData)(), getStatusColor = (status) => {
+  let { reservations, userMap, itemMap } = (0, import_react3.useLoaderData)(), getStatusColor = (status) => {
     switch (status) {
       case "active":
         return "bg-green-100 text-green-800";
@@ -1068,10 +874,10 @@ function AdminReservations() {
         return "bg-gray-100 text-gray-800";
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex items-center gap-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
-        import_react5.Link,
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex items-center gap-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+        import_react3.Link,
         {
           to: "/admin",
           className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80",
@@ -1090,12 +896,12 @@ function AdminReservations() {
         lineNumber: 48,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Reservation Management" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Reservation Management" }, void 0, !1, {
         fileName: "app/routes/admin.reservations.tsx",
         lineNumber: 56,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Monitor and manage all platform reservations" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Monitor and manage all platform reservations" }, void 0, !1, {
         fileName: "app/routes/admin.reservations.tsx",
         lineNumber: 59,
         columnNumber: 11
@@ -1105,15 +911,15 @@ function AdminReservations() {
       lineNumber: 47,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-4 mb-8", children: ["pending", "approved", "active", "returned", "cancelled"].map((status) => {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-4 mb-8", children: ["pending", "approved", "active", "returned", "cancelled"].map((status) => {
       let count = reservations.filter((r) => r.status === status).length;
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-4 text-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-2xl font-bold text-neighborhood-spruce", children: count }, void 0, !1, {
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-4 text-center", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-2xl font-bold text-neighborhood-spruce", children: count }, void 0, !1, {
           fileName: "app/routes/admin.reservations.tsx",
           lineNumber: 70,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60 capitalize", children: status }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60 capitalize", children: status }, void 0, !1, {
           fileName: "app/routes/admin.reservations.tsx",
           lineNumber: 71,
           columnNumber: 17
@@ -1128,9 +934,9 @@ function AdminReservations() {
       lineNumber: 65,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md overflow-hidden", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "p-6 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex justify-between items-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "p-6 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex justify-between items-center", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: [
           "All Reservations (",
           reservations.length,
           ")"
@@ -1139,39 +945,39 @@ function AdminReservations() {
           lineNumber: 80,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("select", { className: "px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neighborhood-spruce", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "", children: "All Statuses" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "flex gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("select", { className: "px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neighborhood-spruce", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "", children: "All Statuses" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 85,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "pending", children: "Pending" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "pending", children: "Pending" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 86,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "approved", children: "Approved" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "approved", children: "Approved" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 87,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "active", children: "Active" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "active", children: "Active" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 88,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "returned", children: "Returned" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "returned", children: "Returned" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 89,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "cancelled", children: "Cancelled" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "cancelled", children: "Cancelled" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 90,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "rejected", children: "Rejected" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("option", { value: "rejected", children: "Rejected" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 91,
               columnNumber: 19
@@ -1181,7 +987,7 @@ function AdminReservations() {
             lineNumber: 84,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
             "input",
             {
               type: "search",
@@ -1211,39 +1017,39 @@ function AdminReservations() {
         lineNumber: 78,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("table", { className: "min-w-full divide-y divide-gray-200", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Reservation ID" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("table", { className: "min-w-full divide-y divide-gray-200", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Reservation ID" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 106,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Item" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Item" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 109,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Requester" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Requester" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 112,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Owner" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Owner" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 115,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Status" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Status" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 118,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Dates" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Dates" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 121,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Actions" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Actions" }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 124,
             columnNumber: 19
@@ -1257,9 +1063,9 @@ function AdminReservations() {
           lineNumber: 104,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("tbody", { className: "bg-white divide-y divide-gray-200", children: reservations.map((reservation) => /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("tr", { className: "hover:bg-gray-50", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm font-medium text-gray-900", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tbody", { className: "bg-white divide-y divide-gray-200", children: reservations.map((reservation) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("tr", { className: "hover:bg-gray-50", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm font-medium text-gray-900", children: [
               "#",
               reservation.id.slice(-8)
             ] }, void 0, !0, {
@@ -1267,7 +1073,7 @@ function AdminReservations() {
               lineNumber: 133,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-500", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-500", children: [
               "Qty: ",
               reservation.quantity_requested
             ] }, void 0, !0, {
@@ -1280,13 +1086,13 @@ function AdminReservations() {
             lineNumber: 132,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-900", children: itemMap[reservation.item_id] || "Unknown Item" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-900", children: itemMap[reservation.item_id] || "Unknown Item" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 141,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-500", children: reservation.item_id.slice(-8) }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-500", children: reservation.item_id.slice(-8) }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 144,
               columnNumber: 23
@@ -1296,13 +1102,13 @@ function AdminReservations() {
             lineNumber: 140,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-900", children: userMap[reservation.requester_id] || "Unknown User" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-900", children: userMap[reservation.requester_id] || "Unknown User" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 149,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-500", children: reservation.requester_id.slice(-8) }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-500", children: reservation.requester_id.slice(-8) }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 152,
               columnNumber: 23
@@ -1312,13 +1118,13 @@ function AdminReservations() {
             lineNumber: 148,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-900", children: userMap[reservation.owner_id] || "Unknown User" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-900", children: userMap[reservation.owner_id] || "Unknown User" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 157,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-500", children: reservation.owner_id.slice(-8) }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-sm text-gray-500", children: reservation.owner_id.slice(-8) }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 160,
               columnNumber: 23
@@ -1328,7 +1134,7 @@ function AdminReservations() {
             lineNumber: 156,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: `px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(reservation.status)}`, children: reservation.status }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("span", { className: `px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(reservation.status)}`, children: reservation.status }, void 0, !1, {
             fileName: "app/routes/admin.reservations.tsx",
             lineNumber: 165,
             columnNumber: 23
@@ -1337,13 +1143,13 @@ function AdminReservations() {
             lineNumber: 164,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { children: reservation.start_date ? new Date(reservation.start_date).toLocaleDateString() : "TBD" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { children: reservation.start_date ? new Date(reservation.start_date).toLocaleDateString() : "TBD" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 170,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { children: [
               "to ",
               reservation.end_date ? new Date(reservation.end_date).toLocaleDateString() : "TBD"
             ] }, void 0, !0, {
@@ -1356,9 +1162,9 @@ function AdminReservations() {
             lineNumber: 169,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm font-medium", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
-              import_react5.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm font-medium", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(
+              import_react3.Link,
               {
                 to: `/admin/reservations/${reservation.id}`,
                 className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 mr-4",
@@ -1373,7 +1179,7 @@ function AdminReservations() {
               },
               this
             ),
-            reservation.status === "pending" && /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("button", { className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Moderate" }, void 0, !1, {
+            reservation.status === "pending" && /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("button", { className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Moderate" }, void 0, !1, {
               fileName: "app/routes/admin.reservations.tsx",
               lineNumber: 191,
               columnNumber: 25
@@ -1626,10 +1432,10 @@ var admin_index_exports = {};
 __export(admin_index_exports, {
   default: () => AdminDashboard,
   loader: () => loader10,
-  meta: () => meta3
+  meta: () => meta2
 });
-var import_node12 = require("@remix-run/node"), import_react6 = require("@remix-run/react");
-var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta3 = () => [
+var import_node12 = require("@remix-run/node"), import_react4 = require("@remix-run/react");
+var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), meta2 = () => [
   { title: "Admin Dashboard - Toolshed" },
   { name: "description", content: "Admin interface for managing community resources" }
 ];
@@ -1645,15 +1451,15 @@ async function loader10({ request }) {
   return (0, import_node12.json)({ users: users2, items: items2, reservations, recentEvents, stats });
 }
 function AdminDashboard() {
-  let { users: users2, items: items2, reservations, recentEvents, stats } = (0, import_react6.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Admin Dashboard" }, void 0, !1, {
+  let { users: users2, items: items2, reservations, recentEvents, stats } = (0, import_react4.useLoaderData)();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Admin Dashboard" }, void 0, !1, {
         fileName: "app/routes/admin._index.tsx",
         lineNumber: 38,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Manage community resources and monitor platform activity" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Manage community resources and monitor platform activity" }, void 0, !1, {
         fileName: "app/routes/admin._index.tsx",
         lineNumber: 41,
         columnNumber: 11
@@ -1663,19 +1469,19 @@ function AdminDashboard() {
       lineNumber: 37,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-2", children: "Users" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-2", children: "Users" }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 49,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-3xl font-bold text-neighborhood-spruce", children: stats.totalUsers }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-3xl font-bold text-neighborhood-spruce", children: stats.totalUsers }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 50,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: "Total registered users" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: "Total registered users" }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 51,
           columnNumber: 13
@@ -1685,18 +1491,18 @@ function AdminDashboard() {
         lineNumber: 48,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-2", children: "Items" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-2", children: "Items" }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 55,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-3xl font-bold text-neighborhood-spruce", children: stats.totalItems }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-3xl font-bold text-neighborhood-spruce", children: stats.totalItems }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 56,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
           stats.availableItems,
           " available now"
         ] }, void 0, !0, {
@@ -1709,18 +1515,18 @@ function AdminDashboard() {
         lineNumber: 54,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-2", children: "Reservations" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-2", children: "Reservations" }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 61,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-3xl font-bold text-neighborhood-spruce", children: stats.totalReservations }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-3xl font-bold text-neighborhood-spruce", children: stats.totalReservations }, void 0, !1, {
           fileName: "app/routes/admin._index.tsx",
           lineNumber: 62,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
           stats.activeReservations,
           " active, ",
           stats.pendingReservations,
@@ -1740,16 +1546,16 @@ function AdminDashboard() {
       lineNumber: 47,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Users" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Users" }, void 0, !1, {
             fileName: "app/routes/admin._index.tsx",
             lineNumber: 71,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-            import_react6.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            import_react4.Link,
             {
               to: "/admin/users",
               className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 text-sm",
@@ -1769,14 +1575,14 @@ function AdminDashboard() {
           lineNumber: 70,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "space-y-3", children: users2.slice(0, 5).map((user) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "font-medium text-neighborhood-slate", children: user.name }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "space-y-3", children: users2.slice(0, 5).map((user) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "font-medium text-neighborhood-slate", children: user.name }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 83,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: user.email }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: user.email }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 84,
               columnNumber: 21
@@ -1786,13 +1592,13 @@ function AdminDashboard() {
             lineNumber: 82,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-right", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: user.neighborhood }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "text-right", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: user.neighborhood }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 87,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40", children: new Date(user.created_at).toLocaleDateString() }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40", children: new Date(user.created_at).toLocaleDateString() }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 88,
               columnNumber: 21
@@ -1816,15 +1622,15 @@ function AdminDashboard() {
         lineNumber: 69,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Items" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Items" }, void 0, !1, {
             fileName: "app/routes/admin._index.tsx",
             lineNumber: 100,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-            import_react6.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            import_react4.Link,
             {
               to: "/admin/items",
               className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 text-sm",
@@ -1844,14 +1650,14 @@ function AdminDashboard() {
           lineNumber: 99,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "space-y-3", children: items2.slice(0, 5).map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "font-medium text-neighborhood-slate", children: item.title }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "space-y-3", children: items2.slice(0, 5).map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "font-medium text-neighborhood-slate", children: item.title }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 112,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: item.category }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: item.category }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 113,
               columnNumber: 21
@@ -1861,13 +1667,13 @@ function AdminDashboard() {
             lineNumber: 111,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-right", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: `text-sm ${item.quantity_available > 0 ? "text-green-600" : "text-red-600"}`, children: item.quantity_available > 0 ? "Available" : "Reserved" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "text-right", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: `text-sm ${item.quantity_available > 0 ? "text-green-600" : "text-red-600"}`, children: item.quantity_available > 0 ? "Available" : "Reserved" }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 116,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40", children: item.location }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40", children: item.location }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 119,
               columnNumber: 21
@@ -1891,15 +1697,15 @@ function AdminDashboard() {
         lineNumber: 98,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Reservations" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Reservations" }, void 0, !1, {
             fileName: "app/routes/admin._index.tsx",
             lineNumber: 129,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-            import_react6.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            import_react4.Link,
             {
               to: "/admin/reservations",
               className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 text-sm",
@@ -1919,9 +1725,9 @@ function AdminDashboard() {
           lineNumber: 128,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "space-y-3", children: reservations.slice(0, 5).map((reservation) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "font-medium text-neighborhood-slate", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "space-y-3", children: reservations.slice(0, 5).map((reservation) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "font-medium text-neighborhood-slate", children: [
               "Reservation #",
               reservation.id.slice(-8)
             ] }, void 0, !0, {
@@ -1929,7 +1735,7 @@ function AdminDashboard() {
               lineNumber: 141,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
               "Item: ",
               reservation.item_id.slice(-8)
             ] }, void 0, !0, {
@@ -1942,13 +1748,13 @@ function AdminDashboard() {
             lineNumber: 140,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-right", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("span", { className: `px-2 py-1 text-xs rounded-full ${reservation.status === "active" ? "bg-green-100 text-green-800" : reservation.status === "pending" ? "bg-yellow-100 text-yellow-800" : reservation.status === "approved" ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"}`, children: reservation.status }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "text-right", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("span", { className: `px-2 py-1 text-xs rounded-full ${reservation.status === "active" ? "bg-green-100 text-green-800" : reservation.status === "pending" ? "bg-yellow-100 text-yellow-800" : reservation.status === "approved" ? "bg-blue-100 text-blue-800" : "bg-gray-100 text-gray-800"}`, children: reservation.status }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 145,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40 mt-1", children: new Date(reservation.updated_at).toLocaleDateString() }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40 mt-1", children: new Date(reservation.updated_at).toLocaleDateString() }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 153,
               columnNumber: 21
@@ -1972,15 +1778,15 @@ function AdminDashboard() {
         lineNumber: 127,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Activity" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "Recent Activity" }, void 0, !1, {
             fileName: "app/routes/admin._index.tsx",
             lineNumber: 165,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-            import_react6.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+            import_react4.Link,
             {
               to: "/admin/events",
               className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 text-sm",
@@ -2000,14 +1806,14 @@ function AdminDashboard() {
           lineNumber: 164,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "space-y-3", children: recentEvents.slice(0, 5).map((event) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "font-medium text-neighborhood-slate capitalize", children: event.event_type.replace("_", " ") }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "space-y-3", children: recentEvents.slice(0, 5).map((event) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "flex justify-between items-center p-3 bg-gray-50 rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "font-medium text-neighborhood-slate capitalize", children: event.event_type.replace("_", " ") }, void 0, !1, {
               fileName: "app/routes/admin._index.tsx",
               lineNumber: 177,
               columnNumber: 21
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/60", children: [
               "Reservation #",
               event.reservation_id.slice(-8)
             ] }, void 0, !0, {
@@ -2020,7 +1826,7 @@ function AdminDashboard() {
             lineNumber: 176,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-right", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40", children: new Date(event.timestamp).toLocaleString() }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "text-right", children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/40", children: new Date(event.timestamp).toLocaleString() }, void 0, !1, {
             fileName: "app/routes/admin._index.tsx",
             lineNumber: 185,
             columnNumber: 21
@@ -2048,15 +1854,15 @@ function AdminDashboard() {
       lineNumber: 67,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-4", children: "Quick Actions" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-4", children: "Quick Actions" }, void 0, !1, {
         fileName: "app/routes/admin._index.tsx",
         lineNumber: 197,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-4 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-          import_react6.Link,
+      /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-4 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+          import_react4.Link,
           {
             to: "/admin/users",
             className: "p-4 bg-neighborhood-spruce text-white rounded-lg hover:bg-neighborhood-spruce/90 transition-colors text-center",
@@ -2071,8 +1877,8 @@ function AdminDashboard() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-          import_react6.Link,
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+          import_react4.Link,
           {
             to: "/admin/items",
             className: "p-4 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors text-center",
@@ -2087,8 +1893,8 @@ function AdminDashboard() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-          import_react6.Link,
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+          import_react4.Link,
           {
             to: "/admin/reservations",
             className: "p-4 bg-neighborhood-mint text-neighborhood-slate rounded-lg hover:bg-neighborhood-mint/90 transition-colors text-center",
@@ -2103,8 +1909,8 @@ function AdminDashboard() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
-          import_react6.Link,
+        /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+          import_react4.Link,
           {
             to: "/admin/events",
             className: "p-4 bg-neighborhood-rust text-white rounded-lg hover:bg-neighborhood-rust/90 transition-colors text-center",
@@ -2145,10 +1951,10 @@ var admin_items_exports = {};
 __export(admin_items_exports, {
   default: () => AdminItems,
   loader: () => loader11,
-  meta: () => meta4
+  meta: () => meta3
 });
-var import_node13 = require("@remix-run/node"), import_react7 = require("@remix-run/react");
-var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), meta4 = () => [
+var import_node13 = require("@remix-run/node"), import_react5 = require("@remix-run/react");
+var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime"), meta3 = () => [
   { title: "Item Management - Admin - Toolshed" },
   { name: "description", content: "Manage platform items and tools" }
 ];
@@ -2157,11 +1963,11 @@ async function loader11({ request }) {
   return (0, import_node13.json)({ items: items2, userMap: Object.fromEntries(userMap) });
 }
 function AdminItems() {
-  let { items: items2, userMap } = (0, import_react7.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
-        import_react7.Link,
+  let { items: items2, userMap } = (0, import_react5.useLoaderData)();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex items-center gap-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+        import_react5.Link,
         {
           to: "/admin",
           className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80",
@@ -2180,12 +1986,12 @@ function AdminItems() {
         lineNumber: 30,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Item Management" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Item Management" }, void 0, !1, {
         fileName: "app/routes/admin.items.tsx",
         lineNumber: 38,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Review and manage all shared items and tools" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Review and manage all shared items and tools" }, void 0, !1, {
         fileName: "app/routes/admin.items.tsx",
         lineNumber: 41,
         columnNumber: 11
@@ -2195,9 +2001,9 @@ function AdminItems() {
       lineNumber: 29,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md overflow-hidden", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "p-6 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex justify-between items-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "p-6 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex justify-between items-center", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: [
           "All Items (",
           items2.length,
           ")"
@@ -2206,8 +2012,8 @@ function AdminItems() {
           lineNumber: 49,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
             "input",
             {
               type: "search",
@@ -2223,38 +2029,38 @@ function AdminItems() {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("select", { className: "px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neighborhood-spruce", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "", children: "All Categories" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("select", { className: "px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neighborhood-spruce", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "", children: "All Categories" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 59,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "power-tools", children: "Power Tools" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "power-tools", children: "Power Tools" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 60,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "hand-tools", children: "Hand Tools" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "hand-tools", children: "Hand Tools" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 61,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "garden", children: "Garden" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "garden", children: "Garden" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 62,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "automotive", children: "Automotive" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "automotive", children: "Automotive" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 63,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "home", children: "Home" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "home", children: "Home" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 64,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("option", { value: "specialty", children: "Specialty" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("option", { value: "specialty", children: "Specialty" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 65,
               columnNumber: 19
@@ -2278,34 +2084,34 @@ function AdminItems() {
         lineNumber: 47,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("table", { className: "min-w-full divide-y divide-gray-200", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Item" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("table", { className: "min-w-full divide-y divide-gray-200", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Item" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 75,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Owner" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Owner" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 78,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Category" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Category" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 81,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Availability" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Availability" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 84,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Location" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Location" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 87,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Actions" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Actions" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 90,
             columnNumber: 19
@@ -2319,14 +2125,14 @@ function AdminItems() {
           lineNumber: 73,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tbody", { className: "bg-white divide-y divide-gray-200", children: items2.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { className: "hover:bg-gray-50", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "text-sm font-medium text-gray-900", children: item.title }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("tbody", { className: "bg-white divide-y divide-gray-200", children: items2.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("tr", { className: "hover:bg-gray-50", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm font-medium text-gray-900", children: item.title }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 100,
               columnNumber: 25
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "text-sm text-gray-500 max-w-xs truncate", children: item.description || "No description" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-500 max-w-xs truncate", children: item.description || "No description" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 101,
               columnNumber: 25
@@ -2340,13 +2146,13 @@ function AdminItems() {
             lineNumber: 98,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "text-sm text-gray-900", children: userMap[item.owner_id] || "Unknown User" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-900", children: userMap[item.owner_id] || "Unknown User" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 107,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "text-sm text-gray-500", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-sm text-gray-500", children: [
               "ID: ",
               item.owner_id.slice(-8)
             ] }, void 0, !0, {
@@ -2359,7 +2165,7 @@ function AdminItems() {
             lineNumber: 106,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-neighborhood-goldenrod text-white", children: item.category.replace("-", " ") }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-neighborhood-goldenrod text-white", children: item.category.replace("-", " ") }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 115,
             columnNumber: 23
@@ -2368,7 +2174,7 @@ function AdminItems() {
             lineNumber: 114,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: `px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${item.quantity_available > 0 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`, children: item.quantity_available > 0 ? `${item.quantity_available} available` : "Reserved" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: `px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${item.quantity_available > 0 ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`, children: item.quantity_available > 0 ? `${item.quantity_available} available` : "Reserved" }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 120,
             columnNumber: 23
@@ -2377,14 +2183,14 @@ function AdminItems() {
             lineNumber: 119,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: item.location }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: item.location }, void 0, !1, {
             fileName: "app/routes/admin.items.tsx",
             lineNumber: 128,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm font-medium", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
-              import_react7.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm font-medium", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
+              import_react5.Link,
               {
                 to: `/admin/items/${item.id}`,
                 className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 mr-4",
@@ -2399,7 +2205,7 @@ function AdminItems() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("button", { className: "text-neighborhood-rust hover:text-neighborhood-rust/80", children: "Remove" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("button", { className: "text-neighborhood-rust hover:text-neighborhood-rust/80", children: "Remove" }, void 0, !1, {
               fileName: "app/routes/admin.items.tsx",
               lineNumber: 138,
               columnNumber: 23
@@ -2432,13 +2238,13 @@ function AdminItems() {
       lineNumber: 46,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Popular Tags" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Popular Tags" }, void 0, !1, {
         fileName: "app/routes/admin.items.tsx",
         lineNumber: 151,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex flex-wrap gap-2", children: Array.from(new Set(items2.flatMap((item) => item.tags))).slice(0, 20).map((tag) => /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex flex-wrap gap-2", children: Array.from(new Set(items2.flatMap((item) => item.tags))).slice(0, 20).map((tag) => /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
         "span",
         {
           className: "px-3 py-1 bg-neighborhood-mint/20 text-neighborhood-slate text-sm rounded-full",
@@ -2478,10 +2284,10 @@ var admin_users_exports = {};
 __export(admin_users_exports, {
   default: () => AdminUsers,
   loader: () => loader12,
-  meta: () => meta5
+  meta: () => meta4
 });
-var import_node14 = require("@remix-run/node"), import_react8 = require("@remix-run/react");
-var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), meta5 = () => [
+var import_node14 = require("@remix-run/node"), import_react6 = require("@remix-run/react");
+var import_jsx_dev_runtime6 = require("react/jsx-dev-runtime"), meta4 = () => [
   { title: "User Management - Admin - Toolshed" },
   { name: "description", content: "Manage platform users" }
 ];
@@ -2490,11 +2296,11 @@ async function loader12({ request }) {
   return (0, import_node14.json)({ users: users2 });
 }
 function AdminUsers() {
-  let { users: users2 } = (0, import_react8.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex items-center gap-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
-        import_react8.Link,
+  let { users: users2 } = (0, import_react6.useLoaderData)();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex items-center gap-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+        import_react6.Link,
         {
           to: "/admin",
           className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80",
@@ -2513,12 +2319,12 @@ function AdminUsers() {
         lineNumber: 25,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "User Management" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "User Management" }, void 0, !1, {
         fileName: "app/routes/admin.users.tsx",
         lineNumber: 33,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Review and manage all platform users" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Review and manage all platform users" }, void 0, !1, {
         fileName: "app/routes/admin.users.tsx",
         lineNumber: 36,
         columnNumber: 11
@@ -2528,9 +2334,9 @@ function AdminUsers() {
       lineNumber: 24,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md overflow-hidden", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "p-6 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex justify-between items-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "p-6 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex justify-between items-center", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: [
           "All Users (",
           users2.length,
           ")"
@@ -2539,8 +2345,8 @@ function AdminUsers() {
           lineNumber: 44,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "flex gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
             "input",
             {
               type: "search",
@@ -2556,23 +2362,23 @@ function AdminUsers() {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("select", { className: "px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neighborhood-spruce", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "", children: "All Neighborhoods" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("select", { className: "px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neighborhood-spruce", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("option", { value: "", children: "All Neighborhoods" }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 54,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "downtown", children: "Downtown" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("option", { value: "downtown", children: "Downtown" }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 55,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "riverside", children: "Riverside" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("option", { value: "riverside", children: "Riverside" }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 56,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "hillside", children: "Hillside" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("option", { value: "hillside", children: "Hillside" }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 57,
               columnNumber: 19
@@ -2596,29 +2402,29 @@ function AdminUsers() {
         lineNumber: 42,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("table", { className: "min-w-full divide-y divide-gray-200", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "User" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("table", { className: "min-w-full divide-y divide-gray-200", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "User" }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 67,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Neighborhood" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Neighborhood" }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 70,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Contact Method" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Contact Method" }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 73,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Joined" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Joined" }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 76,
             columnNumber: 19
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Actions" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("th", { className: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider", children: "Actions" }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 79,
             columnNumber: 19
@@ -2632,14 +2438,14 @@ function AdminUsers() {
           lineNumber: 65,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("tbody", { className: "bg-white divide-y divide-gray-200", children: users2.map((user) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("tr", { className: "hover:bg-gray-50", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "text-sm font-medium text-gray-900", children: user.name }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("tbody", { className: "bg-white divide-y divide-gray-200", children: users2.map((user) => /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("tr", { className: "hover:bg-gray-50", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-sm font-medium text-gray-900", children: user.name }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 89,
               columnNumber: 25
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "text-sm text-gray-500", children: user.email }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("div", { className: "text-sm text-gray-500", children: user.email }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 90,
               columnNumber: 25
@@ -2653,7 +2459,7 @@ function AdminUsers() {
             lineNumber: 87,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("span", { className: "px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-neighborhood-mint text-neighborhood-slate", children: user.neighborhood }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("span", { className: "px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-neighborhood-mint text-neighborhood-slate", children: user.neighborhood }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 94,
             columnNumber: 23
@@ -2662,19 +2468,19 @@ function AdminUsers() {
             lineNumber: 93,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: user.contact_method }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: user.contact_method }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 98,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: new Date(user.created_at).toLocaleDateString() }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", children: new Date(user.created_at).toLocaleDateString() }, void 0, !1, {
             fileName: "app/routes/admin.users.tsx",
             lineNumber: 101,
             columnNumber: 21
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm font-medium", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
-              import_react8.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("td", { className: "px-6 py-4 whitespace-nowrap text-sm font-medium", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
+              import_react6.Link,
               {
                 to: `/admin/users/${user.id}`,
                 className: "text-neighborhood-spruce hover:text-neighborhood-spruce/80 mr-4",
@@ -2689,7 +2495,7 @@ function AdminUsers() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("button", { className: "text-neighborhood-rust hover:text-neighborhood-rust/80", children: "Suspend" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("button", { className: "text-neighborhood-rust hover:text-neighborhood-rust/80", children: "Suspend" }, void 0, !1, {
               fileName: "app/routes/admin.users.tsx",
               lineNumber: 111,
               columnNumber: 23
@@ -2755,22 +2561,22 @@ async function loader13({ request }) {
 var api_docs_exports = {};
 __export(api_docs_exports, {
   default: () => ApiDocs,
-  meta: () => meta6
+  meta: () => meta5
 });
-var import_react9 = require("react"), import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), meta6 = () => [
+var import_react7 = require("react"), import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), meta5 = () => [
   { title: "API Documentation - Toolshed" },
   { name: "description", content: "Complete API documentation for developers" }
 ];
 function ApiDocs() {
-  let [selectedSection, setSelectedSection] = (0, import_react9.useState)("overview");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "API Documentation" }, void 0, !1, {
+  let [selectedSection, setSelectedSection] = (0, import_react7.useState)("overview");
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "API Documentation" }, void 0, !1, {
         fileName: "app/routes/api-docs.tsx",
         lineNumber: 27,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Complete developer reference for the Toolshed API" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-lg text-neighborhood-slate/80", children: "Complete developer reference for the Toolshed API" }, void 0, !1, {
         fileName: "app/routes/api-docs.tsx",
         lineNumber: 30,
         columnNumber: 11
@@ -2780,15 +2586,15 @@ function ApiDocs() {
       lineNumber: 26,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex gap-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "w-64 bg-white rounded-lg shadow-md p-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("nav", { className: "space-y-2", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex gap-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "w-64 bg-white rounded-lg shadow-md p-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("nav", { className: "space-y-2", children: [
         { id: "overview", title: "Overview" },
         { id: "authentication", title: "Authentication" },
         { id: "users", title: "Users" },
         { id: "items", title: "Items" },
         { id: "reservations", title: "Reservations" },
         { id: "events", title: "Event Sourcing" }
-      ].map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+      ].map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
         "button",
         {
           onClick: () => setSelectedSection(section.id),
@@ -2812,32 +2618,32 @@ function ApiDocs() {
         lineNumber: 37,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex-1 bg-white rounded-lg shadow-md p-8", children: [
-        selectedSection === "overview" && /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "API Overview" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex-1 bg-white rounded-lg shadow-md p-8", children: [
+        selectedSection === "overview" && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "API Overview" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 59,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "prose max-w-none", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-6", children: "The Toolshed API provides three different ways to interact with the platform:" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "prose max-w-none", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-6", children: "The Toolshed API provides three different ways to interact with the platform:" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 61,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 mb-8", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-spruce mb-2", children: "1. User Interface" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 mb-8", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-spruce mb-2", children: "1. User Interface" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 67,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70", children: "Web-based interface for community members to browse, share, and request items." }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70", children: "Web-based interface for community members to browse, share, and request items." }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 70,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "text-xs bg-neighborhood-mint px-2 py-1 rounded", children: "/browse, /share, /profile" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "text-xs bg-neighborhood-mint px-2 py-1 rounded", children: "/browse, /share, /profile" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 74,
                   columnNumber: 25
@@ -2851,18 +2657,18 @@ function ApiDocs() {
                 lineNumber: 66,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-goldenrod mb-2", children: "2. Admin Dashboard" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-goldenrod mb-2", children: "2. Admin Dashboard" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 81,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70", children: "Administrative interface for reviewing data, managing users, and monitoring activity." }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70", children: "Administrative interface for reviewing data, managing users, and monitoring activity." }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 84,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "text-xs bg-neighborhood-goldenrod text-white px-2 py-1 rounded", children: "/admin/*" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "text-xs bg-neighborhood-goldenrod text-white px-2 py-1 rounded", children: "/admin/*" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 88,
                   columnNumber: 25
@@ -2876,18 +2682,18 @@ function ApiDocs() {
                 lineNumber: 80,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-rust mb-2", children: "3. JSON API" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-rust mb-2", children: "3. JSON API" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 95,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70", children: "RESTful API endpoints for developers to integrate with external applications." }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70", children: "RESTful API endpoints for developers to integrate with external applications." }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 98,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "text-xs bg-neighborhood-rust text-white px-2 py-1 rounded", children: "/api/*" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "text-xs bg-neighborhood-rust text-white px-2 py-1 rounded", children: "/api/*" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 102,
                   columnNumber: 25
@@ -2906,23 +2712,23 @@ function ApiDocs() {
               lineNumber: 65,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-xl font-semibold text-neighborhood-slate mb-3", children: "Event-Sourced Architecture" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-xl font-semibold text-neighborhood-slate mb-3", children: "Event-Sourced Architecture" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 109,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where the current state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic with full history tracking." }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where the current state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic with full history tracking." }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 110,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "bg-gray-50 p-4 rounded-lg", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Base URL" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "bg-gray-50 p-4 rounded-lg", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Base URL" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 116,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { className: "text-sm bg-gray-200 px-2 py-1 rounded", children: "https://your-domain.com/api" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { className: "text-sm bg-gray-200 px-2 py-1 rounded", children: "https://your-domain.com/api" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 117,
                 columnNumber: 21
@@ -2942,26 +2748,26 @@ function ApiDocs() {
           lineNumber: 58,
           columnNumber: 15
         }, this),
-        selectedSection === "authentication" && /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Authentication" }, void 0, !1, {
+        selectedSection === "authentication" && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Authentication" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 127,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-lg font-semibold mb-3", children: "Login" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold mb-3", children: "Login" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 130,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "bg-gray-50 p-4 rounded-lg mb-4", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex items-center gap-2 mb-2", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "bg-gray-50 p-4 rounded-lg mb-4", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-2 mb-2", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 133,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "/api/auth/login" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "/api/auth/login" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 136,
                   columnNumber: 23
@@ -2971,18 +2777,18 @@ function ApiDocs() {
                 lineNumber: 132,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70 mb-3", children: "Authenticate with email and password to receive a JWT token." }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70 mb-3", children: "Authenticate with email and password to receive a JWT token." }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 138,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mb-4", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Request Body:" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mb-4", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Request Body:" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 143,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
                   email: "alice@neighborhood.local",
                   password: "your_password"
                 }, null, 2) }, void 0, !1, {
@@ -2995,13 +2801,13 @@ function ApiDocs() {
                 lineNumber: 142,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Response:" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Response:" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 153,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
                   token: "mock-jwt-token-550e8400-e29b-41d4-a716-446655440001"
                 }, null, 2) }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
@@ -3023,18 +2829,18 @@ function ApiDocs() {
             lineNumber: 129,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-lg font-semibold mb-3", children: "Using the Token" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold mb-3", children: "Using the Token" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 164,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-3", children: "Include the JWT token in the Authorization header for all API requests:" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-3", children: "Include the JWT token in the Authorization header for all API requests:" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 165,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "bg-gray-50 p-4 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { className: "text-sm", children: "Authorization: Bearer your-jwt-token-here" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "bg-gray-50 p-4 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { className: "text-sm", children: "Authorization: Bearer your-jwt-token-here" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 169,
               columnNumber: 21
@@ -3048,13 +2854,13 @@ function ApiDocs() {
             lineNumber: 163,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "bg-yellow-50 border border-yellow-200 rounded-lg p-4", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold text-yellow-800 mb-2", children: "Development Note" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "bg-yellow-50 border border-yellow-200 rounded-lg p-4", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold text-yellow-800 mb-2", children: "Development Note" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 176,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-yellow-700 text-sm", children: "This implementation uses mock JWT tokens for demonstration. In production, implement proper JWT signing, validation, and expiration handling." }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-yellow-700 text-sm", children: "This implementation uses mock JWT tokens for demonstration. In production, implement proper JWT signing, validation, and expiration handling." }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 177,
               columnNumber: 19
@@ -3069,21 +2875,21 @@ function ApiDocs() {
           lineNumber: 126,
           columnNumber: 15
         }, this),
-        selectedSection === "items" && /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Items API" }, void 0, !1, {
+        selectedSection === "items" && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Items API" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 187,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "space-y-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "space-y-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 192,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "/api/items" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "/api/items" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 195,
                   columnNumber: 23
@@ -3093,19 +2899,19 @@ function ApiDocs() {
                 lineNumber: 191,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get all items with optional pagination." }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get all items with optional pagination." }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 197,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 199,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "limit" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "limit" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 201,
                     columnNumber: 27
@@ -3116,8 +2922,8 @@ function ApiDocs() {
                   lineNumber: 201,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "offset" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "offset" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 202,
                     columnNumber: 27
@@ -3133,12 +2939,12 @@ function ApiDocs() {
                 lineNumber: 200,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Example Response:" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Example Response:" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 205,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify([
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify([
                 {
                   id: "650e8400-e29b-41d4-a716-446655440001",
                   owner_id: "550e8400-e29b-41d4-a716-446655440001",
@@ -3162,14 +2968,14 @@ function ApiDocs() {
               lineNumber: 190,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 227,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "/api/items" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "/api/items" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 230,
                   columnNumber: 23
@@ -3179,17 +2985,17 @@ function ApiDocs() {
                 lineNumber: 226,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Create a new item." }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Create a new item." }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 232,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Request Body:" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Request Body:" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 234,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
                 owner_id: "550e8400-e29b-41d4-a716-446655440001",
                 title: "Circular Saw",
                 description: "Professional grade circular saw with laser guide",
@@ -3217,21 +3023,21 @@ function ApiDocs() {
           lineNumber: 186,
           columnNumber: 15
         }, this),
-        selectedSection === "reservations" && /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Reservations API" }, void 0, !1, {
+        selectedSection === "reservations" && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Reservations API" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 253,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "space-y-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "space-y-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 258,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "/api/reservations" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "/api/reservations" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 261,
                   columnNumber: 23
@@ -3241,19 +3047,19 @@ function ApiDocs() {
                 lineNumber: 257,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get current reservation states with filtering options." }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get current reservation states with filtering options." }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 263,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 265,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "item_id" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "item_id" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 267,
                     columnNumber: 27
@@ -3264,8 +3070,8 @@ function ApiDocs() {
                   lineNumber: 267,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "requester_id" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "requester_id" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 268,
                     columnNumber: 27
@@ -3276,8 +3082,8 @@ function ApiDocs() {
                   lineNumber: 268,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "status" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "status" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 269,
                     columnNumber: 27
@@ -3298,14 +3104,14 @@ function ApiDocs() {
               lineNumber: 256,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 275,
                   columnNumber: 23
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "/api/reservations/[id]" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "/api/reservations/[id]" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 278,
                   columnNumber: 23
@@ -3315,7 +3121,7 @@ function ApiDocs() {
                 lineNumber: 274,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get a specific reservation's current state." }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get a specific reservation's current state." }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 280,
                 columnNumber: 21
@@ -3335,41 +3141,41 @@ function ApiDocs() {
           lineNumber: 252,
           columnNumber: 15
         }, this),
-        selectedSection === "events" && /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Event Sourcing" }, void 0, !1, {
+        selectedSection === "events" && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Event Sourcing" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 288,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where each reservation's state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic." }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where each reservation's state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic." }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 291,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "text-lg font-semibold mb-3", children: "Event Types" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "text-lg font-semibold mb-3", children: "Event Types" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 297,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("table", { className: "min-w-full border border-gray-200", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("tr", { children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Event Type" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("table", { className: "min-w-full border border-gray-200", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Event Type" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 302,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Description" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Description" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 303,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Valid From States" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Valid From States" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 304,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Resulting State" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("th", { className: "px-4 py-2 text-left", children: "Resulting State" }, void 0, !1, {
                   fileName: "app/routes/api-docs.tsx",
                   lineNumber: 305,
                   columnNumber: 27
@@ -3383,24 +3189,24 @@ function ApiDocs() {
                 lineNumber: 300,
                 columnNumber: 23
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "requested" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "requested" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 310,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "Initial reservation request" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "Initial reservation request" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 311,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "-" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "-" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 312,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "pending" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "pending" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 313,
                     columnNumber: 27
@@ -3410,23 +3216,23 @@ function ApiDocs() {
                   lineNumber: 309,
                   columnNumber: 25
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "approved" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "approved" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 316,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "Owner approves reservation" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "Owner approves reservation" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 317,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "pending" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "pending" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 318,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "approved" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "approved" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 319,
                     columnNumber: 27
@@ -3436,23 +3242,23 @@ function ApiDocs() {
                   lineNumber: 315,
                   columnNumber: 25
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "activated" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "activated" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 322,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "Item picked up by requester" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "Item picked up by requester" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 323,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "approved" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "approved" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 324,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "active" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "active" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 325,
                     columnNumber: 27
@@ -3462,23 +3268,23 @@ function ApiDocs() {
                   lineNumber: 321,
                   columnNumber: 25
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "returned" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2 font-mono text-sm", children: "returned" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 328,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "Item returned by requester" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "Item returned by requester" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 329,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "active" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "active" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 330,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("td", { className: "px-4 py-2", children: "returned" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("td", { className: "px-4 py-2", children: "returned" }, void 0, !1, {
                     fileName: "app/routes/api-docs.tsx",
                     lineNumber: 331,
                     columnNumber: 27
@@ -3507,14 +3313,14 @@ function ApiDocs() {
             lineNumber: 290,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "flex items-center gap-2 mb-3", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 340,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("code", { children: "/api/reservations/events" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("code", { children: "/api/reservations/events" }, void 0, !1, {
                 fileName: "app/routes/api-docs.tsx",
                 lineNumber: 343,
                 columnNumber: 21
@@ -3524,17 +3330,17 @@ function ApiDocs() {
               lineNumber: 339,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Add a new event to the reservation log." }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Add a new event to the reservation log." }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 345,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Example: Create New Reservation" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h4", { className: "font-semibold mb-2", children: "Example: Create New Reservation" }, void 0, !1, {
               fileName: "app/routes/api-docs.tsx",
               lineNumber: 347,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+            /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
               item_id: "650e8400-e29b-41d4-a716-446655440001",
               event_type: "requested",
               quantity: 1,
@@ -3566,20 +3372,20 @@ function ApiDocs() {
       lineNumber: 35,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-4", children: "API Examples" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-4", children: "API Examples" }, void 0, !1, {
         fileName: "app/routes/api-docs.tsx",
         lineNumber: 365,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "font-semibold mb-2", children: "Authentication" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "font-semibold mb-2", children: "Authentication" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 368,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/auth/login with email and password to get JWT token" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/auth/login with email and password to get JWT token" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 369,
             columnNumber: 15
@@ -3589,13 +3395,13 @@ function ApiDocs() {
           lineNumber: 367,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "font-semibold mb-2", children: "Get Items" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "font-semibold mb-2", children: "Get Items" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 374,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/70", children: "GET /api/items with Authorization header to retrieve all items" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/70", children: "GET /api/items with Authorization header to retrieve all items" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 375,
             columnNumber: 15
@@ -3605,13 +3411,13 @@ function ApiDocs() {
           lineNumber: 373,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "font-semibold mb-2", children: "Create Reservation" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("h3", { className: "font-semibold mb-2", children: "Create Reservation" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 380,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/reservations/events to create new reservation events" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/reservations/events to create new reservation events" }, void 0, !1, {
             fileName: "app/routes/api-docs.tsx",
             lineNumber: 381,
             columnNumber: 15
@@ -3647,10 +3453,10 @@ var register_exports = {};
 __export(register_exports, {
   action: () => action8,
   default: () => Register,
-  meta: () => meta7
+  meta: () => meta6
 });
-var import_react10 = require("@remix-run/react"), import_node16 = require("@remix-run/node");
-var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), meta7 = () => [{ title: "Join Community - Toolshed" }];
+var import_react8 = require("@remix-run/react"), import_node16 = require("@remix-run/node");
+var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), meta6 = () => [{ title: "Join Community - Toolshed" }];
 async function action8({ request }) {
   let formData = await request.formData(), name = formData.get("name")?.toString(), email = formData.get("email")?.toString(), password = formData.get("password")?.toString(), confirmPassword = formData.get("confirmPassword")?.toString(), neighborhood = formData.get("neighborhood")?.toString(), contactMethod = formData.get("contactMethod")?.toString();
   if (!name || !email || !password || !confirmPassword)
@@ -3673,15 +3479,15 @@ async function action8({ request }) {
   }
 }
 function Register() {
-  let actionData = (0, import_react10.useActionData)(), isSubmitting = (0, import_react10.useNavigation)().state === "submitting";
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "max-w-md w-full space-y-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Join the Community" }, void 0, !1, {
+  let actionData = (0, import_react8.useActionData)(), isSubmitting = (0, import_react8.useNavigation)().state === "submitting";
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "max-w-md w-full space-y-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Join the Community" }, void 0, !1, {
         fileName: "app/routes/register.tsx",
         lineNumber: 59,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Start sharing tools with your neighbors" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Start sharing tools with your neighbors" }, void 0, !1, {
         fileName: "app/routes/register.tsx",
         lineNumber: 62,
         columnNumber: 11
@@ -3691,9 +3497,9 @@ function Register() {
       lineNumber: 58,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react10.Form, { method: "post", className: "space-y-6", children: [
-        actionData?.error && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-red-600 text-sm", children: actionData.error }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react8.Form, { method: "post", className: "space-y-6", children: [
+        actionData?.error && /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("p", { className: "text-red-600 text-sm", children: actionData.error }, void 0, !1, {
           fileName: "app/routes/register.tsx",
           lineNumber: 71,
           columnNumber: 17
@@ -3702,13 +3508,13 @@ function Register() {
           lineNumber: 70,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 76,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "input",
             {
               id: "name",
@@ -3733,13 +3539,13 @@ function Register() {
           lineNumber: 75,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 91,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "input",
             {
               id: "email",
@@ -3764,13 +3570,13 @@ function Register() {
           lineNumber: 90,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 106,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "input",
             {
               id: "neighborhood",
@@ -3793,30 +3599,30 @@ function Register() {
           lineNumber: 105,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 119,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "select",
             {
               id: "contactMethod",
               name: "contactMethod",
               className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
               children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("option", { value: "message", children: "In-app messaging" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "message", children: "In-app messaging" }, void 0, !1, {
                   fileName: "app/routes/register.tsx",
                   lineNumber: 127,
                   columnNumber: 17
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("option", { value: "email", children: "Email" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "email", children: "Email" }, void 0, !1, {
                   fileName: "app/routes/register.tsx",
                   lineNumber: 128,
                   columnNumber: 17
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("option", { value: "phone", children: "Phone" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("option", { value: "phone", children: "Phone" }, void 0, !1, {
                   fileName: "app/routes/register.tsx",
                   lineNumber: 129,
                   columnNumber: 17
@@ -3837,13 +3643,13 @@ function Register() {
           lineNumber: 118,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 134,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "input",
             {
               id: "password",
@@ -3868,13 +3674,13 @@ function Register() {
           lineNumber: 133,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "confirmPassword", className: "block text-sm font-medium text-neighborhood-slate", children: "Confirm Password" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "confirmPassword", className: "block text-sm font-medium text-neighborhood-slate", children: "Confirm Password" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 149,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "input",
             {
               id: "confirmPassword",
@@ -3899,8 +3705,8 @@ function Register() {
           lineNumber: 148,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex items-center", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "flex items-center", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
             "input",
             {
               id: "agree-terms",
@@ -3918,10 +3724,10 @@ function Register() {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "agree-terms", className: "ml-2 block text-sm text-neighborhood-slate", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("label", { htmlFor: "agree-terms", className: "ml-2 block text-sm text-neighborhood-slate", children: [
             "I agree to the",
             " ",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react10.Link, { to: "/terms", className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Terms of Service" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react8.Link, { to: "/terms", className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Terms of Service" }, void 0, !1, {
               fileName: "app/routes/register.tsx",
               lineNumber: 173,
               columnNumber: 17
@@ -3929,7 +3735,7 @@ function Register() {
             " ",
             "and",
             " ",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react10.Link, { to: "/privacy", className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Privacy Policy" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(import_react8.Link, { to: "/privacy", className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Privacy Policy" }, void 0, !1, {
               fileName: "app/routes/register.tsx",
               lineNumber: 177,
               columnNumber: 17
@@ -3944,7 +3750,7 @@ function Register() {
           lineNumber: 163,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
           "button",
           {
             type: "submit",
@@ -3970,9 +3776,9 @@ function Register() {
         lineNumber: 68,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mt-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "relative", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "w-full border-t border-gray-300" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "mt-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "relative", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "w-full border-t border-gray-300" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 197,
             columnNumber: 17
@@ -3981,7 +3787,7 @@ function Register() {
             lineNumber: 196,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "Already have an account?" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "Already have an account?" }, void 0, !1, {
             fileName: "app/routes/register.tsx",
             lineNumber: 200,
             columnNumber: 17
@@ -3995,8 +3801,8 @@ function Register() {
           lineNumber: 195,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
-          import_react10.Link,
+        /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+          import_react8.Link,
           {
             to: "/login",
             className: "w-full flex justify-center py-2 px-4 border border-neighborhood-slate rounded-md shadow-sm text-sm font-medium text-neighborhood-slate bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
@@ -4041,9 +3847,9 @@ var tool_id_exports = {};
 __export(tool_id_exports, {
   default: () => ToolDetail,
   loader: () => loader14,
-  meta: () => meta8
+  meta: () => meta7
 });
-var import_node17 = require("@remix-run/node"), import_react11 = require("@remix-run/react"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), meta8 = () => [
+var import_node17 = require("@remix-run/node"), import_react9 = require("@remix-run/react"), import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), meta7 = () => [
   { title: "Tool Details - Toolshed" },
   { name: "description", content: "View tool details and contact the owner" }
 ];
@@ -4054,16 +3860,16 @@ async function loader14({ params }) {
   return (0, import_node17.json)({ toolId });
 }
 function ToolDetail() {
-  let { toolId } = (0, import_react11.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "text-center py-12 px-6", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+  let { toolId } = (0, import_react9.useLoaderData)();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "text-center py-12 px-6", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
       "svg",
       {
         className: "mx-auto h-12 w-12 text-gray-400",
         fill: "none",
         stroke: "currentColor",
         viewBox: "0 0 24 24",
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+        children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
           "path",
           {
             strokeLinecap: "round",
@@ -4090,12 +3896,12 @@ function ToolDetail() {
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { className: "mt-2 text-sm font-medium text-gray-900", children: "Tool not found" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("h3", { className: "mt-2 text-sm font-medium text-gray-900", children: "Tool not found" }, void 0, !1, {
       fileName: "app/routes/tool.$id.tsx",
       lineNumber: 45,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { className: "mt-1 text-sm text-gray-500", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("p", { className: "mt-1 text-sm text-gray-500", children: [
       'Tool with ID "',
       toolId,
       '" could not be found. This feature will be available once the database schema is integrated.'
@@ -4104,13 +3910,13 @@ function ToolDetail() {
       lineNumber: 46,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
       "a",
       {
         href: "/browse",
         className: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
         children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M10 19l-7-7m0 0l7-7m-7 7h18" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M10 19l-7-7m0 0l7-7m-7 7h18" }, void 0, !1, {
             fileName: "app/routes/tool.$id.tsx",
             lineNumber: 55,
             columnNumber: 17
@@ -4156,10 +3962,10 @@ __export(profile_exports, {
   action: () => action9,
   default: () => Profile,
   loader: () => loader15,
-  meta: () => meta9
+  meta: () => meta8
 });
-var import_react12 = require("react"), import_react13 = require("@remix-run/react"), import_node18 = require("@remix-run/node");
-var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), meta9 = () => [{ title: "Profile - Toolshed" }];
+var import_react10 = require("react"), import_react11 = require("@remix-run/react"), import_node18 = require("@remix-run/node");
+var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), meta8 = () => [{ title: "Profile - Toolshed" }];
 async function loader15({ request }) {
   let user = await getUserByEmail("alice@neighborhood.local");
   if (!user)
@@ -4187,15 +3993,15 @@ async function action9({ request }) {
   return (0, import_node18.json)({ error: "Invalid action" }, { status: 400 });
 }
 function Profile() {
-  let { user, userItems } = (0, import_react13.useLoaderData)(), actionData = (0, import_react13.useActionData)(), navigation = (0, import_react13.useNavigation)(), [searchParams] = (0, import_react13.useSearchParams)(), [isEditing, setIsEditing] = (0, import_react12.useState)(!1), isUpdating = navigation.state === "submitting" && navigation.formData?.get("intent") === "updateProfile", isWelcome = searchParams.get("welcome") === "true", isNewUser = searchParams.get("new") === "true";
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
-    isWelcome && /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mb-8 bg-neighborhood-mint/10 border border-neighborhood-mint/20 rounded-lg p-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-2", children: isNewUser ? "Welcome to Toolshed!" : "Welcome back!" }, void 0, !1, {
+  let { user, userItems } = (0, import_react11.useLoaderData)(), actionData = (0, import_react11.useActionData)(), navigation = (0, import_react11.useNavigation)(), [searchParams] = (0, import_react11.useSearchParams)(), [isEditing, setIsEditing] = (0, import_react10.useState)(!1), isUpdating = navigation.state === "submitting" && navigation.formData?.get("intent") === "updateProfile", isWelcome = searchParams.get("welcome") === "true", isNewUser = searchParams.get("new") === "true";
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
+    isWelcome && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mb-8 bg-neighborhood-mint/10 border border-neighborhood-mint/20 rounded-lg p-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-2", children: isNewUser ? "Welcome to Toolshed!" : "Welcome back!" }, void 0, !1, {
         fileName: "app/routes/profile.tsx",
         lineNumber: 79,
         columnNumber: 13
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: isNewUser ? "Your account has been created successfully. Start by browsing available tools or sharing your own." : "You're successfully signed in. Explore your neighborhood's shared resources." }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: isNewUser ? "Your account has been created successfully. Start by browsing available tools or sharing your own." : "You're successfully signed in. Explore your neighborhood's shared resources." }, void 0, !1, {
         fileName: "app/routes/profile.tsx",
         lineNumber: 82,
         columnNumber: 13
@@ -4205,16 +4011,16 @@ function Profile() {
       lineNumber: 78,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "lg:col-span-2", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex items-center justify-between mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h1", { className: "text-2xl font-bold text-neighborhood-slate", children: "My Profile" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "lg:col-span-2", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex items-center justify-between mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h1", { className: "text-2xl font-bold text-neighborhood-slate", children: "My Profile" }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 96,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
               "button",
               {
                 onClick: () => setIsEditing(!isEditing),
@@ -4235,7 +4041,7 @@ function Profile() {
             lineNumber: 95,
             columnNumber: 15
           }, this),
-          actionData?.success && /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mb-6 bg-green-50 border border-green-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-green-600 text-sm", children: actionData.success }, void 0, !1, {
+          actionData?.success && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mb-6 bg-green-50 border border-green-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-green-600 text-sm", children: actionData.success }, void 0, !1, {
             fileName: "app/routes/profile.tsx",
             lineNumber: 107,
             columnNumber: 19
@@ -4244,7 +4050,7 @@ function Profile() {
             lineNumber: 106,
             columnNumber: 17
           }, this),
-          actionData?.error && /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mb-6 bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-red-600 text-sm", children: actionData.error }, void 0, !1, {
+          actionData?.error && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mb-6 bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-red-600 text-sm", children: actionData.error }, void 0, !1, {
             fileName: "app/routes/profile.tsx",
             lineNumber: 113,
             columnNumber: 19
@@ -4253,19 +4059,19 @@ function Profile() {
             lineNumber: 112,
             columnNumber: 17
           }, this),
-          isEditing ? /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(import_react13.Form, { method: "post", className: "space-y-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("input", { type: "hidden", name: "intent", value: "updateProfile" }, void 0, !1, {
+          isEditing ? /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(import_react11.Form, { method: "post", className: "space-y-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("input", { type: "hidden", name: "intent", value: "updateProfile" }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 119,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 122,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 "input",
                 {
                   id: "name",
@@ -4289,13 +4095,13 @@ function Profile() {
               lineNumber: 121,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email Address" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email Address" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 136,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 "input",
                 {
                   id: "email",
@@ -4314,7 +4120,7 @@ function Profile() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/60 mt-1", children: "Email cannot be changed" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/60 mt-1", children: "Email cannot be changed" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 147,
                 columnNumber: 21
@@ -4324,13 +4130,13 @@ function Profile() {
               lineNumber: 135,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 151,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 "input",
                 {
                   id: "neighborhood",
@@ -4353,13 +4159,13 @@ function Profile() {
               lineNumber: 150,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 164,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 "select",
                 {
                   id: "contactMethod",
@@ -4367,17 +4173,17 @@ function Profile() {
                   defaultValue: user.contactMethod,
                   className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("option", { value: "message", children: "In-app messaging" }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("option", { value: "message", children: "In-app messaging" }, void 0, !1, {
                       fileName: "app/routes/profile.tsx",
                       lineNumber: 173,
                       columnNumber: 23
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("option", { value: "email", children: "Email" }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("option", { value: "email", children: "Email" }, void 0, !1, {
                       fileName: "app/routes/profile.tsx",
                       lineNumber: 174,
                       columnNumber: 23
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("option", { value: "phone", children: "Phone" }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("option", { value: "phone", children: "Phone" }, void 0, !1, {
                       fileName: "app/routes/profile.tsx",
                       lineNumber: 175,
                       columnNumber: 23
@@ -4398,8 +4204,8 @@ function Profile() {
               lineNumber: 163,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex gap-4", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex gap-4", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 "button",
                 {
                   type: "submit",
@@ -4416,7 +4222,7 @@ function Profile() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 "button",
                 {
                   type: "button",
@@ -4442,14 +4248,14 @@ function Profile() {
             fileName: "app/routes/profile.tsx",
             lineNumber: 118,
             columnNumber: 17
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "space-y-4", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Name" }, void 0, !1, {
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "space-y-4", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Name" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 199,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: user.name }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: user.name }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 200,
                 columnNumber: 21
@@ -4459,13 +4265,13 @@ function Profile() {
               lineNumber: 198,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Email" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Email" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 203,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: user.email }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: user.email }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 204,
                 columnNumber: 21
@@ -4475,13 +4281,13 @@ function Profile() {
               lineNumber: 202,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Neighborhood" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Neighborhood" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 207,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: user.neighborhood || "Not specified" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: user.neighborhood || "Not specified" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 208,
                 columnNumber: 21
@@ -4491,13 +4297,13 @@ function Profile() {
               lineNumber: 206,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Contact Preference" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Contact Preference" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 211,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-lg text-neighborhood-slate capitalize", children: user.contactMethod }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-lg text-neighborhood-slate capitalize", children: user.contactMethod }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 212,
                 columnNumber: 21
@@ -4507,13 +4313,13 @@ function Profile() {
               lineNumber: 210,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Member Since" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Member Since" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 215,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: new Date(user.createdAt).toLocaleDateString() }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: new Date(user.createdAt).toLocaleDateString() }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 216,
                 columnNumber: 21
@@ -4533,15 +4339,15 @@ function Profile() {
           lineNumber: 94,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex items-center justify-between mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "My Shared Items" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex items-center justify-between mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "My Shared Items" }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 227,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-              import_react13.Link,
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              import_react11.Link,
               {
                 to: "/share",
                 className: "px-4 py-2 bg-neighborhood-mint text-neighborhood-slate rounded-lg hover:bg-neighborhood-mint/80 transition-colors",
@@ -4561,24 +4367,24 @@ function Profile() {
             lineNumber: 226,
             columnNumber: 15
           }, this),
-          userItems.length > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: userItems.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "font-semibold text-neighborhood-slate", children: item.title }, void 0, !1, {
+          userItems.length > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: userItems.map((item) => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "font-semibold text-neighborhood-slate", children: item.title }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 240,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70 mt-1", children: item.description }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-sm text-neighborhood-slate/70 mt-1", children: item.description }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 241,
               columnNumber: 23
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex items-center justify-between mt-3", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "text-xs bg-neighborhood-mint/20 text-neighborhood-slate px-2 py-1 rounded", children: item.category }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex items-center justify-between mt-3", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "text-xs bg-neighborhood-mint/20 text-neighborhood-slate px-2 py-1 rounded", children: item.category }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 243,
                 columnNumber: 25
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "text-xs text-neighborhood-slate/60", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "text-xs text-neighborhood-slate/60", children: [
                 "Available: ",
                 item.quantityAvailable,
                 "/",
@@ -4601,14 +4407,14 @@ function Profile() {
             fileName: "app/routes/profile.tsx",
             lineNumber: 237,
             columnNumber: 17
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "text-center py-8", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-4", children: "You haven't shared any items yet." }, void 0, !1, {
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "text-center py-8", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-4", children: "You haven't shared any items yet." }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 255,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-              import_react13.Link,
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              import_react11.Link,
               {
                 to: "/share",
                 className: "inline-flex items-center px-4 py-2 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors",
@@ -4638,16 +4444,16 @@ function Profile() {
         lineNumber: 93,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "space-y-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Quick Actions" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "space-y-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Quick Actions" }, void 0, !1, {
             fileName: "app/routes/profile.tsx",
             lineNumber: 270,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-              import_react13.Link,
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              import_react11.Link,
               {
                 to: "/browse",
                 className: "block w-full px-4 py-3 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors text-center",
@@ -4662,8 +4468,8 @@ function Profile() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-              import_react13.Link,
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              import_react11.Link,
               {
                 to: "/share",
                 className: "block w-full px-4 py-3 bg-neighborhood-mint text-neighborhood-slate rounded-lg hover:bg-neighborhood-mint/80 transition-colors text-center",
@@ -4678,8 +4484,8 @@ function Profile() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-              import_react13.Link,
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              import_react11.Link,
               {
                 to: "/reservations",
                 className: "block w-full px-4 py-3 bg-white border border-neighborhood-slate text-neighborhood-slate rounded-lg hover:bg-gray-50 transition-colors text-center",
@@ -4704,20 +4510,20 @@ function Profile() {
           lineNumber: 269,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Community Stats" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Community Stats" }, void 0, !1, {
             fileName: "app/routes/profile.tsx",
             lineNumber: 294,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "text-neighborhood-slate/70", children: "Items Shared" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "text-neighborhood-slate/70", children: "Items Shared" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 297,
                 columnNumber: 19
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "font-semibold text-neighborhood-slate", children: userItems.length }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "font-semibold text-neighborhood-slate", children: userItems.length }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 298,
                 columnNumber: 19
@@ -4727,13 +4533,13 @@ function Profile() {
               lineNumber: 296,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "text-neighborhood-slate/70", children: "Trust Score" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "text-neighborhood-slate/70", children: "Trust Score" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 301,
                 columnNumber: 19
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "font-semibold text-neighborhood-goldenrod", children: "\u2605\u2605\u2605\u2605\u2606" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "font-semibold text-neighborhood-goldenrod", children: "\u2605\u2605\u2605\u2605\u2606" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 302,
                 columnNumber: 19
@@ -4743,13 +4549,13 @@ function Profile() {
               lineNumber: 300,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "flex justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "text-neighborhood-slate/70", children: "Exchanges" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "text-neighborhood-slate/70", children: "Exchanges" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 305,
                 columnNumber: 19
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("span", { className: "font-semibold text-neighborhood-slate", children: "12" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("span", { className: "font-semibold text-neighborhood-slate", children: "12" }, void 0, !1, {
                 fileName: "app/routes/profile.tsx",
                 lineNumber: 306,
                 columnNumber: 19
@@ -4769,25 +4575,25 @@ function Profile() {
           lineNumber: 293,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Account" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Account" }, void 0, !1, {
             fileName: "app/routes/profile.tsx",
             lineNumber: 312,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Notification Settings" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Notification Settings" }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 314,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Privacy Settings" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Privacy Settings" }, void 0, !1, {
               fileName: "app/routes/profile.tsx",
               lineNumber: 317,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
-              import_react13.Link,
+            /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+              import_react11.Link,
               {
                 to: "/logout",
                 className: "block w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 rounded",
@@ -4836,300 +4642,224 @@ function Profile() {
 // app/routes/_index.tsx
 var index_exports = {};
 __export(index_exports, {
-  default: () => Index,
-  meta: () => meta10
+  default: () => Index
 });
-var import_react14 = require("@remix-run/react"), import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), meta10 = () => [
-  { title: "Toolshed - Community Resource Sharing" },
-  { name: "description", content: "Share tools and resources in your community" }
-];
+var import_react12 = require("@remix-run/react"), import_jsx_dev_runtime11 = require("react/jsx-dev-runtime");
 function Index() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "relative overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "container mx-auto px-4 py-16", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "text-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h1", { className: "text-6xl font-bold text-neighborhood-slate mb-6", children: "Welcome to Toolshed" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { maxWidth: "1200px", margin: "0 auto", padding: "2rem" }, children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("header", { style: { textAlign: "center", marginBottom: "3rem" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h1", { style: { fontSize: "3rem", color: "#2d3748", marginBottom: "1rem" }, children: "Welcome to Toolshed" }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 18,
-        columnNumber: 13
+        lineNumber: 8,
+        columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-xl text-neighborhood-slate/80 max-w-3xl mx-auto mb-8", children: "Share tools, borrow equipment, and build stronger communities. Connect with neighbors to share resources and reduce waste." }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { fontSize: "1.25rem", color: "#4a5568", maxWidth: "600px", margin: "0 auto" }, children: "Share tools, borrow equipment, and build stronger communities. Connect with neighbors to share resources and reduce waste." }, void 0, !1, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 21,
-        columnNumber: 13
+        lineNumber: 11,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/_index.tsx",
+      lineNumber: 7,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "flex", gap: "1rem", justifyContent: "center", marginBottom: "3rem" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+        import_react12.Link,
+        {
+          to: "/browse",
+          style: {
+            backgroundColor: "#f6ad55",
+            color: "white",
+            padding: "0.75rem 1.5rem",
+            borderRadius: "0.5rem",
+            textDecoration: "none",
+            fontWeight: "600"
+          },
+          children: "Browse Tools"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 18,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+        import_react12.Link,
+        {
+          to: "/register",
+          style: {
+            backgroundColor: "#4fd1c7",
+            color: "#2d3748",
+            padding: "0.75rem 1.5rem",
+            borderRadius: "0.5rem",
+            textDecoration: "none",
+            fontWeight: "600"
+          },
+          children: "Join Community"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 31,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/routes/_index.tsx",
+      lineNumber: 17,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem", marginBottom: "3rem" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "white", padding: "2rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: "Share Your Tools" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 48,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1rem" }, children: "List tools you're willing to lend to neighbors. From power drills to garden equipment, help your community access what they need." }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 51,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/share", style: { color: "#f6ad55", textDecoration: "none", fontWeight: "600" }, children: "Start Sharing \u2192" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 54,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 47,
+        columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex flex-col sm:flex-row gap-4 justify-center mb-12", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-          import_react14.Link,
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "white", padding: "2rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: "Find What You Need" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 60,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1rem" }, children: "Browse available tools in your neighborhood. Save money and reduce waste by borrowing instead of buying." }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 63,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/browse", style: { color: "#f6ad55", textDecoration: "none", fontWeight: "600" }, children: "Browse Tools \u2192" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 66,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 59,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { backgroundColor: "white", padding: "2rem", borderRadius: "0.5rem", boxShadow: "0 1px 3px rgba(0,0,0,0.1)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h3", { style: { fontSize: "1.25rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }, children: "Build Community" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 72,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1rem" }, children: "Connect with neighbors, build trust, and create a stronger, more sustainable community together." }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 75,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(import_react12.Link, { to: "/login", style: { color: "#f6ad55", textDecoration: "none", fontWeight: "600" }, children: "Get Started \u2192" }, void 0, !1, {
+          fileName: "app/routes/_index.tsx",
+          lineNumber: 78,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 71,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/_index.tsx",
+      lineNumber: 46,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { textAlign: "center", backgroundColor: "#f7fafc", padding: "2rem", borderRadius: "0.5rem" }, children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("h2", { style: { fontSize: "1.5rem", color: "#2d3748", marginBottom: "1rem" }, children: "Ready to get started?" }, void 0, !1, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 85,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("p", { style: { color: "#4a5568", marginBottom: "1.5rem" }, children: "Join our community and start sharing resources with your neighbors today." }, void 0, !1, {
+        fileName: "app/routes/_index.tsx",
+        lineNumber: 88,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { style: { display: "flex", gap: "1rem", justifyContent: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+          import_react12.Link,
           {
-            to: "/browse",
-            className: "px-8 py-3 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors font-semibold",
-            children: "Browse Available Items"
+            to: "/register",
+            style: {
+              backgroundColor: "#f6ad55",
+              color: "white",
+              padding: "0.75rem 1.5rem",
+              borderRadius: "0.5rem",
+              textDecoration: "none",
+              fontWeight: "600"
+            },
+            children: "Create Account"
           },
           void 0,
           !1,
           {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 27,
-            columnNumber: 15
+            lineNumber: 92,
+            columnNumber: 13
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-          import_react14.Link,
+        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+          import_react12.Link,
           {
             to: "/login",
-            className: "px-8 py-3 bg-white text-neighborhood-slate border-2 border-neighborhood-slate rounded-lg hover:bg-neighborhood-slate hover:text-white transition-colors font-semibold",
+            style: {
+              backgroundColor: "white",
+              color: "#2d3748",
+              padding: "0.75rem 1.5rem",
+              borderRadius: "0.5rem",
+              textDecoration: "none",
+              fontWeight: "600",
+              border: "1px solid #e2e8f0"
+            },
             children: "Sign In"
           },
           void 0,
           !1,
           {
             fileName: "app/routes/_index.tsx",
-            lineNumber: 33,
-            columnNumber: 15
+            lineNumber: 105,
+            columnNumber: 13
           },
           this
         )
       ] }, void 0, !0, {
         fileName: "app/routes/_index.tsx",
-        lineNumber: 26,
-        columnNumber: 13
+        lineNumber: 91,
+        columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/_index.tsx",
-      lineNumber: 17,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 16,
+      lineNumber: 84,
       columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 15,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "container mx-auto px-4 py-16", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h2", { className: "text-4xl font-bold text-neighborhood-slate text-center mb-12", children: "How It Works" }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 46,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8 text-center", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "w-16 h-16 bg-neighborhood-mint rounded-full flex items-center justify-center mx-auto mb-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("svg", { className: "w-8 h-8 text-neighborhood-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 54,
-            columnNumber: 17
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 53,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 52,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-xl font-semibold text-neighborhood-spruce mb-4", children: "Discover" }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 57,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Browse tools and equipment available in your neighborhood. From power tools to kitchen appliances." }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 58,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 51,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8 text-center", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "w-16 h-16 bg-neighborhood-goldenrod rounded-full flex items-center justify-center mx-auto mb-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("svg", { className: "w-8 h-8 text-white", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 67,
-            columnNumber: 17
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 66,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 65,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-xl font-semibold text-neighborhood-spruce mb-4", children: "Request" }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 70,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Send a request to borrow items you need. Connect directly with your neighbors through secure messaging." }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 71,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 64,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8 text-center", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "w-16 h-16 bg-neighborhood-rust rounded-full flex items-center justify-center mx-auto mb-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("svg", { className: "w-8 h-8 text-white", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 80,
-            columnNumber: 17
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 79,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 78,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-xl font-semibold text-neighborhood-spruce mb-4", children: "Share" }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 83,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "List your own tools and help others in your community. Build relationships and earn trust through sharing." }, void 0, !1, {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 84,
-            columnNumber: 13
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 77,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 50,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 45,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "bg-white py-16", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "container mx-auto px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-8 text-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-3xl font-bold text-neighborhood-goldenrod mb-2", children: "500+" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 97,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Tools Shared" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 98,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 96,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-3xl font-bold text-neighborhood-mint mb-2", children: "200+" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 101,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Community Members" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 102,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 100,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h3", { className: "text-3xl font-bold text-neighborhood-rust mb-2", children: "1000+" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 105,
-          columnNumber: 15
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Successful Exchanges" }, void 0, !1, {
-          fileName: "app/routes/_index.tsx",
-          lineNumber: 106,
-          columnNumber: 15
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 104,
-        columnNumber: 13
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 95,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 94,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 93,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "container mx-auto px-4 py-16 text-center", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h2", { className: "text-4xl font-bold text-neighborhood-slate mb-6", children: "Ready to Start Sharing?" }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 114,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-xl text-neighborhood-slate/80 mb-8 max-w-2xl mx-auto", children: "Join your neighborhood community today and discover the power of sharing." }, void 0, !1, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 117,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex flex-col sm:flex-row gap-4 justify-center", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-          import_react14.Link,
-          {
-            to: "/register",
-            className: "px-8 py-3 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors font-semibold",
-            children: "Join Community"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 122,
-            columnNumber: 11
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-          import_react14.Link,
-          {
-            to: "/api-docs",
-            className: "px-8 py-3 bg-white text-neighborhood-slate border-2 border-neighborhood-slate rounded-lg hover:bg-neighborhood-slate hover:text-white transition-colors font-semibold",
-            children: "Developer API"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/_index.tsx",
-            lineNumber: 128,
-            columnNumber: 11
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 121,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 113,
-      columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/_index.tsx",
-    lineNumber: 13,
+    lineNumber: 6,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/_index.tsx",
+    lineNumber: 5,
     columnNumber: 5
   }, this);
 }
@@ -5138,22 +4868,22 @@ function Index() {
 var browse_exports = {};
 __export(browse_exports, {
   default: () => Browse,
-  meta: () => meta11
+  meta: () => meta9
 });
-var import_react15 = require("react"), import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), meta11 = () => [
+var import_react13 = require("react"), import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), meta9 = () => [
   { title: "Browse Tools - Toolshed" },
   { name: "description", content: "Browse available tools and resources in your community" }
 ];
 function Browse() {
-  let [searchTerm, setSearchTerm] = (0, import_react15.useState)(""), [selectedCategory, setSelectedCategory] = (0, import_react15.useState)("all");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Browse Tools" }, void 0, !1, {
+  let [searchTerm, setSearchTerm] = (0, import_react13.useState)(""), [selectedCategory, setSelectedCategory] = (0, import_react13.useState)("all");
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Browse Tools" }, void 0, !1, {
         fileName: "app/routes/browse.tsx",
         lineNumber: 28,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: "Discover tools and resources available in your community" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: "Discover tools and resources available in your community" }, void 0, !1, {
         fileName: "app/routes/browse.tsx",
         lineNumber: 29,
         columnNumber: 9
@@ -5163,15 +4893,15 @@ function Browse() {
       lineNumber: 27,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6 mb-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "search", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Search Tools" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6 mb-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("label", { htmlFor: "search", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Search Tools" }, void 0, !1, {
           fileName: "app/routes/browse.tsx",
           lineNumber: 38,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "relative", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("svg", { className: "h-5 w-5 text-neighborhood-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "relative", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("svg", { className: "h-5 w-5 text-neighborhood-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }, void 0, !1, {
             fileName: "app/routes/browse.tsx",
             lineNumber: 44,
             columnNumber: 19
@@ -5184,7 +4914,7 @@ function Browse() {
             lineNumber: 42,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
             "input",
             {
               type: "text",
@@ -5213,13 +4943,13 @@ function Browse() {
         lineNumber: 37,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "category", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Category" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("label", { htmlFor: "category", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Category" }, void 0, !1, {
           fileName: "app/routes/browse.tsx",
           lineNumber: 59,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
           "select",
           {
             id: "category",
@@ -5234,7 +4964,7 @@ function Browse() {
               { id: "automotive", name: "Automotive" },
               { id: "home", name: "Home & DIY" },
               { id: "specialty", name: "Specialty Tools" }
-            ].map((category) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: category.id, children: category.name }, category.id, !1, {
+            ].map((category) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("option", { value: category.id, children: category.name }, category.id, !1, {
               fileName: "app/routes/browse.tsx",
               lineNumber: 69,
               columnNumber: 17
@@ -5263,15 +4993,15 @@ function Browse() {
       lineNumber: 35,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "text-center py-12", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "text-center py-12", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
         "svg",
         {
           className: "mx-auto h-12 w-12 text-gray-400",
           fill: "none",
           stroke: "currentColor",
           viewBox: "0 0 24 24",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+          children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
             "path",
             {
               strokeLinecap: "round",
@@ -5298,23 +5028,23 @@ function Browse() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("h3", { className: "mt-2 text-sm font-medium text-neighborhood-slate", children: "No tools available" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("h3", { className: "mt-2 text-sm font-medium text-neighborhood-slate", children: "No tools available" }, void 0, !1, {
         fileName: "app/routes/browse.tsx",
         lineNumber: 93,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "mt-1 text-sm text-neighborhood-slate", children: "Tools will appear here once they are shared by community members." }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("p", { className: "mt-1 text-sm text-neighborhood-slate", children: "Tools will appear here once they are shared by community members." }, void 0, !1, {
         fileName: "app/routes/browse.tsx",
         lineNumber: 94,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
         "a",
         {
           href: "/share",
           className: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
           children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 6v6m0 0v6m0-6h6m-6 0H6" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 6v6m0 0v6m0-6h6m-6 0H6" }, void 0, !1, {
               fileName: "app/routes/browse.tsx",
               lineNumber: 103,
               columnNumber: 15
@@ -5370,10 +5100,10 @@ var login_exports = {};
 __export(login_exports, {
   action: () => action10,
   default: () => Login,
-  meta: () => meta12
+  meta: () => meta10
 });
-var import_react16 = require("@remix-run/react"), import_node20 = require("@remix-run/node");
-var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), meta12 = () => [{ title: "Sign In - Toolshed" }];
+var import_react14 = require("@remix-run/react"), import_node20 = require("@remix-run/node");
+var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), meta10 = () => [{ title: "Sign In - Toolshed" }];
 async function action10({ request }) {
   let formData = await request.formData(), email = formData.get("email")?.toString(), password = formData.get("password")?.toString();
   if (!email || !password)
@@ -5385,15 +5115,15 @@ async function action10({ request }) {
   }
 }
 function Login() {
-  let actionData = (0, import_react16.useActionData)(), isSubmitting = (0, import_react16.useNavigation)().state === "submitting";
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "max-w-md w-full space-y-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Sign in to Toolshed" }, void 0, !1, {
+  let actionData = (0, import_react14.useActionData)(), isSubmitting = (0, import_react14.useNavigation)().state === "submitting";
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "max-w-md w-full space-y-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Sign in to Toolshed" }, void 0, !1, {
         fileName: "app/routes/login.tsx",
         lineNumber: 45,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Welcome back to your community" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Welcome back to your community" }, void 0, !1, {
         fileName: "app/routes/login.tsx",
         lineNumber: 48,
         columnNumber: 11
@@ -5403,9 +5133,9 @@ function Login() {
       lineNumber: 44,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(import_react16.Form, { method: "post", className: "space-y-6", children: [
-        actionData?.error && /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("p", { className: "text-red-600 text-sm", children: actionData.error }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react14.Form, { method: "post", className: "space-y-6", children: [
+        actionData?.error && /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-red-600 text-sm", children: actionData.error }, void 0, !1, {
           fileName: "app/routes/login.tsx",
           lineNumber: 57,
           columnNumber: 17
@@ -5414,13 +5144,13 @@ function Login() {
           lineNumber: 56,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }, void 0, !1, {
             fileName: "app/routes/login.tsx",
             lineNumber: 62,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
             "input",
             {
               id: "email",
@@ -5445,13 +5175,13 @@ function Login() {
           lineNumber: 61,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }, void 0, !1, {
             fileName: "app/routes/login.tsx",
             lineNumber: 77,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
             "input",
             {
               id: "password",
@@ -5476,9 +5206,9 @@ function Login() {
           lineNumber: 76,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "flex items-center", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex items-center", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
               "input",
               {
                 id: "remember-me",
@@ -5495,7 +5225,7 @@ function Login() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("label", { htmlFor: "remember-me", className: "ml-2 block text-sm text-neighborhood-slate", children: "Remember me" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("label", { htmlFor: "remember-me", className: "ml-2 block text-sm text-neighborhood-slate", children: "Remember me" }, void 0, !1, {
               fileName: "app/routes/login.tsx",
               lineNumber: 99,
               columnNumber: 17
@@ -5505,7 +5235,7 @@ function Login() {
             lineNumber: 92,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(import_react16.Link, { to: "/forgot-password", className: "font-medium text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Forgot your password?" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react14.Link, { to: "/forgot-password", className: "font-medium text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Forgot your password?" }, void 0, !1, {
             fileName: "app/routes/login.tsx",
             lineNumber: 105,
             columnNumber: 17
@@ -5519,7 +5249,7 @@ function Login() {
           lineNumber: 91,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
           "button",
           {
             type: "submit",
@@ -5545,9 +5275,9 @@ function Login() {
         lineNumber: 54,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "mt-6", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "relative", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "w-full border-t border-gray-300" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mt-6", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "relative", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "w-full border-t border-gray-300" }, void 0, !1, {
             fileName: "app/routes/login.tsx",
             lineNumber: 125,
             columnNumber: 17
@@ -5556,7 +5286,7 @@ function Login() {
             lineNumber: 124,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "New to Toolshed?" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "New to Toolshed?" }, void 0, !1, {
             fileName: "app/routes/login.tsx",
             lineNumber: 128,
             columnNumber: 17
@@ -5570,8 +5300,8 @@ function Login() {
           lineNumber: 123,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
-          import_react16.Link,
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+          import_react14.Link,
           {
             to: "/register",
             className: "w-full flex justify-center py-2 px-4 border border-neighborhood-slate rounded-md shadow-sm text-sm font-medium text-neighborhood-slate bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
@@ -5595,7 +5325,7 @@ function Login() {
         lineNumber: 122,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: "mt-6 text-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/60", children: "Demo account: alice@neighborhood.local / password123" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "mt-6 text-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("p", { className: "text-xs text-neighborhood-slate/60", children: "Demo account: alice@neighborhood.local / password123" }, void 0, !1, {
         fileName: "app/routes/login.tsx",
         lineNumber: 143,
         columnNumber: 13
@@ -5625,9 +5355,9 @@ var share_exports = {};
 __export(share_exports, {
   action: () => action11,
   default: () => Share,
-  meta: () => meta13
+  meta: () => meta11
 });
-var import_node21 = require("@remix-run/node"), import_react17 = require("@remix-run/react"), import_react18 = require("react"), import_jsx_dev_runtime16 = require("react/jsx-dev-runtime"), meta13 = () => [
+var import_node21 = require("@remix-run/node"), import_react15 = require("@remix-run/react"), import_react16 = require("react"), import_jsx_dev_runtime14 = require("react/jsx-dev-runtime"), meta11 = () => [
   { title: "Share a Tool - Toolshed" },
   { name: "description", content: "Share your tools and resources with the community" }
 ];
@@ -5644,7 +5374,7 @@ async function action11({ request }) {
   }), (0, import_node21.redirect)("/browse?shared=true"));
 }
 function Share() {
-  let actionData = (0, import_react17.useActionData)(), isSubmitting = (0, import_react17.useNavigation)().state === "submitting", [selectedCategory, setSelectedCategory] = (0, import_react18.useState)(""), categories = [
+  let actionData = (0, import_react15.useActionData)(), isSubmitting = (0, import_react15.useNavigation)().state === "submitting", [selectedCategory, setSelectedCategory] = (0, import_react16.useState)(""), categories = [
     { id: "", name: "Select a category" },
     { id: "power-tools", name: "Power Tools" },
     { id: "hand-tools", name: "Hand Tools" },
@@ -5663,14 +5393,14 @@ function Share() {
     { id: "weekends", name: "Weekends Only" },
     { id: "by-appointment", name: "By Appointment" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Share a Tool" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Share a Tool" }, void 0, !1, {
         fileName: "app/routes/share.tsx",
         lineNumber: 88,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: "Add your tool to the community sharing network" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "text-lg text-neighborhood-slate", children: "Add your tool to the community sharing network" }, void 0, !1, {
         fileName: "app/routes/share.tsx",
         lineNumber: 89,
         columnNumber: 9
@@ -5680,14 +5410,14 @@ function Share() {
       lineNumber: 87,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_react17.Form, { method: "post", className: "space-y-6", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "title", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Tool Name *" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(import_react15.Form, { method: "post", className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "title", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Tool Name *" }, void 0, !1, {
           fileName: "app/routes/share.tsx",
           lineNumber: 98,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
           "input",
           {
             type: "text",
@@ -5705,7 +5435,7 @@ function Share() {
           },
           this
         ),
-        actionData?.errors?.title && /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("p", { className: "mt-1 text-sm text-neighborhood-rust", children: actionData.errors.title }, void 0, !1, {
+        actionData?.errors?.title && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "mt-1 text-sm text-neighborhood-rust", children: actionData.errors.title }, void 0, !1, {
           fileName: "app/routes/share.tsx",
           lineNumber: 113,
           columnNumber: 15
@@ -5715,13 +5445,13 @@ function Share() {
         lineNumber: 97,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "description", className: "block text-sm font-medium text-gray-700 mb-2", children: "Description *" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "description", className: "block text-sm font-medium text-gray-700 mb-2", children: "Description *" }, void 0, !1, {
           fileName: "app/routes/share.tsx",
           lineNumber: 119,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
           "textarea",
           {
             id: "description",
@@ -5739,7 +5469,7 @@ function Share() {
           },
           this
         ),
-        actionData?.errors?.description && /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.description }, void 0, !1, {
+        actionData?.errors?.description && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.description }, void 0, !1, {
           fileName: "app/routes/share.tsx",
           lineNumber: 134,
           columnNumber: 15
@@ -5749,14 +5479,14 @@ function Share() {
         lineNumber: 118,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "category", className: "block text-sm font-medium text-gray-700 mb-2", children: "Category *" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "category", className: "block text-sm font-medium text-gray-700 mb-2", children: "Category *" }, void 0, !1, {
             fileName: "app/routes/share.tsx",
             lineNumber: 141,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
             "select",
             {
               id: "category",
@@ -5764,7 +5494,7 @@ function Share() {
               value: selectedCategory,
               onChange: (e) => setSelectedCategory(e.target.value),
               className: `block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1 ${actionData?.errors?.category ? "border-red-300 focus:ring-red-500 focus:border-red-500" : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"}`,
-              children: categories.map((category) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("option", { value: category.id, children: category.name }, category.id, !1, {
+              children: categories.map((category) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: category.id, children: category.name }, category.id, !1, {
                 fileName: "app/routes/share.tsx",
                 lineNumber: 156,
                 columnNumber: 19
@@ -5779,7 +5509,7 @@ function Share() {
             },
             this
           ),
-          actionData?.errors?.category && /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.category }, void 0, !1, {
+          actionData?.errors?.category && /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.category }, void 0, !1, {
             fileName: "app/routes/share.tsx",
             lineNumber: 162,
             columnNumber: 17
@@ -5789,19 +5519,19 @@ function Share() {
           lineNumber: 140,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "condition", className: "block text-sm font-medium text-gray-700 mb-2", children: "Condition" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "condition", className: "block text-sm font-medium text-gray-700 mb-2", children: "Condition" }, void 0, !1, {
             fileName: "app/routes/share.tsx",
             lineNumber: 167,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
             "select",
             {
               id: "condition",
               name: "condition",
               className: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
-              children: conditions.map((condition) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("option", { value: condition.id, children: condition.name }, condition.id, !1, {
+              children: conditions.map((condition) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: condition.id, children: condition.name }, condition.id, !1, {
                 fileName: "app/routes/share.tsx",
                 lineNumber: 176,
                 columnNumber: 19
@@ -5826,20 +5556,20 @@ function Share() {
         lineNumber: 139,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "availability", className: "block text-sm font-medium text-gray-700 mb-2", children: "Availability" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "availability", className: "block text-sm font-medium text-gray-700 mb-2", children: "Availability" }, void 0, !1, {
             fileName: "app/routes/share.tsx",
             lineNumber: 187,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
             "select",
             {
               id: "availability",
               name: "availability",
               className: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
-              children: availabilityOptions.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("option", { value: option.id, children: option.name }, option.id, !1, {
+              children: availabilityOptions.map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: option.id, children: option.name }, option.id, !1, {
                 fileName: "app/routes/share.tsx",
                 lineNumber: 196,
                 columnNumber: 19
@@ -5859,13 +5589,13 @@ function Share() {
           lineNumber: 186,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-700 mb-2", children: "General Location" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-700 mb-2", children: "General Location" }, void 0, !1, {
             fileName: "app/routes/share.tsx",
             lineNumber: 204,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
             "input",
             {
               type: "text",
@@ -5893,30 +5623,30 @@ function Share() {
         lineNumber: 185,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-gray-700 mb-2", children: "Preferred Contact Method" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-gray-700 mb-2", children: "Preferred Contact Method" }, void 0, !1, {
           fileName: "app/routes/share.tsx",
           lineNumber: 219,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
           "select",
           {
             id: "contactMethod",
             name: "contactMethod",
             className: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
             children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("option", { value: "message", children: "App Message" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: "message", children: "App Message" }, void 0, !1, {
                 fileName: "app/routes/share.tsx",
                 lineNumber: 227,
                 columnNumber: 15
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("option", { value: "email", children: "Email" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: "email", children: "Email" }, void 0, !1, {
                 fileName: "app/routes/share.tsx",
                 lineNumber: 228,
                 columnNumber: 15
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("option", { value: "phone", children: "Phone" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("option", { value: "phone", children: "Phone" }, void 0, !1, {
                 fileName: "app/routes/share.tsx",
                 lineNumber: 229,
                 columnNumber: 15
@@ -5937,7 +5667,7 @@ function Share() {
         lineNumber: 218,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("div", { className: "pt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "pt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
         "button",
         {
           type: "submit",
@@ -5975,7 +5705,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-TK4I6SIB.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-OJIVT72O.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-TXUPMFS3.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-TC5IV6ZZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-FWOQBVIG.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-L4WQGEW7.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-KTL55TVY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-ERJEZREU.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-VM54SIOU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-FN4GGKMW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-W2P5FXXE.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4RC6W7AA.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-SZDBEUUY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-WCTBIYP2.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-JWDXL6UE.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-MIIMFKU6.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "b993ac36", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749404590758 }, url: "/build/manifest-B993AC36.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-TK4I6SIB.js", imports: ["/build/_shared/chunk-O4BRYNJ4.js", "/build/_shared/chunk-OJIVT72O.js", "/build/_shared/chunk-U4FRFQSK.js", "/build/_shared/chunk-XGOTYLZ5.js", "/build/_shared/chunk-7M6SC7J5.js", "/build/_shared/chunk-YP5XBNXY.js", "/build/_shared/chunk-UWV35TSL.js", "/build/_shared/chunk-PNG5AS42.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-XONX5ZQK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !0 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-G7XMN5QS.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-FWOQBVIG.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-L4WQGEW7.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-KTL55TVY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-ERJEZREU.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-VM54SIOU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-6245K4LH.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-WCJWBYDB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-67CCR6UT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-6J4GDWCE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-VBYNWXIZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-BIWLWCSO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-DGUN4OAS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-MTBUTTCX.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-LORNGS5M.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-KTAVK6JS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-SHTHNUT6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-FN4GGKMW.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-W2P5FXXE.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-4RC6W7AA.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-SZDBEUUY.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-WCTBIYP2.js", imports: ["/build/_shared/chunk-KONDUBG3.js", "/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-JWDXL6UE.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-MIIMFKU6.js", imports: ["/build/_shared/chunk-G7CHZRZX.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "5c58b395", hmr: { runtime: "/build/_shared/chunk-YP5XBNXY.js", timestamp: 1749404923228 }, url: "/build/manifest-5C58B395.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "development", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

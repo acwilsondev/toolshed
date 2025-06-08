@@ -1,6 +1,5 @@
 import {
   Links,
-  Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
@@ -8,18 +7,16 @@ import {
   isRouteErrorResponse,
   useRouteError,
 } from "@remix-run/react";
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import { Layout } from "~/components/Layout";
+import type { LinksFunction } from "@remix-run/node";
 import globalStyles from "~/styles/global.css";
-
-export const meta: MetaFunction = () => {
-  return [];
-};
 
 export const links: LinksFunction = () => {
   return [
     { rel: "stylesheet", href: globalStyles },
-    { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    {
+      rel: "preconnect",
+      href: "https://fonts.googleapis.com",
+    },
     {
       rel: "preconnect",
       href: "https://fonts.gstatic.com",
@@ -38,13 +35,20 @@ export default function App() {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
+        <title>Toolshed</title>
         <Links />
       </head>
-      <body>
-        <Layout>
-          <Outlet />
-        </Layout>
+      <body style={{ margin: 0, padding: 0, backgroundColor: "#f7fafc" }}>
+        <nav style={{ backgroundColor: "white", borderBottom: "1px solid #e2e8f0", padding: "1rem 0" }}>
+          <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h1 style={{ margin: 0, fontSize: "1.5rem", fontWeight: "bold", color: "#2d3748" }}>Toolshed</h1>
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <a href="/login" style={{ color: "#4a5568", textDecoration: "none" }}>Sign In</a>
+              <a href="/register" style={{ backgroundColor: "#f6ad55", color: "white", padding: "0.5rem 1rem", borderRadius: "0.25rem", textDecoration: "none" }}>Join</a>
+            </div>
+          </div>
+        </nav>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
@@ -58,34 +62,40 @@ export function ErrorBoundary() {
 
   if (isRouteErrorResponse(error)) {
     return (
-      <html lang="en" className="h-full">
+      <html lang="en">
         <head>
           <title>Error - Toolshed</title>
-          <Meta />
           <Links />
         </head>
-        <body className="h-full bg-neighborhood-cloud text-neighborhood-slate">
-          <Layout>
-            <div className="min-h-screen flex items-center justify-center">
-              <div className="text-center">
-                <h1 className="text-6xl font-bold text-gray-900 mb-4">
-                  {error.status}
-                </h1>
-                <h2 className="text-2xl font-semibold text-gray-700 mb-4">
-                  {error.statusText}
-                </h2>
-                <p className="text-gray-600 mb-8">
-                  {error.data || "Something went wrong. Please try again later."}
-                </p>
-                <a
-                  href="/"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  Go Home
-                </a>
-              </div>
+        <body style={{ margin: 0, padding: 0, backgroundColor: "#f7fafc" }}>
+          <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ textAlign: "center" }}>
+              <h1 style={{ fontSize: "4rem", fontWeight: "bold", color: "#1a202c", marginBottom: "1rem" }}>
+                {error.status}
+              </h1>
+              <h2 style={{ fontSize: "1.5rem", fontWeight: "600", color: "#2d3748", marginBottom: "1rem" }}>
+                {error.statusText}
+              </h2>
+              <p style={{ color: "#4a5568", marginBottom: "2rem" }}>
+                {error.data || "Something went wrong. Please try again later."}
+              </p>
+              <a
+                href="/"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "0.75rem 1.5rem",
+                  backgroundColor: "#f6ad55",
+                  color: "white",
+                  textDecoration: "none",
+                  borderRadius: "0.5rem",
+                  fontWeight: "600"
+                }}
+              >
+                Go Home
+              </a>
             </div>
-          </Layout>
+          </div>
           <Scripts />
         </body>
       </html>
@@ -93,31 +103,37 @@ export function ErrorBoundary() {
   }
 
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
       <head>
         <title>Error - Toolshed</title>
-        <Meta />
         <Links />
       </head>
-      <body className="h-full bg-neighborhood-cloud text-neighborhood-slate">
-        <Layout>
-          <div className="min-h-screen flex items-center justify-center">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-neighborhood-slate mb-4">
-                Unexpected Error
-              </h1>
-              <p className="text-neighborhood-slate mb-8">
-                An unexpected error occurred. Please try refreshing the page.
-              </p>
-              <a
-                href="/"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod"
-              >
-                Go Home
-              </a>
-            </div>
+      <body style={{ margin: 0, padding: 0, backgroundColor: "#f7fafc" }}>
+        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ textAlign: "center" }}>
+            <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "#1a202c", marginBottom: "1rem" }}>
+              Something went wrong
+            </h1>
+            <p style={{ color: "#4a5568", marginBottom: "2rem" }}>
+              We encountered an unexpected error. Please try again later.
+            </p>
+            <a
+              href="/"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                padding: "0.75rem 1.5rem",
+                backgroundColor: "#f6ad55",
+                color: "white",
+                textDecoration: "none",
+                borderRadius: "0.5rem",
+                fontWeight: "600"
+              }}
+            >
+              Go Home
+            </a>
           </div>
-        </Layout>
+        </div>
         <Scripts />
       </body>
     </html>
