@@ -70,9 +70,9 @@ BEGIN
         -- Insert sample users
         INSERT INTO "users" ("id", "name", "email", "password", "neighborhood", "contact_method")
         VALUES 
-            (uuid_generate_v4(), 'Alice Johnson', 'alice@neighborhood.local', '$2a$10$example.hash.for.password123', 'Downtown', 'message'),
-            (uuid_generate_v4(), 'Bob Smith', 'bob@neighborhood.local', '$2a$10$example.hash.for.password123', 'Riverside', 'email'),
-            (uuid_generate_v4(), 'Carol Davis', 'carol@neighborhood.local', '$2a$10$example.hash.for.password123', 'Hillside', 'phone');
+            (uuid_generate_v4(), 'Alice Johnson', 'alice@neighborhood.local', '$2b$10$YiqRxQ4XXYXf1caLg/XIxu2jriZSjMQnr.oh8nCDv6ls/bc.KxEZu', 'Downtown', 'message'),
+            (uuid_generate_v4(), 'Bob Smith', 'bob@neighborhood.local', '$2b$10$YiqRxQ4XXYXf1caLg/XIxu2jriZSjMQnr.oh8nCDv6ls/bc.KxEZu', 'Riverside', 'email'),
+            (uuid_generate_v4(), 'Carol Davis', 'carol@neighborhood.local', '$2b$10$YiqRxQ4XXYXf1caLg/XIxu2jriZSjMQnr.oh8nCDv6ls/bc.KxEZu', 'Hillside', 'phone');
         
         -- Insert sample items (using the created user IDs)
         INSERT INTO "items" ("id", "owner_id", "title", "description", "category", "tags", "location", "quantity_total", "quantity_available")
