@@ -1,10 +1,17 @@
-import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
-import { json, redirect, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node";
+import { json, redirect, type ActionFunctionArgs, type MetaFunction, type LoaderFunctionArgs } from "@remix-run/node";
+import { Form, Link, useActionData, useNavigation, useLoaderData } from "@remix-run/react";
 import { authenticateUser } from "~/utils/db.server";
+import { Layout } from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Sign In - Toolshed" }];
 };
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const { getCurrentUser } = await import("~/utils/session.server");
+  const user = await getCurrentUser(request);
+  return json({ user });
+}
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -35,12 +42,14 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Login() {
+  const { user } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <Layout user={user}>
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="card w-full max-w-md p-8">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-neighborhood-spruce mb-2">
@@ -138,6 +147,7 @@ export default function Login() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }

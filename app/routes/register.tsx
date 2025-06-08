@@ -1,10 +1,17 @@
-import { Form, Link, useActionData, useNavigation } from "@remix-run/react";
-import { json, redirect, type ActionFunctionArgs, type MetaFunction } from "@remix-run/node";
+import { Form, Link, useActionData, useNavigation, useLoaderData } from "@remix-run/react";
+import { json, redirect, type ActionFunctionArgs, type MetaFunction, type LoaderFunctionArgs } from "@remix-run/node";
 import { createUser } from "~/utils/db.server";
+import { Layout } from "~/components/Layout";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Join Community - Toolshed" }];
 };
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  const { getCurrentUser } = await import("~/utils/session.server");
+  const user = await getCurrentUser(request);
+  return json({ user });
+}
 
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
@@ -48,12 +55,14 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Register() {
+  const { user } = useLoaderData<typeof loader>();
   const actionData = useActionData<typeof action>();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
+    <Layout user={user}>
+      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
       <div className="form">
         <div className="text-center mb-8">
           <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
@@ -201,6 +210,7 @@ export default function Register() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </Layout>
   );
 }
