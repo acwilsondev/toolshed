@@ -17,8 +17,6 @@ export const meta: MetaFunction = () => {
   return [
     { title: "Toolshed - Community Resource Sharing" },
     { name: "description", content: "Share tools and resources in your community" },
-    { charset: "utf-8" },
-    { name: "viewport", content: "width=device-width,initial-scale=1" },
   ];
 };
 

@@ -30,8 +30,8 @@ export function Navigation() {
                   to={item.href}
                   className={`${
                     item.current
-                      ? "border-neighborhood-goldenrod text-neighborhood-spruce"
-                      : "border-transparent text-neighborhood-slate hover:text-neighborhood-spruce hover:border-neighborhood-mint"
+                      ? "border-neighborhood-goldenrod dark:border-neighborhood-dark-goldenrod text-neighborhood-spruce dark:text-neighborhood-dark-spruce"
+                      : "border-transparent text-neighborhood-slate dark:text-neighborhood-dark-slate hover:text-neighborhood-spruce dark:hover:text-neighborhood-dark-spruce hover:border-neighborhood-mint dark:hover:border-neighborhood-dark-mint"
                   } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
                 >
                   {item.name}
@@ -40,24 +40,29 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="sm:hidden flex items-center">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-neighborhood-slate hover:text-neighborhood-spruce hover:bg-neighborhood-mint/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neighborhood-goldenrod"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <span className="sr-only">Open main menu</span>
-              {!isMobileMenuOpen ? (
-                <svg className="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              ) : (
-                <svg className="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              )}
-            </button>
+          {/* Theme toggle and mobile menu */}
+          <div className="flex items-center space-x-4">
+            <ThemeToggle />
+            
+            {/* Mobile menu button */}
+            <div className="sm:hidden">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-neighborhood-slate dark:text-neighborhood-dark-slate hover:text-neighborhood-spruce dark:hover:text-neighborhood-dark-spruce hover:bg-neighborhood-mint/10 dark:hover:bg-neighborhood-dark-mint/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-neighborhood-goldenrod dark:focus:ring-neighborhood-dark-goldenrod"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <span className="sr-only">Open main menu</span>
+                {!isMobileMenuOpen ? (
+                  <svg className="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                ) : (
+                  <svg className="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -72,8 +77,8 @@ export function Navigation() {
                 to={item.href}
                 className={`${
                   item.current
-                    ? "bg-neighborhood-mint/20 border-neighborhood-goldenrod text-neighborhood-spruce"
-                    : "border-transparent text-neighborhood-slate hover:text-neighborhood-spruce hover:bg-neighborhood-mint/10 hover:border-neighborhood-mint"
+                    ? "bg-neighborhood-mint/20 dark:bg-neighborhood-dark-mint/20 border-neighborhood-goldenrod dark:border-neighborhood-dark-goldenrod text-neighborhood-spruce dark:text-neighborhood-dark-spruce"
+                    : "border-transparent text-neighborhood-slate dark:text-neighborhood-dark-slate hover:text-neighborhood-spruce dark:hover:text-neighborhood-dark-spruce hover:bg-neighborhood-mint/10 dark:hover:bg-neighborhood-dark-mint/10 hover:border-neighborhood-mint dark:hover:border-neighborhood-dark-mint"
                 } block pl-3 pr-4 py-2 border-l-4 text-base font-medium`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

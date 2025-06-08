@@ -11,8 +11,11 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
+    setIsHydrated(true);
+    
     // Check if user has a saved preference
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
@@ -25,6 +28,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
+    if (!isHydrated) return;
+    
     // Apply theme to document
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -34,7 +39,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     // Save preference
     localStorage.setItem("theme", theme);
-  }, [theme]);
+  }, [theme, isHydrated]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === "light" ? "dark" : "light");

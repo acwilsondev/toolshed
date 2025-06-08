@@ -12,16 +12,16 @@ export default function Index() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="relative bg-white overflow-hidden">
+      <div className="relative bg-white dark:bg-neighborhood-dark-cloud overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+          <div className="relative z-10 pb-8 bg-white dark:bg-neighborhood-dark-cloud sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
             <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
               <div className="sm:text-center lg:text-left">
-                <h1 className="text-4xl tracking-tight font-extrabold text-neighborhood-slate sm:text-5xl md:text-6xl">
+                <h1 className="text-4xl tracking-tight font-extrabold text-neighborhood-slate dark:text-neighborhood-dark-slate sm:text-5xl md:text-6xl">
                   <span className="block xl:inline">Share tools with</span>{' '}
-                  <span className="block text-neighborhood-spruce xl:inline">your community</span>
+                  <span className="block text-neighborhood-spruce dark:text-neighborhood-dark-spruce xl:inline">your community</span>
                 </h1>
-                <p className="mt-3 text-base text-neighborhood-slate sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                <p className="mt-3 text-base text-neighborhood-slate dark:text-neighborhood-dark-slate sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                   Toolshed connects neighbors to share tools, equipment, and resources. 
                   Reduce waste, save money, and build stronger communities.
                 </p>
@@ -29,7 +29,7 @@ export default function Index() {
                   <div className="rounded-md shadow">
                     <Link
                       to="/browse"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover md:py-4 md:text-lg md:px-10"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-neighborhood-goldenrod dark:bg-neighborhood-dark-goldenrod hover:bg-neighborhood-hover dark:hover:bg-neighborhood-dark-hover md:py-4 md:text-lg md:px-10"
                     >
                       Browse Tools
                     </Link>
