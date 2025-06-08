@@ -212,7 +212,7 @@ window.$RefreshReg$ = prevRefreshReg;
 window.$RefreshSig$ = prevRefreshSig;
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-25WSHXCW.css";
+var global_default = "/build/_assets/global-X6KKVG4E.css";
 
 // app/root.tsx
 var import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
@@ -287,7 +287,7 @@ function App() {
       lineNumber: 50,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-gray-50 font-inter", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-gray-50", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Outlet, {}, void 0, false, {
         fileName: "app/root.tsx",
         lineNumber: 58,
@@ -423,7 +423,7 @@ function ErrorBoundary() {
       lineNumber: 102,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-gray-50 font-inter", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-gray-50", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-center", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { className: "text-4xl font-bold text-gray-900 mb-4", children: "Unexpected Error" }, void 0, false, {
           fileName: "app/root.tsx",
@@ -485,4 +485,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-CJOCOMUV.js.map
+//# sourceMappingURL=/build/root-XQRVMK7C.js.map

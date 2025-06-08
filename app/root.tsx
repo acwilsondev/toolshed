@@ -44,7 +44,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full bg-gray-50 font-inter">
+      <body className="h-full bg-gray-50">
         <Layout>
           <Outlet />
         </Layout>
@@ -102,7 +102,7 @@ export function ErrorBoundary() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full bg-gray-50 font-inter">
+      <body className="h-full bg-gray-50">
         <Layout>
           <div className="min-h-screen flex items-center justify-center">
             <div className="text-center">
