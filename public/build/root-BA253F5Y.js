@@ -14,13 +14,13 @@ import "/build/_shared/chunk-U4FRFQSK.js";
 import {
   createHotContext
 } from "/build/_shared/chunk-YP5XBNXY.js";
+import "/build/_shared/chunk-UWV35TSL.js";
 import {
   require_jsx_dev_runtime
 } from "/build/_shared/chunk-XGOTYLZ5.js";
 import {
   require_react
 } from "/build/_shared/chunk-7M6SC7J5.js";
-import "/build/_shared/chunk-UWV35TSL.js";
 import {
   __toESM
 } from "/build/_shared/chunk-PNG5AS42.js";
@@ -212,7 +212,7 @@ window.$RefreshReg$ = prevRefreshReg;
 window.$RefreshSig$ = prevRefreshSig;
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-GWKZYX22.css";
+var global_default = "/build/_assets/global-OP4Q24CH.css";
 
 // app/root.tsx
 var import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
@@ -475,4 +475,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-RLZTJVLC.js.map
+//# sourceMappingURL=/build/root-BA253F5Y.js.map

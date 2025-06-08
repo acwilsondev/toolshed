@@ -1,7 +1,12 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 
-// Remove meta from index route to avoid conflicts
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Toolshed - Community Resource Sharing" },
+    { name: "description", content: "Share tools and resources with your neighbors" },
+  ];
+};
 
 export default function Index() {
   return (
