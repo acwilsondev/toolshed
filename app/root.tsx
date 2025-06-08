@@ -16,7 +16,6 @@ export const meta: MetaFunction = () => {
   return [
     { title: "Toolshed - Community Resource Sharing" },
     { name: "description", content: "Share tools and resources in your community" },
-    { name: "viewport", content: "width=device-width,initial-scale=1" },
   ];
 };
 
@@ -68,7 +67,7 @@ export function ErrorBoundary() {
           <Meta />
           <Links />
         </head>
-        <body className="h-full bg-gray-50 font-inter">
+        <body className="h-full bg-gray-50">
           <Layout>
             <div className="min-h-screen flex items-center justify-center">
               <div className="text-center">
