@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neighborhood-cloud text-neighborhood-slate font-inter;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md transition-all duration-200 ease-in-out;
+  }
+  
+  .btn-primary {
+    @apply bg-neighborhood-goldenrod text-white hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-neighborhood-spruce border-neighborhood-mint hover:bg-neighborhood-cloud focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-mint;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-soft border border-neighborhood-mint/20;
+  }
+  
+  .form-input {
+    @apply block w-full px-3 py-2 border border-neighborhood-mint rounded-md shadow-sm placeholder-neighborhood-disabled focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod;
+  }
+  
+  .nav {
+    @apply bg-white border-b border-neighborhood-mint;
+  }
+}

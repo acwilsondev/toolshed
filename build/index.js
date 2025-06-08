@@ -53,58 +53,25 @@ function handleRequest(request, responseStatusCode, responseHeaders, remixContex
 // app/root.tsx
 var root_exports = {};
 __export(root_exports, {
-  default: () => App
+  default: () => App,
+  links: () => links
 });
-var import_react2 = require("@remix-run/react"), import_jsx_runtime2 = require("react/jsx-runtime");
+var import_react2 = require("@remix-run/react");
+
+// app/tailwind.css
+var tailwind_default = "/build/_assets/tailwind-HQHVNNOW.css";
+
+// app/root.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime"), links = () => [
+  { rel: "stylesheet", href: tailwind_default }
+];
 function App() {
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("html", { lang: "en", children: [
     /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("meta", { charSet: "utf-8" }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("title", { children: "Toolshed" }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("style", { dangerouslySetInnerHTML: {
-        __html: `
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { font-family: 'Inter', system-ui, sans-serif; background-color: #F9F9F6; color: #4A4A4A; }
-            .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-            .nav { background: white; border-bottom: 1px solid #A8D5BA; padding: 1rem 0; }
-            .nav-content { display: flex; justify-content: space-between; align-items: center; }
-            .nav h1 { font-size: 1.25rem; font-weight: bold; color: #2E5E4E; }
-            .nav-links { display: flex; gap: 1rem; align-items: center; }
-            .nav-links a { text-decoration: none; color: #4A4A4A; }
-            .nav-links a:hover { color: #2E5E4E; }
-            .btn { padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 500; display: inline-block; transition: all 0.2s ease; }
-            .btn-primary { background: #E0B34F; color: white; }
-            .btn-primary:hover { background: #F3C86C; }
-            .btn-secondary { background: white; color: #2E5E4E; border: 1px solid #A8D5BA; }
-            .btn-secondary:hover { background: #F9F9F6; }
-            .text-center { text-align: center; }
-            .mb-4 { margin-bottom: 1rem; }
-            .mb-8 { margin-bottom: 2rem; }
-            .mb-12 { margin-bottom: 3rem; }
-            .py-12 { padding: 3rem 0; }
-            .p-8 { padding: 2rem; }
-            .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-            .card { background: white; border-radius: 8px; box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04); border: 1px solid #A8D5BA; }
-            .card h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem; color: #2E5E4E; }
-            .card p { color: #4A4A4A; margin-bottom: 1rem; }
-            .card a { color: #E0B34F; text-decoration: none; font-weight: 500; }
-            .card a:hover { color: #F3C86C; }
-            .cta { background: linear-gradient(135deg, #A8D5BA 0%, #F9F9F6 100%); border: 1px solid #A8D5BA; border-radius: 8px; padding: 2rem; }
-            .cta h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; color: #2E5E4E; }
-            .cta p { color: #4A4A4A; margin-bottom: 1.5rem; }
-            .flex-center { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-            .title { font-size: 2.5rem; font-weight: bold; margin-bottom: 1rem; color: #2E5E4E; }
-            .subtitle { font-size: 1.25rem; color: #4A4A4A; max-width: 600px; margin: 0 auto; }
-            .form { max-width: 400px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border: 1px solid #A8D5BA; }
-            .form-group { margin-bottom: 1rem; }
-            .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: #2E5E4E; }
-            .form-input { width: 100%; padding: 0.75rem; border: 1px solid #A8D5BA; border-radius: 6px; transition: all 0.2s ease; }
-            .form-input:focus { outline: none; border-color: #E0B34F; box-shadow: 0 0 0 3px rgba(224, 179, 79, 0.1); }
-            .error { color: #D96C33; font-size: 0.875rem; margin-top: 0.25rem; }
-            .success { color: #2E5E4E; font-size: 0.875rem; margin-top: 0.25rem; }
-          `
-      } })
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Links, {})
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Outlet, {}),
@@ -2316,12 +2283,12 @@ function Browse() {
   let [searchTerm, setSearchTerm] = (0, import_react14.useState)(""), [selectedCategory, setSelectedCategory] = (0, import_react14.useState)("all");
   return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
     /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Browse Tools" }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h1", { className: "text-3xl font-bold text-neighborhood-spruce mb-4", children: "Browse Tools" }),
       /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-lg text-neighborhood-slate", children: "Discover tools and resources available in your community" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6 mb-8", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "card p-6 mb-8", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
       /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "search", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Search Tools" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "search", className: "block text-sm font-medium text-neighborhood-spruce mb-2", children: "Search Tools" }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "relative", children: [
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("svg", { className: "h-5 w-5 text-neighborhood-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) }) }),
           /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
@@ -2329,7 +2296,7 @@ function Browse() {
             {
               type: "text",
               id: "search",
-              className: "block w-full pl-10 pr-3 py-2 border border-neighborhood-mint rounded-md leading-5 bg-white placeholder-neighborhood-disabled focus:outline-none focus:placeholder-neighborhood-slate focus:ring-1 focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
+              className: "form-input pl-10",
               placeholder: "Search for tools...",
               value: searchTerm,
               onChange: (e) => setSearchTerm(e.target.value)
@@ -2338,12 +2305,12 @@ function Browse() {
         ] })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "category", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Category" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "category", className: "block text-sm font-medium text-neighborhood-spruce mb-2", children: "Category" }),
         /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "select",
           {
             id: "category",
-            className: "block w-full px-3 py-2 border border-neighborhood-mint rounded-md leading-5 bg-white focus:outline-none focus:ring-1 focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
+            className: "form-input",
             value: selectedCategory,
             onChange: (e) => setSelectedCategory(e.target.value),
             children: [
@@ -2363,7 +2330,7 @@ function Browse() {
       /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
         "svg",
         {
-          className: "mx-auto h-12 w-12 text-gray-400",
+          className: "mx-auto h-12 w-12 text-neighborhood-mint",
           fill: "none",
           stroke: "currentColor",
           viewBox: "0 0 24 24",
@@ -2378,19 +2345,12 @@ function Browse() {
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { className: "mt-2 text-sm font-medium text-neighborhood-slate", children: "No tools available" }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { className: "mt-2 text-sm font-medium text-neighborhood-spruce", children: "No tools available" }),
       /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "mt-1 text-sm text-neighborhood-slate", children: "Tools will appear here once they are shared by community members." }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
-        "a",
-        {
-          href: "/share",
-          className: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 6v6m0 0v6m0-6h6m-6 0H6" }) }),
-            "Share a Tool"
-          ]
-        }
-      ) })
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("a", { href: "/share", className: "btn btn-primary", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 6v6m0 0v6m0-6h6m-6 0H6" }) }),
+        "Share a Tool"
+      ] }) })
     ] })
   ] });
 }
@@ -2687,7 +2647,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-7FXDY7L2.js", imports: ["/build/_shared/chunk-WC423CYP.js", "/build/_shared/chunk-4HXKWYDW.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ZMV45JJI.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-CYKRFYOT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-BUJGX7ZW.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-N44FFCEY.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-3AECMJGT.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-F5QCSTUM.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-5LVCS2OQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-RNJQ7LZE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-TFTUHPFE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-EIK5O6TQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-5NG6V3RX.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-QVXE7YW2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-LN5QICBS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-VNQF4L67.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-KUPY5TZC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-W4UEB4XA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-GGYTJEBA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-AYDKUBTS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-B52W3GUJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VG55LGJS.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login.old": { id: "routes/login.old", parentId: "routes/login", path: "old", index: void 0, caseSensitive: void 0, module: "/build/routes/login.old-RVLKVXZT.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-2F6V56XS.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-Z2USS63N.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-GCVWEGCR.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-7JAGJI3P.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-YXTH5F7H.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "e9be74f5", hmr: void 0, url: "/build/manifest-E9BE74F5.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-Q263ZPUY.js", imports: ["/build/_shared/chunk-37YBDP6G.js", "/build/_shared/chunk-4HXKWYDW.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-5TRPIQU5.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-NWGTLHM7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-XUY7V66Y.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-VF5CPJNE.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-73GIPMVN.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-L4HGXEVC.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-5LVCS2OQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-RNJQ7LZE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-TFTUHPFE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-EIK5O6TQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-5NG6V3RX.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-QVXE7YW2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-LN5QICBS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-VNQF4L67.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-KUPY5TZC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-W4UEB4XA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-GGYTJEBA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-AYDKUBTS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-EYJWD2RA.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-IJDA66UN.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login.old": { id: "routes/login.old", parentId: "routes/login", path: "old", index: void 0, caseSensitive: void 0, module: "/build/routes/login.old-6HTZXYYJ.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-2F6V56XS.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-D4VA6NV5.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-AC4WISEH.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-XIFWVBGO.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-LFUTWJVH.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "7514d917", hmr: void 0, url: "/build/manifest-7514D917.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "production", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

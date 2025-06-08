@@ -23,48 +23,31 @@ export default function Browse() {
   ];
 
   return (
-    <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem 2rem 1rem' }}>
-      <div style={{ marginBottom: '2rem' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#2E5E4E', marginBottom: '1rem' }}>Browse Tools</h1>
-        <p style={{ fontSize: '1.125rem', color: '#4A4A4A' }}>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-neighborhood-spruce mb-4">Browse Tools</h1>
+        <p className="text-lg text-neighborhood-slate">
           Discover tools and resources available in your community
         </p>
       </div>
 
       {/* Search and Filters */}
-      <div style={{ 
-        background: 'white', 
-        borderRadius: '8px', 
-        boxShadow: '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)', 
-        border: '1px solid #A8D5BA', 
-        padding: '1.5rem', 
-        marginBottom: '2rem' 
-      }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem' }}>
+      <div className="card p-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="search" style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#2E5E4E', marginBottom: '0.5rem' }}>
+            <label htmlFor="search" className="block text-sm font-medium text-neighborhood-spruce mb-2">
               Search Tools
             </label>
-            <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '0', left: '0', paddingLeft: '0.75rem', height: '100%', display: 'flex', alignItems: 'center', pointerEvents: 'none' }}>
-                <svg style={{ height: '1.25rem', width: '1.25rem', color: '#4A4A4A' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg className="h-5 w-5 text-neighborhood-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
               <input
                 type="text"
                 id="search"
-                style={{ 
-                  display: 'block', 
-                  width: '100%', 
-                  paddingLeft: '2.5rem', 
-                  paddingRight: '0.75rem', 
-                  paddingTop: '0.5rem', 
-                  paddingBottom: '0.5rem', 
-                  border: '1px solid #A8D5BA', 
-                  borderRadius: '6px', 
-                  background: 'white'
-                }}
+                className="form-input pl-10"
                 placeholder="Search for tools..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -73,20 +56,12 @@ export default function Browse() {
           </div>
           
           <div>
-            <label htmlFor="category" style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#2E5E4E', marginBottom: '0.5rem' }}>
+            <label htmlFor="category" className="block text-sm font-medium text-neighborhood-spruce mb-2">
               Category
             </label>
             <select
               id="category"
-              style={{ 
-                display: 'block', 
-                width: '100%', 
-                padding: '0.5rem 0.75rem', 
-                border: '1px solid #A8D5BA', 
-                borderRadius: '6px', 
-                background: 'white',
-                color: '#4A4A4A'
-              }}
+              className="form-input"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
@@ -101,9 +76,9 @@ export default function Browse() {
       </div>
 
       {/* Empty State */}
-      <div style={{ textAlign: 'center', padding: '3rem 0' }}>
+      <div className="text-center py-12">
         <svg
-          style={{ margin: '0 auto', height: '3rem', width: '3rem', color: '#A8D5BA' }}
+          className="mx-auto h-12 w-12 text-neighborhood-mint"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -115,29 +90,13 @@ export default function Browse() {
             d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
           />
         </svg>
-        <h3 style={{ marginTop: '0.5rem', fontSize: '0.875rem', fontWeight: '500', color: '#2E5E4E' }}>No tools available</h3>
-        <p style={{ marginTop: '0.25rem', fontSize: '0.875rem', color: '#4A4A4A' }}>
+        <h3 className="mt-2 text-sm font-medium text-neighborhood-spruce">No tools available</h3>
+        <p className="mt-1 text-sm text-neighborhood-slate">
           Tools will appear here once they are shared by community members.
         </p>
-        <div style={{ marginTop: '1.5rem' }}>
-          <a
-            href="/share"
-            style={{ 
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              padding: '0.5rem 1rem', 
-              fontSize: '0.875rem', 
-              fontWeight: '500', 
-              borderRadius: '6px', 
-              color: 'white', 
-              background: '#E0B34F', 
-              textDecoration: 'none',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseOver={(e) => e.target.style.background = '#F3C86C'}
-            onMouseOut={(e) => e.target.style.background = '#E0B34F'}
-          >
-            <svg style={{ marginLeft: '-0.25rem', marginRight: '0.5rem', height: '1.25rem', width: '1.25rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="mt-6">
+          <a href="/share" className="btn btn-primary">
+            <svg className="-ml-1 mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Share a Tool
