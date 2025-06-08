@@ -1,19 +1,4 @@
-import {
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-  LiveReload,
-} from "@remix-run/react";
-
-export default function App() {
-  return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Toolshed</title>
-        <style dangerouslySetInnerHTML={{
-          __html: `
+import{c as r,g as t,j as n,l as a}from"/build/_shared/chunk-WC423CYP.js";import{b as i}from"/build/_shared/chunk-4HXKWYDW.js";import{c as o}from"/build/_shared/chunk-Q3IECNXJ.js";var e=o(i());function d(){return(0,e.jsxs)("html",{lang:"en",children:[(0,e.jsxs)("head",{children:[(0,e.jsx)("meta",{charSet:"utf-8"}),(0,e.jsx)("meta",{name:"viewport",content:"width=device-width, initial-scale=1"}),(0,e.jsx)("title",{children:"Toolshed"}),(0,e.jsx)("style",{dangerouslySetInnerHTML:{__html:`
             * { margin: 0; padding: 0; box-sizing: border-box; }
             body { font-family: system-ui, sans-serif; background-color: #f9fafb; color: #111827; }
             .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
@@ -53,15 +38,4 @@ export default function App() {
             .form-input:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
             .error { color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem; }
             .success { color: #059669; font-size: 0.875rem; margin-top: 0.25rem; }
-          `
-        }} />
-      </head>
-      <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
-}
+          `}})]}),(0,e.jsxs)("body",{children:[(0,e.jsx)(r,{}),(0,e.jsx)(a,{}),(0,e.jsx)(t,{}),(0,e.jsx)(n,{})]})]})}export{d as default};
