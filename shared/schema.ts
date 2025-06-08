@@ -53,6 +53,7 @@ export const items = pgTable("items", {
 export const reservationEvents = pgTable("reservation_events", {
   id: varchar("id").primaryKey().notNull(),
   reservationId: varchar("reservation_id").notNull(),
+  itemId: varchar("item_id").references(() => items.id), // Track which item this reservation is for
   eventType: varchar("event_type", { length: 50 }).notNull(),
   actorId: varchar("actor_id").notNull().references(() => users.id),
   timestamp: timestamp("timestamp").defaultNow().notNull(),
@@ -69,18 +70,25 @@ export const usersRelations = relations(users, ({ many }) => ({
   reservationEvents: many(reservationEvents),
 }));
 
-export const itemsRelations = relations(items, ({ one }) => ({
-  owner: one(users, {
-    fields: [items.ownerId],
-    references: [users.id],
-  }),
-}));
+// Moved to itemsRelationsExtended above
 
 export const reservationEventsRelations = relations(reservationEvents, ({ one }) => ({
   actor: one(users, {
     fields: [reservationEvents.actorId],
     references: [users.id],
   }),
+  item: one(items, {
+    fields: [reservationEvents.itemId],
+    references: [items.id],
+  }),
+}));
+
+export const itemsRelationsExtended = relations(items, ({ one, many }) => ({
+  owner: one(users, {
+    fields: [items.ownerId],
+    references: [users.id],
+  }),
+  reservationEvents: many(reservationEvents),
 }));
 
 // Type exports for the application

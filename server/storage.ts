@@ -208,9 +208,46 @@ export class DatabaseStorage implements IStorage {
     eventData: CreateReservationEventRequest,
     actorId: string
   ): Promise<ReservationEvent> {
+    // Import validation here to avoid circular dependency
+    const { reservationValidator } = await import('../app/utils/reservationValidator.server');
+    
+    // For new reservations (REQUESTED events), validate against overlaps
+    if (eventData.event_type === 'requested' && eventData.item_id) {
+      const validation = await reservationValidator.validateNewReservation(eventData, eventData.item_id);
+      if (!validation.isValid) {
+        throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+      }
+    }
+    
+    // For existing reservations, validate state transitions
+    if (eventData.reservation_id) {
+      const existingReservation = await this.getReservationById(eventData.reservation_id);
+      if (existingReservation) {
+        const stateValidation = reservationValidator.validateStateTransition(
+          existingReservation.status,
+          eventData.event_type as ReservationEventType
+        );
+        if (!stateValidation.isValid) {
+          throw new Error(`Invalid state transition: ${stateValidation.errors.join(', ')}`);
+        }
+      }
+    }
+    
+    // For extension events, validate the extension
+    if (eventData.event_type === 'extended' && eventData.reservation_id && eventData.end_date) {
+      const extensionValidation = await reservationValidator.validateExtension(
+        eventData.reservation_id,
+        eventData.end_date
+      );
+      if (!extensionValidation.isValid) {
+        throw new Error(`Extension validation failed: ${extensionValidation.errors.join(', ')}`);
+      }
+    }
+
     const newEvent: InsertReservationEvent = {
       id: uuidv4(),
       reservationId: eventData.reservation_id || uuidv4(),
+      itemId: eventData.item_id || null, // Store item_id in the event
       eventType: eventData.event_type,
       actorId,
       quantity: eventData.quantity || null,
@@ -228,7 +265,7 @@ export class DatabaseStorage implements IStorage {
     const events = await this.getReservationEvents(undefined, undefined, id);
     if (events.length === 0) return null;
 
-    return this.computeReservationStateFromEvents(events);
+    return await this.computeReservationStateFromEvents(events);
   }
 
   async getReservations(
@@ -252,7 +289,7 @@ export class DatabaseStorage implements IStorage {
     // Compute reservation states
     const reservations: ReservationState[] = [];
     for (const [reservationId, events] of reservationMap.entries()) {
-      const state = this.computeReservationStateFromEvents(events);
+      const state = await this.computeReservationStateFromEvents(events);
       if (state) {
         // Apply filters
         if (itemId && state.item_id !== itemId) continue;
@@ -279,7 +316,7 @@ export class DatabaseStorage implements IStorage {
   }
 
   // Helper method to compute reservation state from events
-  private computeReservationStateFromEvents(events: ReservationEvent[]): ReservationState | null {
+  private async computeReservationStateFromEvents(events: ReservationEvent[]): Promise<ReservationState | null> {
     if (events.length === 0) return null;
 
     // Sort events by timestamp
@@ -289,12 +326,19 @@ export class DatabaseStorage implements IStorage {
     const lastEvent = sortedEvents[sortedEvents.length - 1];
 
     // Get item_id from the first event (should be from a 'requested' event)
-    const itemIdFromFirstEvent = this.getItemIdFromFirstEvent(firstEvent.reservationId);
+    const itemId = await this.getItemIdFromReservationId(firstEvent.reservationId);
+    
+    // Get owner_id from the item
+    let ownerId = '';
+    if (itemId) {
+      const item = await this.getItemById(itemId);
+      ownerId = item?.ownerId || '';
+    }
 
     let state: ReservationState = {
       id: firstEvent.reservationId,
-      item_id: itemIdFromFirstEvent || '', // Will be updated when we have proper item tracking
-      owner_id: '', // Will be resolved from item
+      item_id: itemId || '',
+      owner_id: ownerId,
       requester_id: firstEvent.actorId,
       status: ReservationStatus.PENDING,
       quantity_requested: firstEvent.quantity || 1,
@@ -344,10 +388,13 @@ export class DatabaseStorage implements IStorage {
     return state;
   }
 
-  private getItemIdFromFirstEvent(reservationId: string): string {
-    // For now, return empty string - this would need to be tracked properly
-    // In a real implementation, we'd store item_id in the reservation events
-    return '';
+  private async getItemIdFromReservationId(reservationId: string): Promise<string> {
+    // Get all events for this reservation to find the initial request event
+    const events = await this.getReservationEvents(undefined, undefined, reservationId);
+    const requestEvent = events.find(e => e.eventType === 'requested');
+    
+    // Return the item_id from the request event
+    return requestEvent?.itemId || '';
   }
 }
 

@@ -1,7 +1,9 @@
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { getReservationEvents, createReservationEvent } from "~/utils/db.server";
+import { ReservationValidationService } from "~/utils/reservationValidator.server";
 import type { CreateReservationEventRequest } from "~/utils/types";
+import { ReservationEventType } from "~/utils/types";
 
 function requireAuth(request: Request) {
   const authHeader = request.headers.get("Authorization");
@@ -62,6 +64,24 @@ export async function action({ request }: ActionFunctionArgs) {
     }
     if (body.end_date && typeof body.end_date === 'string') {
       body.end_date = new Date(body.end_date);
+    }
+
+    // Validate new reservation requests to prevent overlapping reservations
+    if (body.event_type === ReservationEventType.REQUESTED && body.item_id) {
+      const validator = new ReservationValidationService();
+      const validationResult = await validator.validateNewReservation(body, body.item_id);
+      
+      if (!validationResult.isValid) {
+        return json({ 
+          error: "Reservation validation failed", 
+          details: validationResult.errors 
+        }, { status: 409 });
+      }
+      
+      // Include warnings in response metadata if present
+      if (validationResult.warnings && validationResult.warnings.length > 0) {
+        console.log('Reservation warnings:', validationResult.warnings);
+      }
     }
 
     const event = await createReservationEvent(body, actorId);

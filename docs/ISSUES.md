@@ -14,24 +14,6 @@ This document outlines critical issues, technical debt, and areas for improvemen
 
 ## P0 - Critical Issues
 
-### 4. Incomplete Authentication Security
-
-**Impact**: High - Security vulnerability
-**Location**: `server/storage.ts:272-278`
-
-```typescript
-// ISSUE: Plain text password comparison instead of bcrypt
-async authenticateUser(email: string, password: string): Promise<User | null> {
-  const user = await this.getUserByEmail(email);
-  if (user && user.password === password) {  // <-- Security issue
-    return user;
-  }
-  return null;
-}
-```
-
-**Action Required**: Fix to use `bcrypt.compare()` like in `app/utils/db.server.ts:181`
-
 ### 3. Missing Overlapping Reservation Validation
 
 **Impact**: High - Core business logic missing

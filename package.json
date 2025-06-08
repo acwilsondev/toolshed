@@ -7,7 +7,7 @@
     "dev": "remix dev",
     "start": "remix-serve build/index.js",
     "typecheck": "tsc",
-    "test": "vitest",
+    "test": "vitest run",
     "test:run": "vitest run",
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage"

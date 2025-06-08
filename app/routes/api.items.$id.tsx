@@ -1,6 +1,7 @@
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { getItemById, updateItem, deleteItem } from "~/utils/db.server";
+import { ItemUpdateValidationService } from "~/utils/itemUpdateValidator.server";
 import type { CreateItemRequest } from "~/utils/types";
 
 function requireAuth(request: Request) {
@@ -48,14 +49,41 @@ export async function action({ request, params }: ActionFunctionArgs) {
     if (request.method === "PUT") {
       const body: CreateItemRequest = await request.json();
       
+      // Validate the update, especially quantity changes against active reservations
+      const validator = new ItemUpdateValidationService();
+      const validationResult = await validator.validateItemUpdate(id, body);
+      
+      if (!validationResult.isValid) {
+        return json({
+          error: "Item update validation failed",
+          details: validationResult.errors,
+          warnings: validationResult.warnings
+        }, { status: 409 });
+      }
+      
       const item = await updateItem(id, body);
       if (!item) {
         return json({ error: "Item not found" }, { status: 404 });
       }
 
-      return json(item);
+      // Include any warnings in the success response
+      return json({
+        ...item,
+        ...(validationResult.warnings && { _warnings: validationResult.warnings })
+      });
 
     } else if (request.method === "DELETE") {
+      // Validate deletion against active reservations
+      const validator = new ItemUpdateValidationService();
+      const validationResult = await validator.validateItemDeletion(id);
+      
+      if (!validationResult.isValid) {
+        return json({
+          error: "Item deletion validation failed",
+          details: validationResult.errors
+        }, { status: 409 });
+      }
+      
       const success = await deleteItem(id);
       if (!success) {
         return json({ error: "Item not found" }, { status: 404 });
