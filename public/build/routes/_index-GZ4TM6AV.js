@@ -33,17 +33,17 @@ if (import.meta) {
     //@ts-expect-error
     "app/routes/_index.tsx"
   );
-  import.meta.hot.lastModified = "1749403456662.1616";
+  import.meta.hot.lastModified = "1749403498591.1296";
 }
 function Index() {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "container mx-auto px-4 py-8", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "text-center mb-12", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", { className: "text-5xl font-bold text-neighborhood-slate mb-6", children: "Welcome to Toolshed" }, void 0, false, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("h1", { className: "text-5xl font-bold text-neighborhood-slate mb-6", children: "Toolshed API Implementation" }, void 0, false, {
         fileName: "app/routes/_index.tsx",
         lineNumber: 26,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-xl text-neighborhood-slate/80 max-w-2xl mx-auto", children: "A community resource sharing platform with complete API implementation" }, void 0, false, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-xl text-neighborhood-slate/80 max-w-2xl mx-auto", children: "Complete API system with three interfaces: User, Admin, and Developer JSON API" }, void 0, false, {
         fileName: "app/routes/_index.tsx",
         lineNumber: 29,
         columnNumber: 11
@@ -81,7 +81,7 @@ function Index() {
           lineNumber: 46,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-6", children: "Comprehensive data review and management tools" }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70 mb-6", children: "Data review and management tools" }, void 0, false, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 47,
           columnNumber: 13
@@ -107,7 +107,7 @@ function Index() {
           lineNumber: 57,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Link, { to: "/api-docs", className: "block w-full px-4 py-2 bg-neighborhood-rust text-white rounded-lg hover:bg-neighborhood-rust/90 transition-colors", children: "API Docs" }, void 0, false, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)(Link, { to: "/api-docs", className: "block w-full px-4 py-2 bg-neighborhood-rust text-white rounded-lg hover:bg-neighborhood-rust/90 transition-colors", children: "API Documentation" }, void 0, false, {
           fileName: "app/routes/_index.tsx",
           lineNumber: 60,
           columnNumber: 13
@@ -135,7 +135,7 @@ function Index() {
             lineNumber: 72,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Complete audit trail with state computation from immutable event logs" }, void 0, false, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Complete audit trail with state computation from events" }, void 0, false, {
             fileName: "app/routes/_index.tsx",
             lineNumber: 73,
             columnNumber: 15
@@ -151,7 +151,7 @@ function Index() {
             lineNumber: 76,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "JWT-based authentication with proper security handling" }, void 0, false, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "JWT-based authentication with security handling" }, void 0, false, {
             fileName: "app/routes/_index.tsx",
             lineNumber: 77,
             columnNumber: 15
@@ -167,7 +167,7 @@ function Index() {
             lineNumber: 80,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "All interfaces share the same underlying data through API layer" }, void 0, false, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "All interfaces share the same underlying data" }, void 0, false, {
             fileName: "app/routes/_index.tsx",
             lineNumber: 81,
             columnNumber: 15
@@ -183,7 +183,7 @@ function Index() {
             lineNumber: 84,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Complete validation and rule enforcement for community sharing" }, void 0, false, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/70", children: "Complete validation for community sharing" }, void 0, false, {
             fileName: "app/routes/_index.tsx",
             lineNumber: 85,
             columnNumber: 15
@@ -201,22 +201,6 @@ function Index() {
     ] }, void 0, true, {
       fileName: "app/routes/_index.tsx",
       lineNumber: 66,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("div", { className: "mt-8 text-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("p", { className: "text-neighborhood-slate/60", children: [
-      "Test the API: ",
-      /* @__PURE__ */ (0, import_jsx_dev_runtime.jsxDEV)("code", { className: "bg-gray-100 px-2 py-1 rounded", children: "curl http://localhost:3000/api/health" }, void 0, false, {
-        fileName: "app/routes/_index.tsx",
-        lineNumber: 92,
-        columnNumber: 27
-      }, this)
-    ] }, void 0, true, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 91,
-      columnNumber: 11
-    }, this) }, void 0, false, {
-      fileName: "app/routes/_index.tsx",
-      lineNumber: 90,
       columnNumber: 9
     }, this)
   ] }, void 0, true, {
@@ -237,4 +221,4 @@ window.$RefreshSig$ = prevRefreshSig;
 export {
   Index as default
 };
-//# sourceMappingURL=/build/routes/_index-C3Q7Y4I5.js.map
+//# sourceMappingURL=/build/routes/_index-GZ4TM6AV.js.map

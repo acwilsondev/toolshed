@@ -212,7 +212,7 @@ window.$RefreshReg$ = prevRefreshReg;
 window.$RefreshSig$ = prevRefreshSig;
 
 // app/styles/global.css
-var global_default = "/build/_assets/global-MKQJUN3C.css";
+var global_default = "/build/_assets/global-LP746ICF.css";
 
 // app/root.tsx
 var import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime());
@@ -473,4 +473,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-TWT2UGHM.js.map
+//# sourceMappingURL=/build/root-FC6DUTTV.js.map
