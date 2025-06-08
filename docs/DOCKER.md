@@ -21,13 +21,16 @@ The application will be available at `http://localhost:3000`.
 ## What Gets Created
 
 ### Services
+
 - **app**: Remix.js application server
 - **db**: PostgreSQL 16 database
 
 ### Volumes
+
 - **postgres_data**: Persistent database storage
 
 ### Network
+
 - Internal Docker network for service communication
 
 ## Sample Data
@@ -35,13 +38,15 @@ The application will be available at `http://localhost:3000`.
 The application comes pre-loaded with sample users and tools:
 
 ### Sample Users
+
 | Name | Email | Password | Neighborhood |
 |------|-------|----------|-------------|
-| Alice Johnson | alice@neighborhood.local | password123 | Downtown |
-| Bob Smith | bob@neighborhood.local | password123 | Riverside |
-| Carol Davis | carol@neighborhood.local | password123 | Hillside |
+| Alice Johnson | <alice@neighborhood.local> | password123 | Downtown |
+| Bob Smith | <bob@neighborhood.local> | password123 | Riverside |
+| Carol Davis | <carol@neighborhood.local> | password123 | Hillside |
 
 ### Sample Tools
+
 - Electric Drill (owned by Alice)
 - Ladder (owned by Bob)
 - Garden Hose (owned by Carol)
@@ -80,17 +85,19 @@ services:
 ### Security Considerations
 
 1. **Change the session secret**:
+
    ```bash
    SESSION_SECRET=$(openssl rand -base64 32)
    echo "SESSION_SECRET=$SESSION_SECRET" > .env
    ```
 
 2. **Use external database** (recommended for production):
+
    ```bash
    # In .env
    DATABASE_URL=postgresql://user:pass@your-db-host:5432/toolshed
    ```
-   
+
    Then comment out the `db` service in docker-compose.yml
 
 3. **Run behind reverse proxy** (nginx, Caddy, Traefik)
@@ -170,6 +177,7 @@ Both services include health checks:
 - **Application**: Uses the `/api/health` endpoint to verify the app is running
 
 Health status can be checked with:
+
 ```bash
 docker-compose ps
 ```
@@ -179,6 +187,7 @@ docker-compose ps
 ### Common Issues
 
 1. **Port 3000 already in use**
+
    ```bash
    # Change port in docker-compose.yml
    ports:
@@ -186,6 +195,7 @@ docker-compose ps
    ```
 
 2. **Database connection issues**
+
    ```bash
    # Check database logs
    docker-compose logs db
@@ -195,6 +205,7 @@ docker-compose ps
    ```
 
 3. **Application won't start**
+
    ```bash
    # Check application logs
    docker-compose logs app
@@ -204,6 +215,7 @@ docker-compose ps
    ```
 
 4. **Sample data not loading**
+
    ```bash
    # Recreate database
    docker-compose down -v
@@ -233,4 +245,3 @@ The application automatically detects the environment and uses appropriate setti
 - Run behind HTTPS in production
 - Consider using Docker secrets for sensitive data
 - Regularly update base images for security patches
-
