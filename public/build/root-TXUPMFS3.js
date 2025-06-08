@@ -282,12 +282,7 @@ if (import.meta) {
   );
 }
 var meta = () => {
-  return [{
-    title: "Toolshed - Community Resource Sharing"
-  }, {
-    name: "description",
-    content: "Share tools and resources in your community"
-  }];
+  return [];
 };
 var links = () => {
   return [{
@@ -306,56 +301,66 @@ var links = () => {
   }];
 };
 function App() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("html", { lang: "en", className: "h-full", children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("html", { lang: "en", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("meta", { charSet: "utf-8" }, void 0, false, {
+        fileName: "app/root.tsx",
+        lineNumber: 46,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("meta", { name: "viewport", content: "width=device-width, initial-scale=1" }, void 0, false, {
+        fileName: "app/root.tsx",
+        lineNumber: 47,
+        columnNumber: 9
+      }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Meta, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 51,
+        lineNumber: 48,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Links, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 52,
+        lineNumber: 49,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 50,
+      lineNumber: 45,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Outlet, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 56,
+        lineNumber: 53,
         columnNumber: 11
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 55,
+        lineNumber: 52,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(ScrollRestoration, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 58,
+        lineNumber: 55,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Scripts, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 59,
+        lineNumber: 56,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(LiveReload, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 60,
+        lineNumber: 57,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 54,
+      lineNumber: 51,
       columnNumber: 7
     }, this)
   ] }, void 0, true, {
     fileName: "app/root.tsx",
-    lineNumber: 49,
+    lineNumber: 44,
     columnNumber: 10
   }, this);
 }
@@ -368,72 +373,72 @@ function ErrorBoundary() {
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("head", { children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 71,
+          lineNumber: 68,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Meta, {}, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 72,
+          lineNumber: 69,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Links, {}, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 73,
+          lineNumber: 70,
           columnNumber: 11
         }, this)
       ] }, void 0, true, {
         fileName: "app/root.tsx",
-        lineNumber: 70,
+        lineNumber: 67,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-center", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { className: "text-6xl font-bold text-gray-900 mb-4", children: error.status }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 79,
+            lineNumber: 76,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h2", { className: "text-2xl font-semibold text-gray-700 mb-4", children: error.statusText }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 82,
+            lineNumber: 79,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-gray-600 mb-8", children: error.data || "Something went wrong. Please try again later." }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 85,
+            lineNumber: 82,
             columnNumber: 17
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("a", { href: "/", className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500", children: "Go Home" }, void 0, false, {
             fileName: "app/root.tsx",
-            lineNumber: 88,
+            lineNumber: 85,
             columnNumber: 17
           }, this)
         ] }, void 0, true, {
           fileName: "app/root.tsx",
-          lineNumber: 78,
+          lineNumber: 75,
           columnNumber: 15
         }, this) }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 77,
+          lineNumber: 74,
           columnNumber: 13
         }, this) }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 76,
+          lineNumber: 73,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Scripts, {}, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 95,
+          lineNumber: 92,
           columnNumber: 11
         }, this)
       ] }, void 0, true, {
         fileName: "app/root.tsx",
-        lineNumber: 75,
+        lineNumber: 72,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 69,
+      lineNumber: 66,
       columnNumber: 12
     }, this);
   }
@@ -441,67 +446,67 @@ function ErrorBoundary() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("title", { children: "Error - Toolshed" }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 101,
+        lineNumber: 98,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Meta, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 102,
+        lineNumber: 99,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Links, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 103,
+        lineNumber: 100,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 100,
+      lineNumber: 97,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("body", { className: "h-full bg-neighborhood-cloud text-neighborhood-slate", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Layout, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "min-h-screen flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "text-center", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "Unexpected Error" }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 109,
+          lineNumber: 106,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("p", { className: "text-neighborhood-slate mb-8", children: "An unexpected error occurred. Please try refreshing the page." }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 112,
+          lineNumber: 109,
           columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("a", { href: "/", className: "inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod", children: "Go Home" }, void 0, false, {
           fileName: "app/root.tsx",
-          lineNumber: 115,
+          lineNumber: 112,
           columnNumber: 15
         }, this)
       ] }, void 0, true, {
         fileName: "app/root.tsx",
-        lineNumber: 108,
+        lineNumber: 105,
         columnNumber: 13
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 107,
+        lineNumber: 104,
         columnNumber: 11
       }, this) }, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 106,
+        lineNumber: 103,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Scripts, {}, void 0, false, {
         fileName: "app/root.tsx",
-        lineNumber: 122,
+        lineNumber: 119,
         columnNumber: 9
       }, this)
     ] }, void 0, true, {
       fileName: "app/root.tsx",
-      lineNumber: 105,
+      lineNumber: 102,
       columnNumber: 7
     }, this)
   ] }, void 0, true, {
     fileName: "app/root.tsx",
-    lineNumber: 99,
+    lineNumber: 96,
     columnNumber: 10
   }, this);
 }
@@ -521,4 +526,4 @@ export {
   links,
   meta
 };
-//# sourceMappingURL=/build/root-YJVFQ77H.js.map
+//# sourceMappingURL=/build/root-TXUPMFS3.js.map

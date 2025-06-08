@@ -1,4 +1,12 @@
 import { Link } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Toolshed - Community Resource Sharing" },
+    { name: "description", content: "Share tools and resources in your community" },
+  ];
+};
 
 export default function Index() {
   return (
