@@ -6,33 +6,16 @@ module.exports = {
         'inter': ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        // Custom color palette for Toolshed
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          950: '#172554',
+        neighborhood: {
+          spruce: '#2E5E4E',     // primary
+          goldenrod: '#E0B34F',  // accent / CTA
+          mint: '#A8D5BA',       // secondary highlight
+          rust: '#D96C33',       // alert / strong accent
+          cloud: '#F9F9F6',      // background
+          slate: '#4A4A4A',      // primary text
+          disabled: '#C4C4C4',   // form disabled
+          hover: '#F3C86C',      // CTA hover
         },
-        gray: {
-          50: '#f9fafb',
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827',
-          950: '#030712',
-        }
       },
       spacing: {
         '18': '4.5rem',
