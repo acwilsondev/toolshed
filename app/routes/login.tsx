@@ -40,13 +40,13 @@ export default function Login() {
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
-      <div className="form">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="card w-full max-w-md p-8">
         <div className="text-center mb-8">
-          <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
+          <h1 className="text-3xl font-bold text-neighborhood-spruce mb-2">
             Sign in to Toolshed
           </h1>
-          <p style={{ color: "#6b7280" }}>
+          <p className="text-neighborhood-slate">
             Welcome back to your community
           </p>
         </div>
