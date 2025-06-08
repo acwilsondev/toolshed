@@ -1,6 +1,4 @@
-import type { Config } from 'tailwindcss'
-
-export default {
+module.exports = {
   content: ['./app/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
@@ -82,4 +80,4 @@ export default {
     // Add aspect ratio plugin
     require('@tailwindcss/aspect-ratio'),
   ],
-} satisfies Config
+}

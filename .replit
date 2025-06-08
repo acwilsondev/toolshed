@@ -21,8 +21,16 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm install && npm run dev"
+args = "npx remix dev --port 5000"
 waitForPort = 5000
 
 [deployment]
-run = ["sh", "-c", "npm install && npm run dev"]
+run = ["sh", "-c", "npx remix dev --port 5000"]
+
+[[ports]]
+localPort = 3000
+externalPort = 3000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
