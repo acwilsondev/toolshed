@@ -10,7 +10,12 @@ let mockReservationEvents: ReservationEvent[] = [];
 
 // Helper function to generate UUIDs for testing
 let mockIdCounter = 1;
-const generateMockId = () => `test-id-${mockIdCounter++}`;
+const generateMockId = () => {
+  const counter = mockIdCounter++;
+  // Generate a valid UUID v4 format using the counter
+  const hex = counter.toString(16).padStart(8, '0');
+  return `550e8400-e29b-41d4-a716-${hex.padStart(12, '0')}`;
+};
 
 // Mock storage implementation
 export const mockStorage = {
