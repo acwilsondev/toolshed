@@ -53,163 +53,152 @@ export default function Register() {
   const isSubmitting = navigation.state === "submitting";
 
   return (
-    <div className="min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h1 className="text-center text-3xl font-bold text-neighborhood-slate">
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }}>
+      <div className="form">
+        <div className="text-center mb-8">
+          <h1 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
             Join the Community
           </h1>
-          <p className="mt-2 text-center text-sm text-neighborhood-slate/70">
+          <p style={{ color: "#6b7280" }}>
             Start sharing tools with your neighbors
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <Form method="post" className="space-y-6">
-            {actionData?.error && (
-              <div className="bg-red-50 border border-red-200 rounded-md p-4">
-                <p className="text-red-600 text-sm">{actionData.error}</p>
-              </div>
-            )}
-
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-neighborhood-slate">
-                Full Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
-                placeholder="Enter your full name"
-              />
+        <Form method="post">
+          {actionData?.error && (
+            <div className="error" style={{ 
+              backgroundColor: "#fef2f2", 
+              border: "1px solid #fecaca", 
+              borderRadius: "6px", 
+              padding: "0.75rem",
+              marginBottom: "1rem"
+            }}>
+              {actionData.error}
             </div>
+          )}
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-neighborhood-slate">
-                Email address
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="neighborhood" className="block text-sm font-medium text-neighborhood-slate">
-                Neighborhood
-              </label>
-              <input
-                id="neighborhood"
-                name="neighborhood"
-                type="text"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
-                placeholder="e.g. Downtown, Riverside"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="contactMethod" className="block text-sm font-medium text-neighborhood-slate">
-                Preferred Contact Method
-              </label>
-              <select
-                id="contactMethod"
-                name="contactMethod"
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
-              >
-                <option value="message">In-app messaging</option>
-                <option value="email">Email</option>
-                <option value="phone">Phone</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-neighborhood-slate">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
-                placeholder="Create a password"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-neighborhood-slate">
-                Confirm Password
-              </label>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                autoComplete="new-password"
-                required
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod"
-                placeholder="Confirm your password"
-              />
-            </div>
-
-            <div className="flex items-center">
-              <input
-                id="agree-terms"
-                name="agree-terms"
-                type="checkbox"
-                required
-                className="h-4 w-4 text-neighborhood-goldenrod focus:ring-neighborhood-goldenrod border-gray-300 rounded"
-              />
-              <label htmlFor="agree-terms" className="ml-2 block text-sm text-neighborhood-slate">
-                I agree to the{" "}
-                <Link to="/terms" className="text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80">
-                  Terms of Service
-                </Link>{" "}
-                and{" "}
-                <Link to="/privacy" className="text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80">
-                  Privacy Policy
-                </Link>
-              </label>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-neighborhood-goldenrod hover:bg-neighborhood-goldenrod/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Creating account..." : "Create account"}
-              </button>
-            </div>
-          </Form>
-
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-neighborhood-slate/70">Already have an account?</span>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <Link
-                to="/login"
-                className="w-full flex justify-center py-2 px-4 border border-neighborhood-slate rounded-md shadow-sm text-sm font-medium text-neighborhood-slate bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod"
-              >
-                Sign in instead
-              </Link>
-            </div>
+          <div className="form-group">
+            <label htmlFor="name">Full Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              required
+              className="form-input"
+              placeholder="Enter your full name"
+            />
           </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email address</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              className="form-input"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="neighborhood">Neighborhood</label>
+            <input
+              id="neighborhood"
+              name="neighborhood"
+              type="text"
+              className="form-input"
+              placeholder="e.g. Downtown, Riverside"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="contactMethod">Preferred Contact Method</label>
+            <select
+              id="contactMethod"
+              name="contactMethod"
+              className="form-input"
+            >
+              <option value="message">In-app messaging</option>
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="new-password"
+              required
+              className="form-input"
+              placeholder="Create a password"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              autoComplete="new-password"
+              required
+              className="form-input"
+              placeholder="Confirm your password"
+            />
+          </div>
+
+          <div className="form-group" style={{ display: "flex", alignItems: "center" }}>
+            <input
+              id="agree-terms"
+              name="agree-terms"
+              type="checkbox"
+              required
+              style={{ marginRight: "0.5rem" }}
+            />
+            <label htmlFor="agree-terms" style={{ fontSize: "0.875rem" }}>
+              I agree to the{" "}
+              <Link to="/terms" style={{ color: "#2563eb", textDecoration: "underline" }}>
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link to="/privacy" style={{ color: "#2563eb", textDecoration: "underline" }}>
+                Privacy Policy
+              </Link>
+            </label>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn btn-primary"
+              style={{ width: "100%", opacity: isSubmitting ? 0.5 : 1 }}
+            >
+              {isSubmitting ? "Creating account..." : "Create account"}
+            </button>
+          </div>
+        </Form>
+
+        <div style={{ 
+          marginTop: "1.5rem", 
+          paddingTop: "1.5rem", 
+          borderTop: "1px solid #e5e7eb", 
+          textAlign: "center" 
+        }}>
+          <p style={{ color: "#6b7280", marginBottom: "1rem" }}>Already have an account?</p>
+          <Link
+            to="/login"
+            className="btn btn-secondary"
+            style={{ width: "100%" }}
+          >
+            Sign in instead
+          </Link>
         </div>
       </div>
     </div>

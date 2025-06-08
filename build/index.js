@@ -1371,32 +1371,135 @@ async function loader13({ request }) {
   }
 }
 
+// app/routes/login.old.tsx
+var login_old_exports = {};
+__export(login_old_exports, {
+  action: () => action8,
+  default: () => Login,
+  meta: () => meta5
+});
+var import_react7 = require("@remix-run/react"), import_node16 = require("@remix-run/node");
+var import_jsx_runtime7 = require("react/jsx-runtime"), meta5 = () => [{ title: "Sign In - Toolshed" }];
+async function action8({ request }) {
+  let formData = await request.formData(), email = formData.get("email")?.toString(), password = formData.get("password")?.toString();
+  if (!email || !password)
+    return (0, import_node16.json)({ error: "Email and password are required" }, { status: 400 });
+  try {
+    return await authenticateUser(email, password) ? (0, import_node16.redirect)("/profile?welcome=true") : (0, import_node16.json)({ error: "Invalid email or password" }, { status: 401 });
+  } catch (error) {
+    return console.error("Login error:", error), (0, import_node16.json)({ error: "Something went wrong. Please try again." }, { status: 500 });
+  }
+}
+function Login() {
+  let actionData = (0, import_react7.useActionData)(), isSubmitting = (0, import_react7.useNavigation)().state === "submitting";
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "max-w-md w-full space-y-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Sign in to Toolshed" }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Welcome back to your community" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_react7.Form, { method: "post", className: "space-y-6", children: [
+        actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-red-600 text-sm", children: actionData.error }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            "input",
+            {
+              id: "email",
+              name: "email",
+              type: "email",
+              autoComplete: "email",
+              required: !0,
+              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
+              placeholder: "Enter your email"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+            "input",
+            {
+              id: "password",
+              name: "password",
+              type: "password",
+              autoComplete: "current-password",
+              required: !0,
+              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
+              placeholder: "Enter your password"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+              "input",
+              {
+                id: "remember-me",
+                name: "remember-me",
+                type: "checkbox",
+                className: "h-4 w-4 text-neighborhood-goldenrod focus:ring-neighborhood-goldenrod border-gray-300 rounded"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { htmlFor: "remember-me", className: "ml-2 block text-sm text-neighborhood-slate", children: "Remember me" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "text-sm", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_react7.Link, { to: "/forgot-password", className: "font-medium text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Forgot your password?" }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          "button",
+          {
+            type: "submit",
+            disabled: isSubmitting,
+            className: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-neighborhood-goldenrod hover:bg-neighborhood-goldenrod/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod disabled:opacity-50 disabled:cursor-not-allowed",
+            children: isSubmitting ? "Signing in..." : "Sign in"
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mt-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "relative", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "w-full border-t border-gray-300" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "New to Toolshed?" }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+          import_react7.Link,
+          {
+            to: "/register",
+            className: "w-full flex justify-center py-2 px-4 border border-neighborhood-slate rounded-md shadow-sm text-sm font-medium text-neighborhood-slate bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
+            children: "Create an account"
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-6 text-center", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-xs text-neighborhood-slate/60", children: "Demo account: alice@neighborhood.local / password123" }) })
+    ] })
+  ] }) });
+}
+
 // app/routes/api-docs.tsx
 var api_docs_exports = {};
 __export(api_docs_exports, {
   default: () => ApiDocs,
-  meta: () => meta5
+  meta: () => meta6
 });
-var import_react7 = require("react"), import_jsx_runtime7 = require("react/jsx-runtime"), meta5 = () => [
+var import_react8 = require("react"), import_jsx_runtime8 = require("react/jsx-runtime"), meta6 = () => [
   { title: "API Documentation - Toolshed" },
   { name: "description", content: "Complete API documentation for developers" }
 ];
 function ApiDocs() {
-  let [selectedSection, setSelectedSection] = (0, import_react7.useState)("overview");
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "container mx-auto px-4 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "API Documentation" }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-lg text-neighborhood-slate/80", children: "Complete developer reference for the Toolshed API" })
+  let [selectedSection, setSelectedSection] = (0, import_react8.useState)("overview");
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "container mx-auto px-4 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { className: "text-4xl font-bold text-neighborhood-slate mb-4", children: "API Documentation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-lg text-neighborhood-slate/80", children: "Complete developer reference for the Toolshed API" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex gap-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "w-64 bg-white rounded-lg shadow-md p-6", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("nav", { className: "space-y-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-64 bg-white rounded-lg shadow-md p-6", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("nav", { className: "space-y-2", children: [
         { id: "overview", title: "Overview" },
         { id: "authentication", title: "Authentication" },
         { id: "users", title: "Users" },
         { id: "items", title: "Items" },
         { id: "reservations", title: "Reservations" },
         { id: "events", title: "Event Sourcing" }
-      ].map((section) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+      ].map((section) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
         "button",
         {
           onClick: () => setSelectedSection(section.id),
@@ -1405,93 +1508,93 @@ function ApiDocs() {
         },
         section.id
       )) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex-1 bg-white rounded-lg shadow-md p-8", children: [
-        selectedSection === "overview" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "API Overview" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "prose max-w-none", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/80 mb-6", children: "The Toolshed API provides three different ways to interact with the platform:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 mb-8", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-spruce mb-2", children: "1. User Interface" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-sm text-neighborhood-slate/70", children: "Web-based interface for community members to browse, share, and request items." }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-xs bg-neighborhood-mint px-2 py-1 rounded", children: "/browse, /share, /profile" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex-1 bg-white rounded-lg shadow-md p-8", children: [
+        selectedSection === "overview" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "API Overview" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "prose max-w-none", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/80 mb-6", children: "The Toolshed API provides three different ways to interact with the platform:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 mb-8", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-spruce mb-2", children: "1. User Interface" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-sm text-neighborhood-slate/70", children: "Web-based interface for community members to browse, share, and request items." }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs bg-neighborhood-mint px-2 py-1 rounded", children: "/browse, /share, /profile" }) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-goldenrod mb-2", children: "2. Admin Dashboard" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-sm text-neighborhood-slate/70", children: "Administrative interface for reviewing data, managing users, and monitoring activity." }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-xs bg-neighborhood-goldenrod text-white px-2 py-1 rounded", children: "/admin/*" }) })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-goldenrod mb-2", children: "2. Admin Dashboard" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-sm text-neighborhood-slate/70", children: "Administrative interface for reviewing data, managing users, and monitoring activity." }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs bg-neighborhood-goldenrod text-white px-2 py-1 rounded", children: "/admin/*" }) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-rust mb-2", children: "3. JSON API" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-sm text-neighborhood-slate/70", children: "RESTful API endpoints for developers to integrate with external applications." }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "text-xs bg-neighborhood-rust text-white px-2 py-1 rounded", children: "/api/*" }) })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-rust mb-2", children: "3. JSON API" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-sm text-neighborhood-slate/70", children: "RESTful API endpoints for developers to integrate with external applications." }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs bg-neighborhood-rust text-white px-2 py-1 rounded", children: "/api/*" }) })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-xl font-semibold text-neighborhood-slate mb-3", children: "Event-Sourced Architecture" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where the current state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic with full history tracking." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-gray-50 p-4 rounded-lg", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Base URL" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { className: "text-sm bg-gray-200 px-2 py-1 rounded", children: "https://your-domain.com/api" })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-xl font-semibold text-neighborhood-slate mb-3", children: "Event-Sourced Architecture" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where the current state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic with full history tracking." }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bg-gray-50 p-4 rounded-lg", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Base URL" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { className: "text-sm bg-gray-200 px-2 py-1 rounded", children: "https://your-domain.com/api" })
             ] })
           ] })
         ] }),
-        selectedSection === "authentication" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Authentication" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-lg font-semibold mb-3", children: "Login" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-gray-50 p-4 rounded-lg mb-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2 mb-2", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "/api/auth/login" })
+        selectedSection === "authentication" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Authentication" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold mb-3", children: "Login" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bg-gray-50 p-4 rounded-lg mb-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center gap-2 mb-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "/api/auth/login" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-sm text-neighborhood-slate/70 mb-3", children: "Authenticate with email and password to receive a JWT token." }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mb-4", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Request Body:" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-sm text-neighborhood-slate/70 mb-3", children: "Authenticate with email and password to receive a JWT token." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mb-4", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Request Body:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
                   email: "alice@neighborhood.local",
                   password: "your_password"
                 }, null, 2) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Response:" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Response:" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
                   token: "mock-jwt-token-550e8400-e29b-41d4-a716-446655440001"
                 }, null, 2) })
               ] })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-lg font-semibold mb-3", children: "Using the Token" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/80 mb-3", children: "Include the JWT token in the Authorization header for all API requests:" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "bg-gray-50 p-4 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { className: "text-sm", children: "Authorization: Bearer your-jwt-token-here" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold mb-3", children: "Using the Token" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/80 mb-3", children: "Include the JWT token in the Authorization header for all API requests:" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-gray-50 p-4 rounded-lg", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { className: "text-sm", children: "Authorization: Bearer your-jwt-token-here" }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bg-yellow-50 border border-yellow-200 rounded-lg p-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold text-yellow-800 mb-2", children: "Development Note" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-yellow-700 text-sm", children: "This implementation uses mock JWT tokens for demonstration. In production, implement proper JWT signing, validation, and expiration handling." })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bg-yellow-50 border border-yellow-200 rounded-lg p-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold text-yellow-800 mb-2", children: "Development Note" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-yellow-700 text-sm", children: "This implementation uses mock JWT tokens for demonstration. In production, implement proper JWT signing, validation, and expiration handling." })
           ] })
         ] }),
-        selectedSection === "items" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Items API" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "/api/items" })
+        selectedSection === "items" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Items API" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "space-y-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "/api/items" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get all items with optional pagination." }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "limit" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get all items with optional pagination." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "limit" }),
                   " - Maximum number of items (default: 50)"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "offset" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "offset" }),
                   " - Number of items to skip (default: 0)"
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Example Response:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify([
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Example Response:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify([
                 {
                   id: "650e8400-e29b-41d4-a716-446655440001",
                   owner_id: "550e8400-e29b-41d4-a716-446655440001",
@@ -1507,14 +1610,14 @@ function ApiDocs() {
                 }
               ], null, 2) })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "/api/items" })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "/api/items" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Create a new item." }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Request Body:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Create a new item." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Request Body:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
                 owner_id: "550e8400-e29b-41d4-a716-446655440001",
                 title: "Circular Saw",
                 description: "Professional grade circular saw with laser guide",
@@ -1526,88 +1629,88 @@ function ApiDocs() {
             ] })
           ] })
         ] }),
-        selectedSection === "reservations" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Reservations API" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "space-y-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "/api/reservations" })
+        selectedSection === "reservations" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Reservations API" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "space-y-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "/api/reservations" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get current reservation states with filtering options." }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "item_id" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get current reservation states with filtering options." }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Query Parameters:" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("ul", { className: "text-sm text-neighborhood-slate/70 mb-3 space-y-1", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "item_id" }),
                   " - Filter by item ID"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "requester_id" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "requester_id" }),
                   " - Filter by requester ID"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("li", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "status" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("li", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "status" }),
                   " - Filter by status (pending, approved, active, returned, cancelled)"
                 ] })
               ] })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "/api/reservations/[id]" })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm font-mono", children: "GET" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "/api/reservations/[id]" })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get a specific reservation's current state." })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Get a specific reservation's current state." })
             ] })
           ] })
         ] }),
-        selectedSection === "events" && /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Event Sourcing" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where each reservation's state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "text-lg font-semibold mb-3", children: "Event Types" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("table", { className: "min-w-full border border-gray-200", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("tr", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("th", { className: "px-4 py-2 text-left", children: "Event Type" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("th", { className: "px-4 py-2 text-left", children: "Description" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("th", { className: "px-4 py-2 text-left", children: "Valid From States" }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("th", { className: "px-4 py-2 text-left", children: "Resulting State" })
+        selectedSection === "events" && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "text-2xl font-bold text-neighborhood-slate mb-4", children: "Event Sourcing" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/80 mb-4", children: "The reservation system uses event sourcing where each reservation's state is computed from an immutable log of events. This provides complete audit trails and enables complex business logic." }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold mb-3", children: "Event Types" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "overflow-x-auto", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("table", { className: "min-w-full border border-gray-200", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("thead", { className: "bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { className: "px-4 py-2 text-left", children: "Event Type" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { className: "px-4 py-2 text-left", children: "Description" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { className: "px-4 py-2 text-left", children: "Valid From States" }),
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("th", { className: "px-4 py-2 text-left", children: "Resulting State" })
               ] }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("tbody", { className: "divide-y divide-gray-200", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "requested" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "Initial reservation request" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "-" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "pending" })
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tbody", { className: "divide-y divide-gray-200", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "requested" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "Initial reservation request" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "-" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "pending" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "approved" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "Owner approves reservation" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "pending" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "approved" })
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "approved" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "Owner approves reservation" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "pending" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "approved" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "activated" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "Item picked up by requester" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "approved" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "active" })
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "activated" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "Item picked up by requester" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "approved" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "active" })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "returned" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "Item returned by requester" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "active" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("td", { className: "px-4 py-2", children: "returned" })
+                /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2 font-mono text-sm", children: "returned" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "Item returned by requester" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "active" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("td", { className: "px-4 py-2", children: "returned" })
                 ] })
               ] })
             ] }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }),
-              /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("code", { children: "/api/reservations/events" })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center gap-2 mb-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-mono", children: "POST" }),
+              /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("code", { children: "/api/reservations/events" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Add a new event to the reservation log." }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h4", { className: "font-semibold mb-2", children: "Example: Create New Reservation" }),
-            /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-neighborhood-slate/70 mb-3", children: "Add a new event to the reservation log." }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h4", { className: "font-semibold mb-2", children: "Example: Create New Reservation" }),
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("pre", { className: "bg-gray-800 text-green-400 p-3 rounded text-sm overflow-x-auto", children: JSON.stringify({
               item_id: "650e8400-e29b-41d4-a716-446655440001",
               event_type: "requested",
               quantity: 1,
@@ -1619,20 +1722,20 @@ function ApiDocs() {
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-4", children: "API Examples" }),
-      /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "font-semibold mb-2", children: "Authentication" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/auth/login with email and password to get JWT token" })
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-4", children: "API Examples" }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "font-semibold mb-2", children: "Authentication" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/auth/login with email and password to get JWT token" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "font-semibold mb-2", children: "Get Items" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-xs text-neighborhood-slate/70", children: "GET /api/items with Authorization header to retrieve all items" })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "font-semibold mb-2", children: "Get Items" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-xs text-neighborhood-slate/70", children: "GET /api/items with Authorization header to retrieve all items" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h3", { className: "font-semibold mb-2", children: "Create Reservation" }),
-          /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/reservations/events to create new reservation events" })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "font-semibold mb-2", children: "Create Reservation" }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-xs text-neighborhood-slate/70", children: "POST /api/reservations/events to create new reservation events" })
         ] })
       ] })
     ] })
@@ -1642,20 +1745,20 @@ function ApiDocs() {
 // app/routes/register.tsx
 var register_exports = {};
 __export(register_exports, {
-  action: () => action8,
+  action: () => action9,
   default: () => Register,
-  meta: () => meta6
+  meta: () => meta7
 });
-var import_react8 = require("@remix-run/react"), import_node16 = require("@remix-run/node");
-var import_jsx_runtime8 = require("react/jsx-runtime"), meta6 = () => [{ title: "Join Community - Toolshed" }];
-async function action8({ request }) {
+var import_react9 = require("@remix-run/react"), import_node17 = require("@remix-run/node");
+var import_jsx_runtime9 = require("react/jsx-runtime"), meta7 = () => [{ title: "Join Community - Toolshed" }];
+async function action9({ request }) {
   let formData = await request.formData(), name = formData.get("name")?.toString(), email = formData.get("email")?.toString(), password = formData.get("password")?.toString(), confirmPassword = formData.get("confirmPassword")?.toString(), neighborhood = formData.get("neighborhood")?.toString(), contactMethod = formData.get("contactMethod")?.toString();
   if (!name || !email || !password || !confirmPassword)
-    return (0, import_node16.json)({ error: "All fields are required" }, { status: 400 });
+    return (0, import_node17.json)({ error: "All fields are required" }, { status: 400 });
   if (password !== confirmPassword)
-    return (0, import_node16.json)({ error: "Passwords do not match" }, { status: 400 });
+    return (0, import_node17.json)({ error: "Passwords do not match" }, { status: 400 });
   if (password.length < 6)
-    return (0, import_node16.json)({ error: "Password must be at least 6 characters long" }, { status: 400 });
+    return (0, import_node17.json)({ error: "Password must be at least 6 characters long" }, { status: 400 });
   try {
     let user = await createUser({
       name,
@@ -1664,155 +1767,163 @@ async function action8({ request }) {
       neighborhood: neighborhood || "",
       contact_method: contactMethod || "message"
     });
-    return (0, import_node16.redirect)("/profile?welcome=true&new=true");
+    return (0, import_node17.redirect)("/profile?welcome=true&new=true");
   } catch (error) {
-    return error.message?.includes("unique constraint") || error.message?.includes("already exists") ? (0, import_node16.json)({ error: "An account with this email already exists" }, { status: 400 }) : (console.error("Registration error:", error), (0, import_node16.json)({ error: "Something went wrong. Please try again." }, { status: 500 }));
+    return error.message?.includes("unique constraint") || error.message?.includes("already exists") ? (0, import_node17.json)({ error: "An account with this email already exists" }, { status: 400 }) : (console.error("Registration error:", error), (0, import_node17.json)({ error: "Something went wrong. Please try again." }, { status: 500 }));
   }
 }
 function Register() {
-  let actionData = (0, import_react8.useActionData)(), isSubmitting = (0, import_react8.useNavigation)().state === "submitting";
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "max-w-md w-full space-y-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Join the Community" }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Start sharing tools with your neighbors" })
+  let actionData = (0, import_react9.useActionData)(), isSubmitting = (0, import_react9.useNavigation)().state === "submitting";
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "text-center mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h1", { style: { fontSize: "2rem", fontWeight: "bold", marginBottom: "0.5rem" }, children: "Join the Community" }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { color: "#6b7280" }, children: "Start sharing tools with your neighbors" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_react8.Form, { method: "post", className: "space-y-6", children: [
-        actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-red-600 text-sm", children: actionData.error }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            "input",
-            {
-              id: "name",
-              name: "name",
-              type: "text",
-              autoComplete: "name",
-              required: !0,
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "Enter your full name"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            "input",
-            {
-              id: "email",
-              name: "email",
-              type: "email",
-              autoComplete: "email",
-              required: !0,
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "Enter your email"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            "input",
-            {
-              id: "neighborhood",
-              name: "neighborhood",
-              type: "text",
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "e.g. Downtown, Riverside"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
-            "select",
-            {
-              id: "contactMethod",
-              name: "contactMethod",
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              children: [
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "message", children: "In-app messaging" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "email", children: "Email" }),
-                /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("option", { value: "phone", children: "Phone" })
-              ]
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            "input",
-            {
-              id: "password",
-              name: "password",
-              type: "password",
-              autoComplete: "new-password",
-              required: !0,
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "Create a password"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("label", { htmlFor: "confirmPassword", className: "block text-sm font-medium text-neighborhood-slate", children: "Confirm Password" }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            "input",
-            {
-              id: "confirmPassword",
-              name: "confirmPassword",
-              type: "password",
-              autoComplete: "new-password",
-              required: !0,
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "Confirm your password"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-            "input",
-            {
-              id: "agree-terms",
-              name: "agree-terms",
-              type: "checkbox",
-              required: !0,
-              className: "h-4 w-4 text-neighborhood-goldenrod focus:ring-neighborhood-goldenrod border-gray-300 rounded"
-            }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { htmlFor: "agree-terms", className: "ml-2 block text-sm text-neighborhood-slate", children: [
-            "I agree to the",
-            " ",
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react8.Link, { to: "/terms", className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Terms of Service" }),
-            " ",
-            "and",
-            " ",
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_react8.Link, { to: "/privacy", className: "text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Privacy Policy" })
-          ] })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-          "button",
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(import_react9.Form, { method: "post", children: [
+      actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "error", style: {
+        backgroundColor: "#fef2f2",
+        border: "1px solid #fecaca",
+        borderRadius: "6px",
+        padding: "0.75rem",
+        marginBottom: "1rem"
+      }, children: actionData.error }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { htmlFor: "name", children: "Full Name" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          "input",
           {
-            type: "submit",
-            disabled: isSubmitting,
-            className: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-neighborhood-goldenrod hover:bg-neighborhood-goldenrod/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod disabled:opacity-50 disabled:cursor-not-allowed",
-            children: isSubmitting ? "Creating account..." : "Create account"
+            id: "name",
+            name: "name",
+            type: "text",
+            autoComplete: "name",
+            required: !0,
+            className: "form-input",
+            placeholder: "Enter your full name"
           }
-        ) })
+        )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "mt-6", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "relative", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-full border-t border-gray-300" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "Already have an account?" }) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
-          import_react8.Link,
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { htmlFor: "email", children: "Email address" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          "input",
           {
-            to: "/login",
-            className: "w-full flex justify-center py-2 px-4 border border-neighborhood-slate rounded-md shadow-sm text-sm font-medium text-neighborhood-slate bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
-            children: "Sign in instead"
+            id: "email",
+            name: "email",
+            type: "email",
+            autoComplete: "email",
+            required: !0,
+            className: "form-input",
+            placeholder: "Enter your email"
           }
-        ) })
-      ] })
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { htmlFor: "neighborhood", children: "Neighborhood" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          "input",
+          {
+            id: "neighborhood",
+            name: "neighborhood",
+            type: "text",
+            className: "form-input",
+            placeholder: "e.g. Downtown, Riverside"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { htmlFor: "contactMethod", children: "Preferred Contact Method" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+          "select",
+          {
+            id: "contactMethod",
+            name: "contactMethod",
+            className: "form-input",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "message", children: "In-app messaging" }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "email", children: "Email" }),
+              /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("option", { value: "phone", children: "Phone" })
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { htmlFor: "password", children: "Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          "input",
+          {
+            id: "password",
+            name: "password",
+            type: "password",
+            autoComplete: "new-password",
+            required: !0,
+            className: "form-input",
+            placeholder: "Create a password"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("label", { htmlFor: "confirmPassword", children: "Confirm Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          "input",
+          {
+            id: "confirmPassword",
+            name: "confirmPassword",
+            type: "password",
+            autoComplete: "new-password",
+            required: !0,
+            className: "form-input",
+            placeholder: "Confirm your password"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "form-group", style: { display: "flex", alignItems: "center" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+          "input",
+          {
+            id: "agree-terms",
+            name: "agree-terms",
+            type: "checkbox",
+            required: !0,
+            style: { marginRight: "0.5rem" }
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { htmlFor: "agree-terms", style: { fontSize: "0.875rem" }, children: [
+          "I agree to the",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react9.Link, { to: "/terms", style: { color: "#2563eb", textDecoration: "underline" }, children: "Terms of Service" }),
+          " ",
+          "and",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_react9.Link, { to: "/privacy", style: { color: "#2563eb", textDecoration: "underline" }, children: "Privacy Policy" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        "button",
+        {
+          type: "submit",
+          disabled: isSubmitting,
+          className: "btn btn-primary",
+          style: { width: "100%", opacity: isSubmitting ? 0.5 : 1 },
+          children: isSubmitting ? "Creating account..." : "Create account"
+        }
+      ) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { style: {
+      marginTop: "1.5rem",
+      paddingTop: "1.5rem",
+      borderTop: "1px solid #e5e7eb",
+      textAlign: "center"
+    }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { style: { color: "#6b7280", marginBottom: "1rem" }, children: "Already have an account?" }),
+      /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        import_react9.Link,
+        {
+          to: "/login",
+          className: "btn btn-secondary",
+          style: { width: "100%" },
+          children: "Sign in instead"
+        }
+      )
     ] })
   ] }) });
 }
@@ -1822,9 +1933,9 @@ var tool_id_exports = {};
 __export(tool_id_exports, {
   default: () => ToolDetail,
   loader: () => loader14,
-  meta: () => meta7
+  meta: () => meta8
 });
-var import_node17 = require("@remix-run/node"), import_react9 = require("@remix-run/react"), import_jsx_runtime9 = require("react/jsx-runtime"), meta7 = () => [
+var import_node18 = require("@remix-run/node"), import_react10 = require("@remix-run/react"), import_jsx_runtime10 = require("react/jsx-runtime"), meta8 = () => [
   { title: "Tool Details - Toolshed" },
   { name: "description", content: "View tool details and contact the owner" }
 ];
@@ -1832,19 +1943,19 @@ async function loader14({ params }) {
   let toolId = params.id;
   if (!toolId)
     throw new Response("Tool not found", { status: 404 });
-  return (0, import_node17.json)({ toolId });
+  return (0, import_node18.json)({ toolId });
 }
 function ToolDetail() {
-  let { toolId } = (0, import_react9.useLoaderData)();
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "text-center py-12 px-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+  let { toolId } = (0, import_react10.useLoaderData)();
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "text-center py-12 px-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
       "svg",
       {
         className: "mx-auto h-12 w-12 text-gray-400",
         fill: "none",
         stroke: "currentColor",
         viewBox: "0 0 24 24",
-        children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -1855,19 +1966,19 @@ function ToolDetail() {
         )
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("h3", { className: "mt-2 text-sm font-medium text-gray-900", children: "Tool not found" }),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("p", { className: "mt-1 text-sm text-gray-500", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "mt-2 text-sm font-medium text-gray-900", children: "Tool not found" }),
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("p", { className: "mt-1 text-sm text-gray-500", children: [
       'Tool with ID "',
       toolId,
       '" could not be found. This feature will be available once the database schema is integrated.'
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
       "a",
       {
         href: "/browse",
         className: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M10 19l-7-7m0 0l7-7m-7 7h18" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M10 19l-7-7m0 0l7-7m-7 7h18" }) }),
           "Back to Browse"
         ]
       }
@@ -1878,52 +1989,52 @@ function ToolDetail() {
 // app/routes/profile.tsx
 var profile_exports = {};
 __export(profile_exports, {
-  action: () => action9,
+  action: () => action10,
   default: () => Profile,
   loader: () => loader15,
-  meta: () => meta8
+  meta: () => meta9
 });
-var import_react10 = require("react"), import_react11 = require("@remix-run/react"), import_node18 = require("@remix-run/node");
-var import_jsx_runtime10 = require("react/jsx-runtime"), meta8 = () => [{ title: "Profile - Toolshed" }];
+var import_react11 = require("react"), import_react12 = require("@remix-run/react"), import_node19 = require("@remix-run/node");
+var import_jsx_runtime11 = require("react/jsx-runtime"), meta9 = () => [{ title: "Profile - Toolshed" }];
 async function loader15({ request }) {
   let user = await getUserByEmail("alice@neighborhood.local");
   if (!user)
     throw new Response("User not found", { status: 404 });
   let userItems = (await getItems()).filter((item) => item.ownerId === user.id);
-  return (0, import_node18.json)({ user, userItems });
+  return (0, import_node19.json)({ user, userItems });
 }
-async function action9({ request }) {
+async function action10({ request }) {
   let formData = await request.formData();
   if (formData.get("intent") === "updateProfile") {
     let name = formData.get("name")?.toString(), neighborhood = formData.get("neighborhood")?.toString(), contactMethod = formData.get("contactMethod")?.toString();
     if (!name)
-      return (0, import_node18.json)({ error: "Name is required" }, { status: 400 });
+      return (0, import_node19.json)({ error: "Name is required" }, { status: 400 });
     try {
       let user = await getUserByEmail("alice@neighborhood.local");
       return user ? (await updateUser(user.id, {
         name,
         neighborhood: neighborhood || "",
         contact_method: contactMethod || "message"
-      }), (0, import_node18.json)({ success: "Profile updated successfully" })) : (0, import_node18.json)({ error: "User not found" }, { status: 404 });
+      }), (0, import_node19.json)({ success: "Profile updated successfully" })) : (0, import_node19.json)({ error: "User not found" }, { status: 404 });
     } catch (error) {
-      return console.error("Profile update error:", error), (0, import_node18.json)({ error: "Failed to update profile" }, { status: 500 });
+      return console.error("Profile update error:", error), (0, import_node19.json)({ error: "Failed to update profile" }, { status: 500 });
     }
   }
-  return (0, import_node18.json)({ error: "Invalid action" }, { status: 400 });
+  return (0, import_node19.json)({ error: "Invalid action" }, { status: 400 });
 }
 function Profile() {
-  let { user, userItems } = (0, import_react11.useLoaderData)(), actionData = (0, import_react11.useActionData)(), navigation = (0, import_react11.useNavigation)(), [searchParams] = (0, import_react11.useSearchParams)(), [isEditing, setIsEditing] = (0, import_react10.useState)(!1), isUpdating = navigation.state === "submitting" && navigation.formData?.get("intent") === "updateProfile", isWelcome = searchParams.get("welcome") === "true", isNewUser = searchParams.get("new") === "true";
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "container mx-auto px-4 py-8", children: [
-    isWelcome && /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "mb-8 bg-neighborhood-mint/10 border border-neighborhood-mint/20 rounded-lg p-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-2", children: isNewUser ? "Welcome to Toolshed!" : "Welcome back!" }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-neighborhood-slate/70", children: isNewUser ? "Your account has been created successfully. Start by browsing available tools or sharing your own." : "You're successfully signed in. Explore your neighborhood's shared resources." })
+  let { user, userItems } = (0, import_react12.useLoaderData)(), actionData = (0, import_react12.useActionData)(), navigation = (0, import_react12.useNavigation)(), [searchParams] = (0, import_react12.useSearchParams)(), [isEditing, setIsEditing] = (0, import_react11.useState)(!1), isUpdating = navigation.state === "submitting" && navigation.formData?.get("intent") === "updateProfile", isWelcome = searchParams.get("welcome") === "true", isNewUser = searchParams.get("new") === "true";
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "container mx-auto px-4 py-8", children: [
+    isWelcome && /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "mb-8 bg-neighborhood-mint/10 border border-neighborhood-mint/20 rounded-lg p-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "text-xl font-semibold text-neighborhood-slate mb-2", children: isNewUser ? "Welcome to Toolshed!" : "Welcome back!" }),
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-neighborhood-slate/70", children: isNewUser ? "Your account has been created successfully. Start by browsing available tools or sharing your own." : "You're successfully signed in. Explore your neighborhood's shared resources." })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "lg:col-span-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center justify-between mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h1", { className: "text-2xl font-bold text-neighborhood-slate", children: "My Profile" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid grid-cols-1 lg:grid-cols-3 gap-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "lg:col-span-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex items-center justify-between mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { className: "text-2xl font-bold text-neighborhood-slate", children: "My Profile" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
               "button",
               {
                 onClick: () => setIsEditing(!isEditing),
@@ -1932,13 +2043,13 @@ function Profile() {
               }
             )
           ] }),
-          actionData?.success && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "mb-6 bg-green-50 border border-green-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-green-600 text-sm", children: actionData.success }) }),
-          actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "mb-6 bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-red-600 text-sm", children: actionData.error }) }),
-          isEditing ? /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(import_react11.Form, { method: "post", className: "space-y-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("input", { type: "hidden", name: "intent", value: "updateProfile" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+          actionData?.success && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "mb-6 bg-green-50 border border-green-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-green-600 text-sm", children: actionData.success }) }),
+          actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "mb-6 bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-red-600 text-sm", children: actionData.error }) }),
+          isEditing ? /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(import_react12.Form, { method: "post", className: "space-y-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("input", { type: "hidden", name: "intent", value: "updateProfile" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("label", { htmlFor: "name", className: "block text-sm font-medium text-neighborhood-slate", children: "Full Name" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "input",
                 {
                   id: "name",
@@ -1950,9 +2061,9 @@ function Profile() {
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email Address" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email Address" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "input",
                 {
                   id: "email",
@@ -1963,11 +2074,11 @@ function Profile() {
                   className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-50 text-gray-500"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-xs text-neighborhood-slate/60 mt-1", children: "Email cannot be changed" })
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-xs text-neighborhood-slate/60 mt-1", children: "Email cannot be changed" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("label", { htmlFor: "neighborhood", className: "block text-sm font-medium text-neighborhood-slate", children: "Neighborhood" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "input",
                 {
                   id: "neighborhood",
@@ -1978,9 +2089,9 @@ function Profile() {
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-neighborhood-slate", children: "Preferred Contact Method" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(
                 "select",
                 {
                   id: "contactMethod",
@@ -1988,15 +2099,15 @@ function Profile() {
                   defaultValue: user.contactMethod,
                   className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "message", children: "In-app messaging" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "email", children: "Email" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("option", { value: "phone", children: "Phone" })
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { value: "message", children: "In-app messaging" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { value: "email", children: "Email" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("option", { value: "phone", children: "Phone" })
                   ]
                 }
               )
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex gap-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex gap-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "button",
                 {
                   type: "submit",
@@ -2005,7 +2116,7 @@ function Profile() {
                   children: isUpdating ? "Saving..." : "Save Changes"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
                 "button",
                 {
                   type: "button",
@@ -2015,34 +2126,34 @@ function Profile() {
                 }
               )
             ] })
-          ] }) : /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Name" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-lg text-neighborhood-slate", children: user.name })
+          ] }) : /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "space-y-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Name" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-lg text-neighborhood-slate", children: user.name })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Email" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-lg text-neighborhood-slate", children: user.email })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Email" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-lg text-neighborhood-slate", children: user.email })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Neighborhood" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-lg text-neighborhood-slate", children: user.neighborhood || "Not specified" })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Neighborhood" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-lg text-neighborhood-slate", children: user.neighborhood || "Not specified" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Contact Preference" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-lg text-neighborhood-slate capitalize", children: user.contactMethod })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Contact Preference" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-lg text-neighborhood-slate capitalize", children: user.contactMethod })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Member Since" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-lg text-neighborhood-slate", children: new Date(user.createdAt).toLocaleDateString() })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-sm font-medium text-neighborhood-slate/70", children: "Member Since" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-lg text-neighborhood-slate", children: new Date(user.createdAt).toLocaleDateString() })
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center justify-between mb-6", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "My Shared Items" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-              import_react11.Link,
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "mt-8 bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex items-center justify-between mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "text-xl font-semibold text-neighborhood-slate", children: "My Shared Items" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              import_react12.Link,
               {
                 to: "/share",
                 className: "px-4 py-2 bg-neighborhood-mint text-neighborhood-slate rounded-lg hover:bg-neighborhood-mint/80 transition-colors",
@@ -2050,22 +2161,22 @@ function Profile() {
               }
             )
           ] }),
-          userItems.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: userItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "font-semibold text-neighborhood-slate", children: item.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-sm text-neighborhood-slate/70 mt-1", children: item.description }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex items-center justify-between mt-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "text-xs bg-neighborhood-mint/20 text-neighborhood-slate px-2 py-1 rounded", children: item.category }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("span", { className: "text-xs text-neighborhood-slate/60", children: [
+          userItems.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: userItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "border border-gray-200 rounded-lg p-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "font-semibold text-neighborhood-slate", children: item.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-sm text-neighborhood-slate/70 mt-1", children: item.description }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex items-center justify-between mt-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-xs bg-neighborhood-mint/20 text-neighborhood-slate px-2 py-1 rounded", children: item.category }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: "text-xs text-neighborhood-slate/60", children: [
                 "Available: ",
                 item.quantityAvailable,
                 "/",
                 item.quantityTotal
               ] })
             ] })
-          ] }, item.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "text-center py-8", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("p", { className: "text-neighborhood-slate/70 mb-4", children: "You haven't shared any items yet." }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-              import_react11.Link,
+          ] }, item.id)) }) : /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "text-center py-8", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "text-neighborhood-slate/70 mb-4", children: "You haven't shared any items yet." }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              import_react12.Link,
               {
                 to: "/share",
                 className: "inline-flex items-center px-4 py-2 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors",
@@ -2075,28 +2186,28 @@ function Profile() {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-6", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Quick Actions" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-              import_react11.Link,
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "space-y-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Quick Actions" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              import_react12.Link,
               {
                 to: "/browse",
                 className: "block w-full px-4 py-3 bg-neighborhood-goldenrod text-white rounded-lg hover:bg-neighborhood-goldenrod/90 transition-colors text-center",
                 children: "Browse Items"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-              import_react11.Link,
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              import_react12.Link,
               {
                 to: "/share",
                 className: "block w-full px-4 py-3 bg-neighborhood-mint text-neighborhood-slate rounded-lg hover:bg-neighborhood-mint/80 transition-colors text-center",
                 children: "Share an Item"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-              import_react11.Link,
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              import_react12.Link,
               {
                 to: "/reservations",
                 className: "block w-full px-4 py-3 bg-white border border-neighborhood-slate text-neighborhood-slate rounded-lg hover:bg-gray-50 transition-colors text-center",
@@ -2105,30 +2216,30 @@ function Profile() {
             )
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Community Stats" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "text-neighborhood-slate/70", children: "Items Shared" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "font-semibold text-neighborhood-slate", children: userItems.length })
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Community Stats" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-neighborhood-slate/70", children: "Items Shared" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "font-semibold text-neighborhood-slate", children: userItems.length })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "text-neighborhood-slate/70", children: "Trust Score" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "font-semibold text-neighborhood-goldenrod", children: "\u2605\u2605\u2605\u2605\u2606" })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-neighborhood-slate/70", children: "Trust Score" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "font-semibold text-neighborhood-goldenrod", children: "\u2605\u2605\u2605\u2605\u2606" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "flex justify-between", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "text-neighborhood-slate/70", children: "Exchanges" }),
-              /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: "font-semibold text-neighborhood-slate", children: "12" })
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "text-neighborhood-slate/70", children: "Exchanges" }),
+              /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "font-semibold text-neighborhood-slate", children: "12" })
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Account" }),
-          /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Notification Settings" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Privacy Settings" }),
-            /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
-              import_react11.Link,
+        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { className: "text-lg font-semibold text-neighborhood-slate mb-4", children: "Account" }),
+          /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Notification Settings" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "block w-full px-4 py-2 text-left text-neighborhood-slate hover:bg-gray-50 rounded", children: "Privacy Settings" }),
+            /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+              import_react12.Link,
               {
                 to: "/logout",
                 className: "block w-full px-4 py-2 text-left text-red-600 hover:bg-red-50 rounded",
@@ -2147,44 +2258,44 @@ var index_exports = {};
 __export(index_exports, {
   default: () => Index
 });
-var import_react12 = require("@remix-run/react"), import_jsx_runtime11 = require("react/jsx-runtime");
+var import_react13 = require("@remix-run/react"), import_jsx_runtime12 = require("react/jsx-runtime");
 function Index() {
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("nav", { className: "nav", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "container", children: /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "nav-content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h1", { children: "Toolshed" }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "nav-links", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/login", children: "Sign In" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/register", className: "btn btn-primary", children: "Join" })
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("nav", { className: "nav", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "container", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "nav-content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h1", { children: "Toolshed" }),
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "nav-links", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/login", children: "Sign In" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/register", className: "btn btn-primary", children: "Join" })
       ] })
     ] }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("main", { className: "container py-12", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("header", { className: "text-center mb-12", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h2", { className: "title", children: "Welcome to Toolshed" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { className: "subtitle", children: "Share tools, borrow equipment, and build stronger communities. Connect with neighbors to share resources and reduce waste." })
+    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("main", { className: "container py-12", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("header", { className: "text-center mb-12", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h2", { className: "title", children: "Welcome to Toolshed" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "subtitle", children: "Share tools, borrow equipment, and build stronger communities. Connect with neighbors to share resources and reduce waste." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "grid-3 mb-12", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "card p-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { children: "Share Your Tools" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "List tools you're willing to lend to neighbors. From power drills to garden equipment, help your community access what they need." }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/share", children: "Start Sharing \u2192" })
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid-3 mb-12", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "card p-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Share Your Tools" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "List tools you're willing to lend to neighbors. From power drills to garden equipment, help your community access what they need." }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/share", children: "Start Sharing \u2192" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "card p-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { children: "Find What You Need" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Browse available tools in your neighborhood. Save money and reduce waste by borrowing instead of buying." }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/browse", children: "Browse Tools \u2192" })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "card p-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Find What You Need" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Browse available tools in your neighborhood. Save money and reduce waste by borrowing instead of buying." }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/browse", children: "Browse Tools \u2192" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "card p-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { children: "Build Community" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Connect with neighbors, build trust, and create a stronger, more sustainable community together." }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/login", children: "Get Started \u2192" })
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "card p-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Build Community" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Connect with neighbors, build trust, and create a stronger, more sustainable community together." }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/login", children: "Get Started \u2192" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "text-center cta", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("h3", { children: "Ready to get started?" }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("p", { children: "Join our community and start sharing resources with your neighbors today." }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "flex-center", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/register", className: "btn btn-primary", children: "Create Account" }),
-          /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(import_react12.Link, { to: "/login", className: "btn btn-secondary", children: "Sign In" })
+      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-center cta", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { children: "Ready to get started?" }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { children: "Join our community and start sharing resources with your neighbors today." }),
+        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex-center", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/register", className: "btn btn-primary", children: "Create Account" }),
+          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react13.Link, { to: "/login", className: "btn btn-secondary", children: "Sign In" })
         ] })
       ] })
     ] })
@@ -2195,25 +2306,25 @@ function Index() {
 var browse_exports = {};
 __export(browse_exports, {
   default: () => Browse,
-  meta: () => meta9
+  meta: () => meta10
 });
-var import_react13 = require("react"), import_jsx_runtime12 = require("react/jsx-runtime"), meta9 = () => [
+var import_react14 = require("react"), import_jsx_runtime13 = require("react/jsx-runtime"), meta10 = () => [
   { title: "Browse Tools - Toolshed" },
   { name: "description", content: "Browse available tools and resources in your community" }
 ];
 function Browse() {
-  let [searchTerm, setSearchTerm] = (0, import_react13.useState)(""), [selectedCategory, setSelectedCategory] = (0, import_react13.useState)("all");
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Browse Tools" }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "text-lg text-neighborhood-slate", children: "Discover tools and resources available in your community" })
+  let [searchTerm, setSearchTerm] = (0, import_react14.useState)(""), [selectedCategory, setSelectedCategory] = (0, import_react14.useState)("all");
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Browse Tools" }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-lg text-neighborhood-slate", children: "Discover tools and resources available in your community" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6 mb-8", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("label", { htmlFor: "search", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Search Tools" }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "relative", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("svg", { className: "h-5 w-5 text-neighborhood-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6 mb-8", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "search", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Search Tools" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "relative", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("svg", { className: "h-5 w-5 text-neighborhood-slate", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" }) }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "input",
             {
               type: "text",
@@ -2226,9 +2337,9 @@ function Browse() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("label", { htmlFor: "category", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Category" }),
-        /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "category", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Category" }),
+        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
           "select",
           {
             id: "category",
@@ -2243,20 +2354,20 @@ function Browse() {
               { id: "automotive", name: "Automotive" },
               { id: "home", name: "Home & DIY" },
               { id: "specialty", name: "Specialty Tools" }
-            ].map((category) => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("option", { value: category.id, children: category.name }, category.id))
+            ].map((category) => /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("option", { value: category.id, children: category.name }, category.id))
           }
         )
       ] })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "text-center py-12", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "text-center py-12", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
         "svg",
         {
           className: "mx-auto h-12 w-12 text-gray-400",
           fill: "none",
           stroke: "currentColor",
           viewBox: "0 0 24 24",
-          children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -2267,15 +2378,15 @@ function Browse() {
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("h3", { className: "mt-2 text-sm font-medium text-neighborhood-slate", children: "No tools available" }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("p", { className: "mt-1 text-sm text-neighborhood-slate", children: "Tools will appear here once they are shared by community members." }),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h3", { className: "mt-2 text-sm font-medium text-neighborhood-slate", children: "No tools available" }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "mt-1 text-sm text-neighborhood-slate", children: "Tools will appear here once they are shared by community members." }),
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(
         "a",
         {
           href: "/share",
           className: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-neighborhood-goldenrod hover:bg-neighborhood-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 6v6m0 0v6m0-6h6m-6 0H6" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("svg", { className: "-ml-1 mr-2 h-5 w-5", fill: "none", stroke: "currentColor", viewBox: "0 0 24 24", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("path", { strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: 2, d: "M12 6v6m0 0v6m0-6h6m-6 0H6" }) }),
             "Share a Tool"
           ]
         }
@@ -2290,9 +2401,9 @@ __export(logout_exports, {
   default: () => Logout,
   loader: () => loader16
 });
-var import_node19 = require("@remix-run/node");
+var import_node20 = require("@remix-run/node");
 async function loader16({ request }) {
-  return (0, import_node19.redirect)("/?logout=true");
+  return (0, import_node20.redirect)("/?logout=true");
 }
 function Logout() {
   return null;
@@ -2301,102 +2412,121 @@ function Logout() {
 // app/routes/login.tsx
 var login_exports = {};
 __export(login_exports, {
-  action: () => action10,
-  default: () => Login,
-  meta: () => meta10
+  action: () => action11,
+  default: () => Login2,
+  meta: () => meta11
 });
-var import_react14 = require("@remix-run/react"), import_node20 = require("@remix-run/node");
-var import_jsx_runtime13 = require("react/jsx-runtime"), meta10 = () => [{ title: "Sign In - Toolshed" }];
-async function action10({ request }) {
+var import_react15 = require("@remix-run/react"), import_node21 = require("@remix-run/node");
+var import_jsonwebtoken2 = __toESM(require("jsonwebtoken")), import_jsx_runtime14 = require("react/jsx-runtime"), meta11 = () => [{ title: "Sign In - Toolshed" }];
+async function action11({ request }) {
   let formData = await request.formData(), email = formData.get("email")?.toString(), password = formData.get("password")?.toString();
   if (!email || !password)
-    return (0, import_node20.json)({ error: "Email and password are required" }, { status: 400 });
+    return (0, import_node21.json)({ error: "Email and password are required" }, { status: 400 });
   try {
-    return await authenticateUser(email, password) ? (0, import_node20.redirect)("/profile?welcome=true") : (0, import_node20.json)({ error: "Invalid email or password" }, { status: 401 });
+    let user = await authenticateUser(email, password);
+    if (!user)
+      return (0, import_node21.json)({ error: "Invalid email or password" }, { status: 401 });
+    let token = import_jsonwebtoken2.default.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET || "fallback-secret",
+      { expiresIn: "7d" }
+    );
+    return (0, import_node21.redirect)("/profile", {
+      headers: {
+        "Set-Cookie": `auth_token=${token}; HttpOnly; Path=/; Max-Age=${7 * 24 * 60 * 60}; SameSite=Strict; Secure`
+      }
+    });
   } catch (error) {
-    return console.error("Login error:", error), (0, import_node20.json)({ error: "Something went wrong. Please try again." }, { status: 500 });
+    return console.error("Login error:", error), (0, import_node21.json)({ error: "Something went wrong. Please try again." }, { status: 500 });
   }
 }
-function Login() {
-  let actionData = (0, import_react14.useActionData)(), isSubmitting = (0, import_react14.useNavigation)().state === "submitting";
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "min-h-screen bg-neighborhood-cloud flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "max-w-md w-full space-y-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("h1", { className: "text-center text-3xl font-bold text-neighborhood-slate", children: "Sign in to Toolshed" }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "mt-2 text-center text-sm text-neighborhood-slate/70", children: "Welcome back to your community" })
+function Login2() {
+  let actionData = (0, import_react15.useActionData)(), isSubmitting = (0, import_react15.useNavigation)().state === "submitting";
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { style: { minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem 1rem" }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "form", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "text-center mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h1", { style: { fontSize: "2rem", fontWeight: "bold", marginBottom: "0.5rem" }, children: "Sign in to Toolshed" }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { style: { color: "#6b7280" }, children: "Welcome back to your community" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "bg-white rounded-lg shadow-md p-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(import_react14.Form, { method: "post", className: "space-y-6", children: [
-        actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "bg-red-50 border border-red-200 rounded-md p-4", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-red-600 text-sm", children: actionData.error }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "email", className: "block text-sm font-medium text-neighborhood-slate", children: "Email address" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_react15.Form, { method: "post", children: [
+      actionData?.error && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "error", style: {
+        backgroundColor: "#fef2f2",
+        border: "1px solid #fecaca",
+        borderRadius: "6px",
+        padding: "0.75rem",
+        marginBottom: "1rem"
+      }, children: actionData.error }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "email", children: "Email address" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          "input",
+          {
+            id: "email",
+            name: "email",
+            type: "email",
+            autoComplete: "email",
+            required: !0,
+            className: "form-input",
+            placeholder: "Enter your email"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "form-group", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "password", children: "Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          "input",
+          {
+            id: "password",
+            name: "password",
+            type: "password",
+            autoComplete: "current-password",
+            required: !0,
+            className: "form-input",
+            placeholder: "Enter your password"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "form-group", style: { display: "flex", alignItems: "center", justifyContent: "space-between" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: { display: "flex", alignItems: "center" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
             "input",
             {
-              id: "email",
-              name: "email",
-              type: "email",
-              autoComplete: "email",
-              required: !0,
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "Enter your email"
+              id: "remember-me",
+              name: "remember-me",
+              type: "checkbox",
+              style: { marginRight: "0.5rem" }
             }
-          )
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "remember-me", style: { fontSize: "0.875rem" }, children: "Remember me" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "password", className: "block text-sm font-medium text-neighborhood-slate", children: "Password" }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-            "input",
-            {
-              id: "password",
-              name: "password",
-              type: "password",
-              autoComplete: "current-password",
-              required: !0,
-              className: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-neighborhood-goldenrod focus:border-neighborhood-goldenrod",
-              placeholder: "Enter your password"
-            }
-          )
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "flex items-center", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-              "input",
-              {
-                id: "remember-me",
-                name: "remember-me",
-                type: "checkbox",
-                className: "h-4 w-4 text-neighborhood-goldenrod focus:ring-neighborhood-goldenrod border-gray-300 rounded"
-              }
-            ),
-            /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("label", { htmlFor: "remember-me", className: "ml-2 block text-sm text-neighborhood-slate", children: "Remember me" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "text-sm", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_react14.Link, { to: "/forgot-password", className: "font-medium text-neighborhood-goldenrod hover:text-neighborhood-goldenrod/80", children: "Forgot your password?" }) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-          "button",
-          {
-            type: "submit",
-            disabled: isSubmitting,
-            className: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-neighborhood-goldenrod hover:bg-neighborhood-goldenrod/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod disabled:opacity-50 disabled:cursor-not-allowed",
-            children: isSubmitting ? "Signing in..." : "Sign in"
-          }
-        ) })
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(import_react15.Link, { to: "/forgot-password", style: { color: "#2563eb", textDecoration: "underline", fontSize: "0.875rem" }, children: "Forgot your password?" }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "mt-6", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("div", { className: "relative", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "absolute inset-0 flex items-center", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "w-full border-t border-gray-300" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "relative flex justify-center text-sm", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "px-2 bg-white text-neighborhood-slate/70", children: "New to Toolshed?" }) })
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-          import_react14.Link,
-          {
-            to: "/register",
-            className: "w-full flex justify-center py-2 px-4 border border-neighborhood-slate rounded-md shadow-sm text-sm font-medium text-neighborhood-slate bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neighborhood-goldenrod",
-            children: "Create an account"
-          }
-        ) })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("div", { className: "mt-6 text-center", children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("p", { className: "text-xs text-neighborhood-slate/60", children: "Demo account: alice@neighborhood.local / password123" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        "button",
+        {
+          type: "submit",
+          disabled: isSubmitting,
+          className: "btn btn-primary",
+          style: { width: "100%", opacity: isSubmitting ? 0.5 : 1 },
+          children: isSubmitting ? "Signing in..." : "Sign in"
+        }
+      ) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { style: {
+      marginTop: "1.5rem",
+      paddingTop: "1.5rem",
+      borderTop: "1px solid #e5e7eb",
+      textAlign: "center"
+    }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { style: { color: "#6b7280", marginBottom: "1rem" }, children: "New to Toolshed?" }),
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        import_react15.Link,
+        {
+          to: "/register",
+          className: "btn btn-secondary",
+          style: { width: "100%" },
+          children: "Create an account"
+        }
+      )
     ] })
   ] }) });
 }
@@ -2404,17 +2534,17 @@ function Login() {
 // app/routes/share.tsx
 var share_exports = {};
 __export(share_exports, {
-  action: () => action11,
+  action: () => action12,
   default: () => Share,
-  meta: () => meta11
+  meta: () => meta12
 });
-var import_node21 = require("@remix-run/node"), import_react15 = require("@remix-run/react"), import_react16 = require("react"), import_jsx_runtime14 = require("react/jsx-runtime"), meta11 = () => [
+var import_node22 = require("@remix-run/node"), import_react16 = require("@remix-run/react"), import_react17 = require("react"), import_jsx_runtime15 = require("react/jsx-runtime"), meta12 = () => [
   { title: "Share a Tool - Toolshed" },
   { name: "description", content: "Share your tools and resources with the community" }
 ];
-async function action11({ request }) {
+async function action12({ request }) {
   let formData = await request.formData(), title = formData.get("title"), description = formData.get("description"), category = formData.get("category"), errors = {};
-  return (!title || typeof title != "string" || title.trim().length === 0) && (errors.title = "Tool name is required"), (!description || typeof description != "string" || description.trim().length === 0) && (errors.description = "Description is required"), (!category || typeof category != "string" || category === "") && (errors.category = "Category is required"), Object.keys(errors).length > 0 ? (0, import_node21.json)({ errors, success: !1 }, { status: 400 }) : (console.log("Tool sharing data:", {
+  return (!title || typeof title != "string" || title.trim().length === 0) && (errors.title = "Tool name is required"), (!description || typeof description != "string" || description.trim().length === 0) && (errors.description = "Description is required"), (!category || typeof category != "string" || category === "") && (errors.category = "Category is required"), Object.keys(errors).length > 0 ? (0, import_node22.json)({ errors, success: !1 }, { status: 400 }) : (console.log("Tool sharing data:", {
     title,
     description,
     category,
@@ -2422,10 +2552,10 @@ async function action11({ request }) {
     availability: formData.get("availability"),
     location: formData.get("location"),
     contactMethod: formData.get("contactMethod")
-  }), (0, import_node21.redirect)("/browse?shared=true"));
+  }), (0, import_node22.redirect)("/browse?shared=true"));
 }
 function Share() {
-  let actionData = (0, import_react15.useActionData)(), isSubmitting = (0, import_react15.useNavigation)().state === "submitting", [selectedCategory, setSelectedCategory] = (0, import_react16.useState)(""), categories = [
+  let actionData = (0, import_react16.useActionData)(), isSubmitting = (0, import_react16.useNavigation)().state === "submitting", [selectedCategory, setSelectedCategory] = (0, import_react17.useState)(""), categories = [
     { id: "", name: "Select a category" },
     { id: "power-tools", name: "Power Tools" },
     { id: "hand-tools", name: "Hand Tools" },
@@ -2444,15 +2574,15 @@ function Share() {
     { id: "weekends", name: "Weekends Only" },
     { id: "by-appointment", name: "By Appointment" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Share a Tool" }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "text-lg text-neighborhood-slate", children: "Add your tool to the community sharing network" })
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h1", { className: "text-3xl font-bold text-neighborhood-slate mb-4", children: "Share a Tool" }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-lg text-neighborhood-slate", children: "Add your tool to the community sharing network" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_react15.Form, { method: "post", className: "space-y-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "title", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Tool Name *" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "bg-white rounded-lg shadow-sm border border-neighborhood-mint/20 p-6", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_react16.Form, { method: "post", className: "space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "title", className: "block text-sm font-medium text-neighborhood-slate mb-2", children: "Tool Name *" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
           "input",
           {
             type: "text",
@@ -2462,11 +2592,11 @@ function Share() {
             placeholder: "e.g., Power Drill, Lawnmower, Socket Set"
           }
         ),
-        actionData?.errors?.title && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1 text-sm text-neighborhood-rust", children: actionData.errors.title })
+        actionData?.errors?.title && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1 text-sm text-neighborhood-rust", children: actionData.errors.title })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "description", className: "block text-sm font-medium text-gray-700 mb-2", children: "Description *" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "description", className: "block text-sm font-medium text-gray-700 mb-2", children: "Description *" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
           "textarea",
           {
             id: "description",
@@ -2476,12 +2606,12 @@ function Share() {
             placeholder: "Describe the tool, its features, and any important details..."
           }
         ),
-        actionData?.errors?.description && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.description })
+        actionData?.errors?.description && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.description })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "category", className: "block text-sm font-medium text-gray-700 mb-2", children: "Category *" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "category", className: "block text-sm font-medium text-gray-700 mb-2", children: "Category *" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "select",
             {
               id: "category",
@@ -2489,40 +2619,40 @@ function Share() {
               value: selectedCategory,
               onChange: (e) => setSelectedCategory(e.target.value),
               className: `block w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-1 ${actionData?.errors?.category ? "border-red-300 focus:ring-red-500 focus:border-red-500" : "border-gray-300 focus:ring-blue-500 focus:border-blue-500"}`,
-              children: categories.map((category) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: category.id, children: category.name }, category.id))
+              children: categories.map((category) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: category.id, children: category.name }, category.id))
             }
           ),
-          actionData?.errors?.category && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.category })
+          actionData?.errors?.category && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mt-1 text-sm text-red-600", children: actionData.errors.category })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "condition", className: "block text-sm font-medium text-gray-700 mb-2", children: "Condition" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "condition", className: "block text-sm font-medium text-gray-700 mb-2", children: "Condition" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "select",
             {
               id: "condition",
               name: "condition",
               className: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
-              children: conditions.map((condition) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: condition.id, children: condition.name }, condition.id))
+              children: conditions.map((condition) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: condition.id, children: condition.name }, condition.id))
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "availability", className: "block text-sm font-medium text-gray-700 mb-2", children: "Availability" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "availability", className: "block text-sm font-medium text-gray-700 mb-2", children: "Availability" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "select",
             {
               id: "availability",
               name: "availability",
               className: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
-              children: availabilityOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: option.id, children: option.name }, option.id))
+              children: availabilityOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: option.id, children: option.name }, option.id))
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-700 mb-2", children: "General Location" }),
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "location", className: "block text-sm font-medium text-gray-700 mb-2", children: "General Location" }),
+          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "input",
             {
               type: "text",
@@ -2534,23 +2664,23 @@ function Share() {
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-gray-700 mb-2", children: "Preferred Contact Method" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { htmlFor: "contactMethod", className: "block text-sm font-medium text-gray-700 mb-2", children: "Preferred Contact Method" }),
+        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
           "select",
           {
             id: "contactMethod",
             name: "contactMethod",
             className: "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "message", children: "App Message" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "email", children: "Email" }),
-              /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("option", { value: "phone", children: "Phone" })
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "message", children: "App Message" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "email", children: "Email" }),
+              /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: "phone", children: "Phone" })
             ]
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "pt-4", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "pt-4", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
         "button",
         {
           type: "submit",
@@ -2564,7 +2694,7 @@ function Share() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-7FXDY7L2.js", imports: ["/build/_shared/chunk-WC423CYP.js", "/build/_shared/chunk-4HXKWYDW.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HT4INRBY.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-CYKRFYOT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-BUJGX7ZW.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-N44FFCEY.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-3AECMJGT.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-F5QCSTUM.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-5LVCS2OQ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-RNJQ7LZE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-TFTUHPFE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-EIK5O6TQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-5NG6V3RX.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-QVXE7YW2.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-LN5QICBS.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-VNQF4L67.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-KUPY5TZC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-W4UEB4XA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-GGYTJEBA.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-AYDKUBTS.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-B52W3GUJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-XQUD5DT3.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-2F6V56XS.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-Z2USS63N.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-RC4OK2PO.js", imports: ["/build/_shared/chunk-VAWQIAN7.js", "/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-7JAGJI3P.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-YXTH5F7H.js", imports: ["/build/_shared/chunk-PGOH7JLP.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "937dfe0e", hmr: void 0, url: "/build/manifest-937DFE0E.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-QBU7FYFG.js", imports: ["/build/_shared/chunk-DO3GTMLW.js", "/build/_shared/chunk-5LVCCKB6.js", "/build/_shared/chunk-G5WX4PPA.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-ZL4LIY2W.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-RMZHK4VO.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin._index": { id: "routes/admin._index", parentId: "root", path: "admin", index: !0, caseSensitive: void 0, module: "/build/routes/admin._index-TDZRWM5P.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.items": { id: "routes/admin.items", parentId: "root", path: "admin/items", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.items-OR7UFBM4.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.reservations": { id: "routes/admin.reservations", parentId: "root", path: "admin/reservations", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.reservations-HALCBFNE.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/admin.users": { id: "routes/admin.users", parentId: "root", path: "admin/users", index: void 0, caseSensitive: void 0, module: "/build/routes/admin.users-NJOGPNUO.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api-docs": { id: "routes/api-docs", parentId: "root", path: "api-docs", index: void 0, caseSensitive: void 0, module: "/build/routes/api-docs-SSZDY4C7.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.login": { id: "routes/api.auth.login", parentId: "root", path: "api/auth/login", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.login-ZNNEWMJR.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.auth.logout": { id: "routes/api.auth.logout", parentId: "root", path: "api/auth/logout", index: void 0, caseSensitive: void 0, module: "/build/routes/api.auth.logout-EVOUV26I.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.health": { id: "routes/api.health", parentId: "root", path: "api/health", index: void 0, caseSensitive: void 0, module: "/build/routes/api.health-JVOXE34R.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items.$id": { id: "routes/api.items.$id", parentId: "root", path: "api/items/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.items.$id-EYM3VE7Y.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.items._index": { id: "routes/api.items._index", parentId: "root", path: "api/items", index: !0, caseSensitive: void 0, module: "/build/routes/api.items._index-JIRXBXLT.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id": { id: "routes/api.reservations.$id", parentId: "root", path: "api/reservations/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id-GULDY36Z.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.$id.events": { id: "routes/api.reservations.$id.events", parentId: "routes/api.reservations.$id", path: "events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.$id.events-PPYU2FBK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations._index": { id: "routes/api.reservations._index", parentId: "root", path: "api/reservations", index: !0, caseSensitive: void 0, module: "/build/routes/api.reservations._index-QX7ML336.js", imports: void 0, hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.reservations.events": { id: "routes/api.reservations.events", parentId: "root", path: "api/reservations/events", index: void 0, caseSensitive: void 0, module: "/build/routes/api.reservations.events-QISCJSTE.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users.$id": { id: "routes/api.users.$id", parentId: "root", path: "api/users/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/api.users.$id-ZF4UNHBZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/api.users._index": { id: "routes/api.users._index", parentId: "root", path: "api/users", index: !0, caseSensitive: void 0, module: "/build/routes/api.users._index-RCQRBOVL.js", imports: void 0, hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/browse": { id: "routes/browse", parentId: "root", path: "browse", index: void 0, caseSensitive: void 0, module: "/build/routes/browse-NWXRBDY6.js", imports: void 0, hasAction: !1, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-5L2UEDWZ.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/login.old": { id: "routes/login.old", parentId: "routes/login", path: "old", index: void 0, caseSensitive: void 0, module: "/build/routes/login.old-NB2PYN2F.js", imports: void 0, hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/logout": { id: "routes/logout", parentId: "root", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/logout-HKEAI4P7.js", imports: ["/build/_shared/chunk-5TRFQBKG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/profile": { id: "routes/profile", parentId: "root", path: "profile", index: void 0, caseSensitive: void 0, module: "/build/routes/profile-OVFHIRRA.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !0, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/register": { id: "routes/register", parentId: "root", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/register-ROMWDYI5.js", imports: ["/build/_shared/chunk-6S2QUAFR.js", "/build/_shared/chunk-5TRFQBKG.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/share": { id: "routes/share", parentId: "root", path: "share", index: void 0, caseSensitive: void 0, module: "/build/routes/share-M4FLTPFN.js", imports: ["/build/_shared/chunk-5TRFQBKG.js"], hasAction: !0, hasLoader: !1, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 }, "routes/tool.$id": { id: "routes/tool.$id", parentId: "root", path: "tool/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/tool.$id-AZ4B7M6N.js", imports: ["/build/_shared/chunk-5TRFQBKG.js"], hasAction: !1, hasLoader: !0, hasClientAction: !1, hasClientLoader: !1, hasErrorBoundary: !1 } }, version: "ec3e64a8", hmr: void 0, url: "/build/manifest-EC3E64A8.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var mode = "production", assetsBuildDirectory = "public/build", future = { v3_fetcherPersist: !1, v3_relativeSplatPath: !1, v3_throwAbortReason: !1, v3_routeConfig: !1, v3_singleFetch: !1, v3_lazyRouteDiscovery: !1, unstable_optimizeDeps: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -2695,6 +2825,14 @@ var mode = "production", assetsBuildDirectory = "public/build", future = { v3_fe
     index: void 0,
     caseSensitive: void 0,
     module: api_health_exports
+  },
+  "routes/login.old": {
+    id: "routes/login.old",
+    parentId: "routes/login",
+    path: "old",
+    index: void 0,
+    caseSensitive: void 0,
+    module: login_old_exports
   },
   "routes/api-docs": {
     id: "routes/api-docs",
