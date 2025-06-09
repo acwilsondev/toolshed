@@ -25,7 +25,16 @@
     "test:e2e:demo": "tsx test/e2e/demo.ts",
     "test:e2e:demo:headless": "HEADLESS=true tsx test/e2e/demo.ts",
     "test:e2e:flows": "tsx test/e2e/criticalFlowsRunner.ts",
-    "test:e2e:flows:headless": "HEADLESS=true tsx test/e2e/criticalFlowsRunner.ts"
+    "test:e2e:flows:headless": "HEADLESS=true tsx test/e2e/criticalFlowsRunner.ts",
+    "test:epic": "tsx test/e2e/tests/epics/run-epics.ts",
+    "test:epic:all": "tsx test/e2e/tests/epics/run-epics.ts all",
+    "test:epic:all:headless": "tsx test/e2e/tests/epics/run-epics.ts all --headless",
+    "test:epic:1": "npm test -- test/e2e/tests/epics/epic1-auth.test.ts",
+    "test:epic:2": "npm test -- test/e2e/tests/epics/epic2-tool-management.test.ts",
+    "test:epic:3": "npm test -- test/e2e/tests/epics/epic3-tool-discovery.test.ts",
+    "test:epic:1:headless": "HEADLESS=true npm test -- test/e2e/tests/epics/epic1-auth.test.ts",
+    "test:epic:2:headless": "HEADLESS=true npm test -- test/e2e/tests/epics/epic2-tool-management.test.ts",
+    "test:epic:3:headless": "HEADLESS=true npm test -- test/e2e/tests/epics/epic3-tool-discovery.test.ts"
   },
   "keywords": [],
   "author": "",
