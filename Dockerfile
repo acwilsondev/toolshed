@@ -1,4 +1,7 @@
-FROM node:20-alpine
+FROM node:20.12.2-alpine
+
+# Update and install security patches
+RUN apk update && apk upgrade --no-cache
 
 WORKDIR /app
 
