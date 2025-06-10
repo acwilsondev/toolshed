@@ -28,8 +28,11 @@ class SimpleE2ERunner {
     
     // Wait for services to be healthy
     console.log('⌛ Waiting for services to be healthy...');
-    const maxAttempts = 10;
+    const maxAttempts = 30; // Increased to account for app startup
     let attempts = 0;
+    
+    // Initial delay to let containers start
+    await new Promise(resolve => setTimeout(resolve, 5000));
     
     while (attempts < maxAttempts) {
       try {
@@ -43,13 +46,19 @@ class SimpleE2ERunner {
         }
 
         // Check if db is healthy
-        if (!psOutput.includes('toolshed-db') || !psOutput.toLowerCase().includes('healthy')) {
+        const dbRunning = psOutput.includes('toolshed-db');
+        const dbHealthy = psOutput.includes('db') && psOutput.includes('(healthy)');
+        if (!dbRunning || !dbHealthy) {
           throw new Error('Database not yet healthy');
         }
 
-        // Check if app is running
-        if (!psOutput.includes('toolshed-app')) {
+        // Check if app is running and healthy
+        const appRunning = psOutput.includes('toolshed-app');
+        const appHealthy = psOutput.includes('app') && psOutput.includes('(healthy)');
+        if (!appRunning) {
           throw new Error('App container not running');
+        } else if (!appHealthy) {
+          throw new Error('App container starting but not yet healthy');
         }
 
         // Try the health endpoint
@@ -68,7 +77,7 @@ class SimpleE2ERunner {
           console.error('Final error:', error.message);
         } else {
           console.log(`Attempt ${attempts + 1}/${maxAttempts}: ${error.message}`);
-          await new Promise(resolve => setTimeout(resolve, 1000));
+          await new Promise(resolve => setTimeout(resolve, 5000)); // Increased delay between checks
         }
       }
       attempts++;
