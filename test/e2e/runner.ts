@@ -21,7 +21,71 @@ class SimpleE2ERunner {
     };
   }
   
+  private async startDockerCompose(): Promise<void> {
+    console.log('🐳 Starting Docker Compose environment...');
+    const { execSync } = require('child_process');
+    execSync('docker-compose up -d', { stdio: 'inherit' });
+    
+    // Wait for services to be healthy
+    console.log('⌛ Waiting for services to be healthy...');
+    const maxAttempts = 10;
+    let attempts = 0;
+    
+    while (attempts < maxAttempts) {
+      try {
+        // Get Docker Compose status
+        const psOutput = execSync('docker-compose ps -a').toString();
+        console.log('Docker Compose status:', psOutput);
+
+        // Check if any containers exited
+        if (psOutput.includes('Exit')) {
+          throw new Error('Container exited unexpectedly');
+        }
+
+        // Check if db is healthy
+        if (!psOutput.includes('toolshed-db') || !psOutput.toLowerCase().includes('healthy')) {
+          throw new Error('Database not yet healthy');
+        }
+
+        // Check if app is running
+        if (!psOutput.includes('toolshed-app')) {
+          throw new Error('App container not running');
+        }
+
+        // Try the health endpoint
+        try {
+          const response = await fetch('http://localhost:3000/api/health');
+          if (response.ok) {
+            console.log('✅ Docker Compose environment is ready');
+            return;
+          }
+          throw new Error(`Health check responded with status ${response.status}`);
+        } catch (e) {
+          throw new Error(`Health check failed: ${e.message}`);
+        }
+      } catch (error) {
+        if (attempts + 1 === maxAttempts) {
+          console.error('Final error:', error.message);
+        } else {
+          console.log(`Attempt ${attempts + 1}/${maxAttempts}: ${error.message}`);
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+      attempts++;
+    }
+    
+    throw new Error('Services did not become healthy within the timeout period');
+  }
+  
+  private async stopDockerCompose(): Promise<void> {
+    console.log('🛑 Stopping Docker Compose environment...');
+    const { execSync } = require('child_process');
+    execSync('docker-compose down', { stdio: 'inherit' });
+    console.log('✅ Docker Compose environment stopped');
+  }
+
   async initialize(): Promise<void> {
+    await this.startDockerCompose();
     console.log(`🚀 Initializing E2E tests with ${this.config.browser} (headless: ${this.config.headless})`);
     this.driver = await WebDriverFactory.createDriver(this.config);
   }
@@ -152,6 +216,7 @@ class SimpleE2ERunner {
       }
       this.driver = null;
     }
+    await this.stopDockerCompose();
   }
   
   async run(): Promise<void> {
