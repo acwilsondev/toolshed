@@ -241,8 +241,11 @@ postgres_data/
 *.db-journal
 
 # Drizzle
-drizzle/
-meta/
+# Allow migration files but ignore other Drizzle artifacts
+drizzle/*
+!drizzle/migrations/
+meta/*
+!database/migrations/meta/
 
 # Misc
 *.tgz
