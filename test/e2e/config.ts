@@ -16,7 +16,7 @@ export interface E2EConfig {
 
 const getConfig = (): E2EConfig => {
   return {
-    baseUrl: process.env.E2E_BASE_URL || 'http://localhost:3000',
+    baseUrl: process.env.E2E_BASE_URL || 'http://localhost:3000', // Using the app service port mapping from docker-compose.yml
     browser: (process.env.BROWSER as 'chrome' | 'firefox') || 'chrome',
     headless: process.env.CI === 'true' || process.env.HEADLESS === 'true',
     timeout: parseInt(process.env.E2E_TIMEOUT || '15000'),

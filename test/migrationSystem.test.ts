@@ -480,8 +480,13 @@ describe('Database Migration System', () => {
     });
 
     it('should handle missing migration files gracefully', async () => {
-      const { readdir } = await import('fs/promises');
-      vi.mocked(readdir).mockRejectedValue(new Error('Directory not found'));
+      // Reset and reconfigure the fs/promises mock and process.cwd for this test
+      vi.resetModules();
+      vi.spyOn(process, 'cwd').mockReturnValue('/nonexistent/directory');
+      vi.mock('fs/promises', () => ({
+        readdir: vi.fn().mockRejectedValue(new Error('Directory not found')),
+        readFile: vi.fn().mockResolvedValue('CREATE TABLE test (id INTEGER);')
+      }));
       
       const strategy = new ProductionMigrationStrategy('postgresql://localhost:5432/test_db', 'production');
       
@@ -490,6 +495,18 @@ describe('Database Migration System', () => {
       expect(status).toEqual([]);
       
       await strategy.close();
+      
+      // Reset the mocks to their original state for other tests
+      vi.resetModules();
+      vi.mocked(process.cwd).mockRestore();
+      vi.mock('fs/promises', async (importOriginal) => {
+        const actual = await importOriginal<typeof import('fs/promises')>();
+        return {
+          ...actual,
+          readdir: vi.fn().mockResolvedValue(['0001_initial.sql', '0002_add_users.sql']),
+          readFile: vi.fn().mockResolvedValue('CREATE TABLE test (id INTEGER);')
+        };
+      });
     });
   });
 

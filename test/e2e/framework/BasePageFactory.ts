@@ -1,5 +1,6 @@
 import { WebDriver, Builder, Capabilities } from 'selenium-webdriver';
 import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
+import * as chrome from 'selenium-webdriver/chrome';
 import { Options as FirefoxOptions } from 'selenium-webdriver/firefox';
 
 /**
@@ -44,43 +45,53 @@ export class WebDriverFactory {
     const options = new ChromeOptions();
     
     if (headless) {
-      options.addArguments('--headless');
+      options.addArguments('--headless=new');
     }
     
     options.addArguments(
       '--no-sandbox',
       '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--disable-web-security',
-      '--disable-features=VizDisplayCompositor',
-      '--disable-background-timer-throttling',
-      '--disable-renderer-backgrounding',
-      '--disable-backgrounding-occluded-windows',
-      '--remote-debugging-port=9222',
       `--window-size=${windowSize.width},${windowSize.height}`
     );
     
-    // Set additional preferences for stability
-    options.setUserPreferences({
-      'profile.default_content_setting_values.notifications': 2,
-      'profile.default_content_settings.popups': 0,
-      'profile.managed_default_content_settings.images': 2
-    });
+    const service = new chrome.ServiceBuilder('/bin/chromedriver');
     
     return new Builder()
       .forBrowser('chrome')
       .setChromeOptions(options)
+      .setChromeService(service)
       .build();
   }
   
   private static async createFirefoxDriver(headless: boolean, windowSize: { width: number; height: number }): Promise<WebDriver> {
     const options = new FirefoxOptions();
     
-    if (headless) {
-      options.addArguments('--headless');
-    }
-    
-    options.addArguments(`--width=${windowSize.width}`, `--height=${windowSize.height}`);
+    // Set Firefox-specific preferences
+    options.set('moz:firefoxOptions', {
+      prefs: {
+        'browser.startup.homepage': 'about:blank',
+        'browser.cache.disk.enable': false,
+        'browser.cache.memory.enable': false,
+        'browser.cache.offline.enable': false,
+        'network.http.use-cache': false,
+        'javascript.enabled': true,
+        'dom.disable_beforeunload': true,
+        'dom.webnotifications.enabled': false,
+        'dom.push.enabled': false,
+        'media.navigator.enabled': false,
+        'network.manage-offline-status': false,
+        'browser.tabs.remote.autostart': false,
+        'toolkit.cosmeticAnimations.enabled': false
+      },
+      args: headless ? [
+        '-headless',
+        `--width=${windowSize.width}`,
+        `--height=${windowSize.height}`
+      ] : [
+        `--width=${windowSize.width}`,
+        `--height=${windowSize.height}`
+      ]
+    });
     
     return new Builder()
       .forBrowser('firefox')
