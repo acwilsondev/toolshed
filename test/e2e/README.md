@@ -1,3 +1,83 @@
+# Toolshed E2E Tests
+
+## Running Tests with Docker Compose
+
+The E2E tests are configured to automatically manage a Docker Compose environment for testing. When you run the tests:
+
+1. The test runner will start all required services using `docker-compose up -d`
+2. It will wait for all services to be healthy before proceeding
+3. Tests will run against the Docker Compose environment
+4. After tests complete, the environment will be automatically cleaned up
+
+### Prerequisites
+
+- Node.js 20 or higher
+- Docker and Docker Compose
+- Chrome or Firefox browser installed
+
+### Running the Tests
+
+```bash
+# Run with default settings (Chrome)
+npm run test:e2e
+
+# Run with Firefox
+BROWSER=firefox npm run test:e2e
+
+# Run in headless mode
+HEADLESS=true npm run test:e2e
+
+# Run in CI mode (headless)
+CI=true npm run test:e2e
+```
+
+### Configuration
+
+The following environment variables can be used to configure the tests:
+
+- `BROWSER`: The browser to use (`chrome` or `firefox`). Defaults to `chrome`
+- `HEADLESS`: Run tests in headless mode if set to `true`
+- `CI`: Run tests in CI mode if set to `true` (implies headless)
+- `E2E_BASE_URL`: Base URL for tests. Defaults to `http://localhost:3000`
+- `E2E_TIMEOUT`: Timeout in milliseconds. Defaults to 15000
+- `WINDOW_WIDTH`: Browser window width. Defaults to 1920
+- `WINDOW_HEIGHT`: Browser window height. Defaults to 1080
+- `E2E_RETRIES`: Number of times to retry failed tests. Defaults to 1
+
+### Test Structure
+
+Tests are organized following the Page Object Model pattern:
+
+```
+test/e2e/
+├── framework/      # Base test framework classes
+├── pages/          # Page Object definitions
+├── runner.ts       # Test runner
+└── config.ts       # Test configuration
+```
+
+### Docker Compose Integration
+
+The test runner will:
+
+1. Start the Docker Compose environment
+2. Wait for services to be healthy (up to 50 seconds)
+3. Run the tests
+4. Tear down the environment
+
+If you need to debug the Docker Compose environment:
+
+```bash
+# View service logs
+docker-compose logs
+
+# Check service status
+docker-compose ps
+
+# Manually cleanup
+docker-compose down
+```
+
 # E2E Testing with Selenium
 
 This directory contains comprehensive end-to-end tests using Selenium WebDriver with TypeScript.

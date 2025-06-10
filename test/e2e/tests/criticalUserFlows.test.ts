@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
+import fetch from 'node-fetch';
 import { WebDriver, By } from 'selenium-webdriver';
 import { WebDriverFactory, BrowserConfig } from '../framework/BasePageFactory';
 import { NavigationPageObject } from '../pages/NavigationPageObject';
@@ -20,11 +21,35 @@ describe('Critical User Flows E2E Tests', () => {
   let profilePage: ProfilePageObject;
   
   const config: BrowserConfig = {
-    browser: 'chrome',
+    browser: 'firefox',
     headless: process.env.CI === 'true' || process.env.HEADLESS === 'true',
     windowSize: { width: 1920, height: 1080 },
     timeout: 15000
   };
+
+
+  beforeAll(async () => {
+    vi.setConfig({ hookTimeout: 60000, testTimeout: 60000 });
+
+    // Wait for server to be ready
+    let retries = 0;
+    const maxRetries = 5;
+    while (retries < maxRetries) {
+      try {
+        const response = await fetch('http://localhost:3001');
+        if (response.ok || response.status === 404) {
+          break;
+        }
+      } catch (error) {
+        console.log(`Waiting for server (attempt ${retries + 1}/${maxRetries})...`);
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+      retries++;
+    }
+    if (retries === maxRetries) {
+      throw new Error('Server did not become ready in time');
+    }
+  });
   
   beforeAll(async () => {
     driver = await WebDriverFactory.createDriver(config);
@@ -36,10 +61,14 @@ describe('Critical User Flows E2E Tests', () => {
   }, 30000);
   
   afterAll(async () => {
-    if (driver) {
-      await driver.quit();
+    try {
+      if (driver) {
+        await driver.quit();
+      }
+    } catch (error) {
+      console.error('Error during cleanup:', error);
     }
-  });
+  }, 30000);
   
   beforeEach(async () => {
     // Reset to home page before each test

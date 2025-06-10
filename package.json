@@ -60,6 +60,7 @@
     "jsdom": "^26.0.0",
     "jsonwebtoken": "^9.0.2",
     "memoizee": "^0.4.17",
+    "node-fetch": "^3.3.2",
     "openid-client": "^6.5.1",
     "passport": "^0.7.0",
     "pg": "^8.11.3",
