@@ -205,21 +205,33 @@ export class ProductionMigrationStrategy extends MigrationStrategy {
   private async getAllMigrationFiles(): Promise<MigrationInfo[]> {
     try {
       const migrationsPath = join(process.cwd(), 'database', 'migrations');
-      const files = await readdir(migrationsPath);
+      const files = await readdir(migrationsPath).catch(() => []);
       const sqlFiles = files.filter(f => f.endsWith('.sql')).sort();
       
-      return Promise.all(sqlFiles.map(async (file) => {
-        const content = await readFile(join(migrationsPath, file), 'utf8');
-        const hash = await this.generateHash(content);
-        
-        return {
-          id: file.replace('.sql', ''),
-          name: file,
-          path: join(migrationsPath, file),
-          hash,
-          status: 'pending' as const
-        };
+      if (sqlFiles.length === 0) return [];
+      
+      const results = await Promise.allSettled(sqlFiles.map(async (file) => {
+        try {
+          const content = await readFile(join(migrationsPath, file), 'utf8');
+          const hash = await this.generateHash(content);
+          
+          return {
+            id: file.replace('.sql', ''),
+            name: file,
+            path: join(migrationsPath, file),
+            hash,
+            status: 'pending' as const
+          };
+        } catch (error) {
+          return null;
+        }
       }));
+      
+      return results
+        .filter((result): result is PromiseFulfilledResult<MigrationInfo> => 
+          result.status === 'fulfilled' && result.value !== null
+        )
+        .map(result => result.value);
     } catch (error) {
       return [];
     }
